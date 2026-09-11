@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>통돌 Note 사용설명서</title>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   통돌 Note — 문서 공통 바탕
+
+   ── 글꼴을 인터넷에서 안 받아옵니다 ★ ─────────────────────
+   이 프로그램은 **인터넷이 없어도 되는 것**이 전제입니다. 웹 글꼴을
+   쓰면 인터넷이 없는 기관 PC 에서 글자가 무너집니다. 윈도에 늘 있는
+   맑은 고딕으로 짜고, **크기·굵기·자간**으로 모양을 냅니다.
+
+   ── 색은 프로그램에서 그대로 가져옵니다 ───────────────────
+   현장앱과 화면이 이미 쓰는 값입니다. 문서만 다른 초록을 쓰면
+   같은 제품으로 안 보입니다.
+
+   ── 밝은 쪽으로 못박습니다 ────────────────────────────────
+   종이로 뽑아 PC 옆에 두는 문서라 어두운 모드를 따라가지 않습니다.
+   대신 **모든 색을 빠짐없이 칠합니다** — 어느 브라우저에서 열어도
+   같은 모양이어야 합니다.
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --ink:#1b1d1a; --ink2:#43483f; --muted:#6f766c; --faint:#9aa196;
+  --line:#e2e5df; --line2:#eef1ec;
+  --paper:#ffffff; --ground:#f4f6f2; --sunk:#f8faf7;
+  --green:#3f6b4a; --green-deep:#2f5239; --green-soft:#e8f0e9;
+  --warn:#8a5a1c; --warn-soft:#fdf3e3; --warn-line:#e8d3ad;
+  --bad:#8f3630;  --bad-soft:#fbeceb;  --bad-line:#eccbc8;
+  --글꼴:"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",
+        "Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --숫자:"Segoe UI","맑은 고딕",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--글꼴); font-size:16.5px; line-height:1.85;
+  word-break:keep-all; overflow-wrap:anywhere;
+}
+
+/* ── 종이 ────────────────────────────────────────────────── */
+.종이{max-width:52rem; margin:0 auto; background:var(--paper);
+  box-shadow:0 1px 2px rgba(27,29,26,.05), 0 8px 40px rgba(27,29,26,.07);}
+.속{padding:0 clamp(1.4rem,5vw,4.2rem)}
+
+/* ── 머리 ────────────────────────────────────────────────── */
+.머리{background:var(--green); color:#fff; padding:3.2rem clamp(1.4rem,5vw,4.2rem) 2.6rem;}
+.머리 .표시{display:flex; align-items:center; gap:.85rem; margin-bottom:2.2rem}
+.머리 .표시 svg{width:34px; height:34px; display:block}
+.머리 .표시 b{font-size:1.02rem; font-weight:600; letter-spacing:-.01em}
+.머리 h1{margin:0; font-size:clamp(1.9rem,5.2vw,2.7rem); font-weight:700;
+  letter-spacing:-.035em; line-height:1.25; text-wrap:balance}
+.머리 .한줄{margin:.8rem 0 0; font-size:1.06rem; color:#d5e4d8; line-height:1.7}
+.머리 .꼬리{margin-top:2rem; padding-top:1.1rem; border-top:1px solid rgba(255,255,255,.22);
+  display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; font-size:.87rem; color:#c3d8c8}
+.머리 .꼬리 b{color:#fff; font-weight:600; font-family:var(--숫자)}
+
+/* ── 글 ──────────────────────────────────────────────────── */
+h2{margin:3.4rem 0 1.1rem; font-size:1.42rem; font-weight:700; letter-spacing:-.028em;
+  line-height:1.4; text-wrap:balance; color:var(--ink)}
+h3{margin:2.2rem 0 .7rem; font-size:1.1rem; font-weight:700; letter-spacing:-.02em; color:var(--ink)}
+h4{margin:1.6rem 0 .5rem; font-size:.99rem; font-weight:700; color:var(--ink2)}
+p{margin:0 0 1.05rem}
+b,strong{font-weight:700}
+a{color:var(--green-deep)}
+.작게{font-size:.9rem; color:var(--muted); line-height:1.75}
+.가운데{text-align:center}
+
+/* 첫 h2 위 여백은 머리와 겹치므로 줄입니다 */
+.속>h2:first-child{margin-top:2.6rem}
+
+ul,ol{margin:0 0 1.05rem; padding-left:1.35rem}
+li{margin:.34rem 0}
+li::marker{color:var(--faint)}
+
+/* ── 눈에 띄는 이름표 ────────────────────────────────────── */
+.이름표{display:inline-block; font-size:.73rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--green-deep); background:var(--green-soft);
+  padding:.2rem .55rem; border-radius:3px}
+
+/* ── 차례 ────────────────────────────────────────────────── */
+.차례{background:var(--sunk); border:1px solid var(--line); border-radius:6px;
+  padding:1.4rem 1.6rem; margin:0 0 1.4rem}
+.차례 ol{margin:0; padding-left:0; list-style:none; counter-reset:ch}
+.차례 li{counter-increment:ch; display:flex; gap:.85rem; align-items:baseline;
+  padding:.42rem 0; border-bottom:1px solid var(--line2)}
+.차례 li:last-child{border-bottom:0}
+.차례 li::before{content:counter(ch); font-family:var(--숫자); font-size:.82rem;
+  font-weight:700; color:var(--green); min-width:1.5rem; flex:none}
+.차례 li em{font-style:normal; color:var(--muted); font-size:.9rem; margin-left:auto;
+  padding-left:1rem; text-align:right; flex:none}
+
+/* ── 차례 단계 ★ 이 문서는 진짜 순서입니다 ──────────────── */
+.단계{display:grid; grid-template-columns:3.2rem 1fr; gap:0 1.3rem;
+  margin:2.8rem 0 0; padding-top:2rem; border-top:1px solid var(--line)}
+.단계:first-of-type{border-top:0; padding-top:0}
+.단계 .번호{font-family:var(--숫자); font-size:1.5rem; font-weight:700; color:var(--green);
+  line-height:1.5; letter-spacing:-.03em; font-variant-numeric:tabular-nums}
+.단계 .속살{min-width:0}
+.단계 h2{margin:0 0 .3rem; font-size:1.32rem}
+.단계 .걸림{font-size:.86rem; color:var(--muted); margin:0 0 1rem}
+
+/* ── 알림 상자 ───────────────────────────────────────────── */
+.짚기{border-left:3px solid var(--green); background:var(--green-soft);
+  padding:1rem 1.2rem; margin:1.3rem 0; border-radius:0 4px 4px 0}
+.짚기>:last-child{margin-bottom:0}
+.조심{border-left:3px solid var(--warn); background:var(--warn-soft);
+  border-top:1px solid var(--warn-line); border-right:1px solid var(--warn-line);
+  border-bottom:1px solid var(--warn-line);
+  padding:1rem 1.2rem; margin:1.3rem 0; border-radius:0 4px 4px 0}
+.조심>:last-child{margin-bottom:0}
+.조심 .머릿말{font-weight:700; color:var(--warn); margin:0 0 .35rem; font-size:.95rem}
+.큰일{border-left:3px solid var(--bad); background:var(--bad-soft);
+  border-top:1px solid var(--bad-line); border-right:1px solid var(--bad-line);
+  border-bottom:1px solid var(--bad-line);
+  padding:1rem 1.2rem; margin:1.3rem 0; border-radius:0 4px 4px 0}
+.큰일>:last-child{margin-bottom:0}
+.큰일 .머릿말{font-weight:700; color:var(--bad); margin:0 0 .35rem; font-size:.95rem}
+
+/* 한 줄로 못박는 것 */
+.못박기{margin:1.5rem 0; padding:1.15rem 1.3rem; background:var(--green-deep);
+  color:#fff; border-radius:5px; font-size:1.08rem; font-weight:700;
+  line-height:1.6; letter-spacing:-.015em}
+
+/* ── 표 ──────────────────────────────────────────────────── */
+.표감{overflow-x:auto; margin:1.2rem 0; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; font-size:.94rem; line-height:1.65}
+th,td{text-align:left; padding:.62rem .8rem; border-bottom:1px solid var(--line2);
+  vertical-align:top}
+thead th{font-size:.79rem; font-weight:700; letter-spacing:.05em; color:var(--muted);
+  text-transform:uppercase; border-bottom:1px solid var(--line); white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.수, th.수{font-family:var(--숫자); font-variant-numeric:tabular-nums; white-space:nowrap}
+
+/* ── 눌러야 하는 것 · 화면에 뜨는 글 ─────────────────────── */
+.누름{display:inline-block; font-size:.9em; font-weight:600; background:var(--sunk);
+  border:1px solid var(--line); border-bottom-color:#d6dbd2; border-radius:4px;
+  padding:.06em .42em; white-space:nowrap; color:var(--ink)}
+.길{font-family:var(--숫자); font-size:.92em; color:var(--ink2); white-space:nowrap}
+/* 화면에 실제로 뜨는 글. 낫표를 붙여 문장 안에서 경계가 보이게 합니다. */
+.뜬말{font-style:normal; color:var(--green-deep); font-weight:600}
+.뜬말::before{content:"「"} .뜬말::after{content:"」"}
+
+/* ── 검은 창 ─────────────────────────────────────────────── */
+.검은창{background:#1a1f1b; color:#dfe6e0; border-radius:5px; padding:1.05rem 1.2rem;
+  margin:1.2rem 0; font-family:var(--숫자); font-size:.88rem; line-height:1.75;
+  overflow-x:auto; white-space:pre; box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.검은창 .밝게{color:#fff; font-weight:600}
+.검은창 .흐리게{color:#8fa093}
+
+/* ── 윈도 경고창 흉내 ★ ─────────────────────────────────── */
+.윈도창{max-width:25rem; margin:1.4rem auto; border-radius:7px; overflow:hidden;
+  background:#f3f3f3; color:#1b1b1b; border:1px solid #d8d8d8;
+  box-shadow:0 10px 30px rgba(20,24,20,.16); font-size:.9rem; line-height:1.6}
+.윈도창 .창머리{background:#fff; padding:1.05rem 1.25rem .3rem;
+  font-size:1.02rem; font-weight:700; color:#1b1b1b}
+.윈도창 .창몸{background:#fff; padding:.2rem 1.25rem 1.25rem; color:#3a3a3a}
+.윈도창 .더보기{display:inline-block; color:#1a5fb4; text-decoration:underline;
+  margin-top:.6rem; cursor:default}
+.윈도창 .창발{display:flex; justify-content:flex-end; gap:.5rem;
+  padding:.85rem 1.25rem; border-top:1px solid #e6e6e6}
+.윈도창 .단추{border:1px solid #cfcfcf; background:#fdfdfd; border-radius:4px;
+  padding:.32rem 1.15rem; font-size:.87rem}
+.윈도창 .단추.짙게{background:var(--green); border-color:var(--green); color:#fff; font-weight:600}
+.창설명{max-width:25rem; margin:-.6rem auto 1.4rem; font-size:.86rem; color:var(--muted);
+  text-align:center; line-height:1.7}
+
+/* ── 흐름 그림 ───────────────────────────────────────────── */
+.흐름{list-style:none; margin:1.4rem 0; padding:0; counter-reset:fl}
+.흐름 li{counter-increment:fl; position:relative; padding:0 0 1.35rem 3rem; margin:0}
+.흐름 li::before{content:counter(fl); position:absolute; left:0; top:.1rem;
+  width:1.85rem; height:1.85rem; border-radius:50%; background:var(--green-soft);
+  color:var(--green-deep); font-family:var(--숫자); font-size:.85rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center}
+.흐름 li::after{content:""; position:absolute; left:.9rem; top:2.05rem; bottom:.1rem;
+  width:1px; background:var(--line)}
+.흐름 li:last-child{padding-bottom:0}
+.흐름 li:last-child::after{display:none}
+.흐름 li b{display:block; font-size:1.02rem; margin-bottom:.12rem}
+.흐름 li span{display:block; font-size:.9rem; color:var(--muted); line-height:1.7}
+
+/* ── 발 ──────────────────────────────────────────────────── */
+.발{margin-top:4rem; padding:2rem clamp(1.4rem,5vw,4.2rem) 2.6rem;
+  border-top:1px solid var(--line); background:var(--sunk);
+  font-size:.88rem; color:var(--muted); line-height:1.8}
+.발 b{color:var(--ink2)}
+
+/* ── 인쇄 ★ A4 로 뽑아 PC 옆에 둡니다 ───────────────────── */
+@media print{
+  @page{size:A4; margin:15mm 14mm}
+  body{background:#fff; font-size:10.4pt; line-height:1.65}
+  .종이{box-shadow:none; max-width:none}
+  .속{padding:0}
+  .머리{padding:0 0 1.1rem; background:#fff; color:var(--ink);
+    border-bottom:2.5pt solid var(--green); margin-bottom:1.4rem}
+  .머리 .표시{margin-bottom:.8rem}
+  .머리 .표시 b{color:var(--green-deep)}
+  .머리 .한줄{color:var(--ink2)}
+  .머리 .꼬리{border-top-color:var(--line); color:var(--muted)}
+  .머리 .꼬리 b{color:var(--ink)}
+  .못박기{background:#fff; color:var(--ink); border:1.5pt solid var(--green)}
+  .검은창{background:#fff; color:var(--ink); border:.7pt solid var(--line); box-shadow:none}
+  .검은창 .밝게{color:var(--ink)} .검은창 .흐리게{color:var(--muted)}
+  .윈도창{box-shadow:none; border:.7pt solid #bbb}
+  .발{background:#fff}
+  h2,h3,h4{break-after:avoid-page}
+  .단계,.짚기,.조심,.큰일,.윈도창,table,.흐름 li{break-inside:avoid}
+  .안찍기{display:none !important}
+}
+
+</style>
+</head>
+<body>
+<div class="종이">
+<div class="머리">
+  <div class="표시">
+    <img src="data:image/png;base64,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" width="34" height="34" alt="">
+    <b>통돌 Note</b>
+  </div>
+  <h1>관리자 사용설명서</h1>
+  <p class="한줄">업무를 처음 맡은 사무직원이 첫 달을 혼자 마무리하는 것 — 그것이 이 설명서가 하려는 일입니다.</p>
+  <div class="꼬리"><span>버전 <b>{버전}</b></span><span>장 <b>13장 + 부록</b></span><span>먼저 볼 것 <b>1장 · 6장</b></span></div>
+</div>
+<div class="속">
+
+<h2 style="margin-top:2.6rem">이 설명서가 하려는 일</h2>
+<div class="못박기">업무를 처음 맡은 사무직원이 첫 달을 혼자 마무리하는 것.</div>
+<p>화면마다 무엇을 누르는지는 화면 안에 적혀 있습니다.
+   여기서는 <b>화면과 화면 사이</b>, 그러니까 「이 다음에 무엇을 하나」를 적습니다.</p>
+
+<h3>급하시면 1장과 6장만</h3>
+<div class="차례">
+  <ol>
+    <li><b>설정부터</b> &mdash; 프로그램을 처음 받은 날<em>반드시</em></li>
+    <li>한 달이 어떻게 도나<em>한 번 훑기</em></li>
+    <li>대상자를 받는다<em>명단이 왔을 때</em></li>
+    <li>배정한다<em>담당을 정할 때</em></li>
+    <li>현장에서 찍는다<em>휴대폰을 붙일 때</em></li>
+    <li><b>월말 순서</b> &mdash; 제일 많이 쓰입니다<em>매달 말</em></li>
+    <li>청구 시점<em>처음 한 번</em></li>
+    <li>기록지 뽑기<em>매달</em></li>
+    <li><b>USB 로 오가며 일하기</b><em>제일 조심할 것</em></li>
+    <li>백업과 되돌리기<em>미리 읽어 두세요</em></li>
+    <li>옆 컴퓨터에서 열기<em>컴퓨터가 여럿일 때</em></li>
+    <li>새 버전<em>알림이 떴을 때</em></li>
+    <li>안 될 때<em>막혔을 때</em></li>
+  </ol>
+</div>
+
+<!-- ══════════════ 1장 ══════════════ -->
+<div class="단계">
+  <div class="번호">1</div>
+  <div class="속살">
+    <h2>설정부터 봅니다</h2>
+    <p class="걸림">처음 받은 날 · 반드시 · 5분</p>
+
+    <h3>왜 이것이 1장인가</h3>
+    <p>프로그램은 설정이 틀려도 <b>잘 돕니다.</b> 화면도 똑같이 생겼습니다.
+       틀렸다는 것은 <b>청구서를 내고 나서</b> 압니다.</p>
+    <ul>
+      <li>단가가 1,000원 다르면 <b>한 달치 청구가 다 틀립니다</b></li>
+      <li>한도가 0 으로 되어 있으면 <b>넘겨도 아무 말이 없습니다</b></li>
+      <li>본인부담 비율이 다르면 <b>어르신 영수증 금액이 틀립니다</b></li>
+    </ul>
+
+    <h3>처음 켜면 저절로 물어봅니다</h3>
+    <p>기관 정보를 넣으면 곧바로
+       <span class="뜬말">이 값들이 맞는지만 봐 주세요</span> 화면이 뜹니다.
+       <b>이 화면을 지나야 홈이 열립니다.</b> 건너뛰기 단추는 없습니다.</p>
+    <p>새로 적는 화면이 아닙니다 &mdash; 2026년 해남군 편람 기준으로
+       <b>이미 다 채워져</b> 있습니다. 해남군이시면 맨 아래 단추 하나로 끝납니다.</p>
+
+    <h3>일곱 가지를 봅니다</h3>
+    <div class="표감"><table>
+      <thead><tr><th style="width:2rem"></th><th style="width:13rem">무엇</th><th>보실 것</th></tr></thead>
+      <tbody>
+        <tr><td class="수">1</td><td>우리 지자체 이름</td>
+            <td>규칙 이름을 우리 군·시 이름으로. 그대로 두면 설정 화면과
+                이력에 남의 이름이 남습니다</td></tr>
+        <tr><td class="수">2</td><td><b>서비스 단가</b></td>
+            <td>우리 지자체 편람의 금액과 같은지. <b>이 값이 틀리면 청구
+                금액이 그대로 틀립니다</b></td></tr>
+        <tr><td class="수">3</td><td>지원한도</td>
+            <td>1인 연간 · 안전생활환경 생애. <b>0 은 「안 봅니다」</b>라는 뜻입니다</td></tr>
+        <tr><td class="수">4</td><td>서비스별 월 한도</td>
+            <td>시간과 횟수가 <b>둘 다</b> 걸리는 서비스가 있습니다 (동행지원)</td></tr>
+        <tr><td class="수">5</td><td>비대면 배달 한도</td>
+            <td>돈이 아니라 <b>어르신 서비스가 끊기는</b> 기준입니다</td></tr>
+        <tr><td class="수">6</td><td>본인부담 구간</td>
+            <td>지자체마다 다릅니다. 그대로 어르신 영수증이 됩니다</td></tr>
+        <tr><td class="수">7</td><td>공휴일</td>
+            <td>여기서는 안 묻습니다 &mdash; 아래를 보세요</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>공휴일은 며칠 안에</h3>
+    <p><span class="누름">설정</span> → <span class="누름">공휴일</span>.
+       그해 관공서 공휴일을 넣어 주세요.
+       설날·추석은 해마다 옮겨 다녀서 프로그램이 알지 못합니다.</p>
+    <p>달력이 있어야 넣을 수 있어 설치할 때는 안 묻습니다.
+       대신 넣으실 때까지 <b>홈 화면이 알려 드립니다.</b></p>
+
+    <h3>홈이 말을 걸면</h3>
+    <p>홈 위쪽에 노란 칸으로 이런 것이 뜰 수 있습니다.</p>
+    <div class="표감"><table>
+      <tbody>
+        <tr><td style="width:19rem"><span class="뜬말">올해 공휴일이 하나도 없습니다</span></td>
+            <td>위를 보세요</td></tr>
+        <tr><td><span class="뜬말">단가가 0원인 서비스가 있습니다</span></td>
+            <td>그대로 두면 <b>청구서에 0원으로 나갑니다</b></td></tr>
+        <tr><td><span class="뜬말">잠긴 기준선을 쓰고 있습니다</span></td>
+            <td>한도가 다 꺼진 규칙입니다. 우리 지자체 규칙으로 바꾸세요</td></tr>
+      </tbody>
+    </table></div>
+    <p class="작게">셋 다 옆에 <span class="누름">설정에서 고치기</span> 가 붙어 있습니다.</p>
+
+    <div class="짚기">
+      <p style="margin-bottom:0">마친 뒤에도 <span class="누름">설정</span> →
+         <span class="누름">계산 규칙</span> 에서 <b>언제든 고칠 수 있습니다.</b>
+         바꾼 것은 이력에 남습니다 &mdash; 나중에 「단가가 언제 바뀌었나」에
+         답할 수 있어야 합니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 2장 ══════════════ -->
+<div class="단계">
+  <div class="번호">2</div>
+  <div class="속살">
+    <h2>한 달이 어떻게 도나</h2>
+    <p class="걸림">한 번 훑어 두면 나머지가 쉬워집니다</p>
+    <ol class="흐름">
+      <li><b>의뢰 접수</b><span>군에서 온 엑셀을 그대로 올립니다</span></li>
+      <li><b>대상자</b><span>등록하고 계약서를 뽑습니다</span></li>
+      <li><b>배정</b><span>누가 · 무슨 요일에 · 한 달에 몇 번</span></li>
+      <li><b>제공실적</b><span>현장에서 찍힌 것이 여기 쌓입니다</span></li>
+      <li><b>정산</b><span>한 달치를 확정합니다</span></li>
+      <li><b>기록지</b><span>군에 낼 종이를 뽑습니다</span></li>
+    </ol>
+    <div class="짚기">
+      <p style="margin-bottom:0"><b>매달 군에 내는 것은 기록지 하나입니다.</b>
+         나머지는 기관 안에서 씁니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 3장 ══════════════ -->
+<div class="단계">
+  <div class="번호">3</div>
+  <div class="속살">
+    <h2>대상자를 받는다</h2>
+
+    <h3>명단이 오면</h3>
+    <p><span class="누름">의뢰 접수</span> 화면에서 군이 준 엑셀을 그대로 올립니다.
+       암호가 걸린 파일이면 암호를 함께 넣습니다.</p>
+    <p>올리면 <b>미리 보기</b>가 나옵니다. <b>여기서 한 번 눈으로 보고</b> 넣으세요 &mdash;
+       넣고 나서 고치는 것보다 훨씬 쉽습니다.</p>
+
+    <h3>계약서</h3>
+    <p>대상자를 등록하면 <b>계약서(서식2)</b> 를 뽑을 수 있습니다.
+       <b>2부</b>가 나옵니다 &mdash; 기관 1부, 어르신 1부.</p>
+    <div class="짚기">
+      <p style="margin-bottom:0">계약기간 칸의 연도는 <b>늘 실제 연도로</b> 고쳐 인쇄합니다.
+         편람 서식에 「2025」로 인쇄돼 있는데 <b>군의 오타</b>입니다.</p>
+    </div>
+
+    <h3>상태 다섯 가지</h3>
+    <div class="표감"><table>
+      <tbody>
+        <tr><td style="width:7rem"><b>이용</b></td><td>지금 서비스를 받고 계십니다</td></tr>
+        <tr><td><b>중단</b></td><td><b>잠시 멈춘 것</b>입니다. 그날 갈 곳에서도 빠집니다 &mdash;
+            멈춘 집에 제공인력이 찾아가면 안 되기 때문입니다</td></tr>
+        <tr><td><b>종결</b></td><td>서비스가 끝났습니다</td></tr>
+        <tr><td><b>취소</b></td><td>시작하기 전에 취소되었습니다</td></tr>
+        <tr><td><b>직권중단</b></td><td>기관이나 군의 판단으로 멈춘 것입니다</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ══════════════ 4장 ══════════════ -->
+<div class="단계">
+  <div class="번호">4</div>
+  <div class="속살">
+    <h2>배정한다</h2>
+
+    <h3>세 가지를 정합니다</h3>
+    <div class="표감"><table>
+      <tbody>
+        <tr><td style="width:11rem"><b>누가</b></td><td>담당 제공인력</td></tr>
+        <tr><td><b>무슨 요일에</b></td><td>월·수·금처럼</td></tr>
+        <tr><td><b>한 달에 몇 번</b></td><td>매주 / 한 달에 1~4번</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>「가는 주기」가 왜 있나</h3>
+    <p>편람은 서비스마다 <b>월 한도</b>를 정해 두었습니다.</p>
+    <div class="표감"><table>
+      <thead><tr><th>서비스</th><th>월 한도</th></tr></thead>
+      <tbody>
+        <tr><td>가사지원</td><td>월 12시간</td></tr>
+        <tr><td>식사지원</td><td>월 8회</td></tr>
+        <tr><td><b>동행지원</b></td><td><b>월 6시간 · 2회</b></td></tr>
+        <tr><td><b>이미용</b></td><td><b>월 1회</b></td></tr>
+      </tbody>
+    </table></div>
+    <p>요일만으로는 <b>한 주에 한 번이 제일 적은데 그것만도 한 달 4~5번</b>입니다.
+       그래서 동행지원(월 2회)과 이미용(월 1회)은 요일만으로 짤 수가 없습니다.</p>
+    <div class="못박기">「한 달에 2번 · 수요일」 = 그 달 수요일 중 앞의 두 번</div>
+    <p>달이 몇 주짜리든 정확히 2번입니다.
+       <b>사무실 달력과 제공인력 휴대폰이 같은 날을 봅니다.</b></p>
+
+    <h3>한도를 넘으면 저장이 안 됩니다</h3>
+    <p>넘는 계획은 <b>저장되지 않습니다.</b> 화면이 무엇이 얼마나 넘는지,
+       넘긴 몫은 누가 떠안는지, 어떻게 고치면 되는지를 함께 알려 줍니다.</p>
+    <div class="조심">
+      <p class="머릿말">요일만 줄여서는 안 되는 경우가 있습니다</p>
+      <p style="margin-bottom:0">월 2회짜리를 매주로 잡으면 <b>요일을 아무리 줄여도</b>
+         한도 안에 못 듭니다. <span class="누름">가는 주기</span> 를 바꾸셔야 합니다 &mdash;
+         화면이 그렇게 말해 줍니다.</p>
+    </div>
+    <div class="짚기">
+      <p style="margin-bottom:0"><b>이미 넘겨 저장된 배정</b>(옛 자료함이나 군과 협의해
+         넘긴 것)은 담당자만 바꾸는 것 같은 <b>줄이거나 그대로 두는 저장</b>은 늘 됩니다.
+         새로 넘기는 것만 막힙니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 5장 ══════════════ -->
+<div class="단계">
+  <div class="번호">5</div>
+  <div class="속살">
+    <h2>현장에서 찍는다</h2>
+
+    <h3>제공인력 휴대폰</h3>
+    <p>제공인력은 휴대폰으로 <b>오늘 갈 곳</b>을 보고, 집 앞에서 <b>방문표(QR)</b> 를 찍고,
+       일지를 쓰고, 서명을 받습니다. 그것이 사무실의 <b>제공실적 달력</b>에
+       그대로 올라옵니다.</p>
+
+    <h3>서식 3·4·5 는 저절로 채워집니다</h3>
+    <p>가사지원·식사 관리·병원동행 제공기록지입니다.
+       <b>제공인력은 이 서식을 보지도 않습니다.</b> 방문을 찍고 일지를 쓰면
+       그것이 서식의 칸으로 들어갑니다. 사무실에서 뽑기만 합니다.</p>
+
+    <h3>계획한 시간을 못 채우고 끝내면</h3>
+    <p>확인 창이 뜹니다.</p>
+    <div class="검은창">계획된 서비스 제공시간을 충족하지 못하였습니다(<span class="밝게">30분 남음</span>).
+
+정말로 종결 하시겠습니까?</div>
+    <p><b>막지는 않습니다.</b> 어르신이 「오늘은 그만하자」고 하시는 날이 있고,
+       그때 앱이 못 끝내게 하면 현장은 앱을 버리고 종이로 돌아갑니다.
+       <b>모르고 지나가는 것만</b> 막습니다.</p>
+    <div class="조심">
+      <p class="머릿말">다만 인정 시간이 줄어듭니다</p>
+      <p style="margin-bottom:0">40분이면 <b>30분</b>, 14분이면 <b>0원</b>입니다.
+         그 차이는 기관이 떠안습니다. 부록의 표를 보세요.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 6장 ══════════════ -->
+<div class="단계">
+  <div class="번호">6</div>
+  <div class="속살">
+    <h2>월말 순서</h2>
+    <p class="걸림">매달 말 · 이 한 장이 제일 많이 쓰입니다</p>
+    <ol class="흐름">
+      <li><b>제공실적에서 그 달을 훑는다</b>
+        <span>빈 칸이 있나 (안 찍은 방문) · 미제공 사유가 다 적혀 있나</span></li>
+      <li><b>정산 화면에서 그 달을 연다</b>
+        <span>대상자마다 금액을 본다 · 한도 넘음 표시가 있나</span></li>
+      <li><b>청구서·영수증을 뽑는다</b>
+        <span>본인부담금 영수증(서식7)은 어르신께 · 비용총괄(서식8)은 군에</span></li>
+      <li><b>기록지를 뽑는다</b>
+        <span>모니터링 기록지(서식9) · 제공기록지(서식3·4·5)</span></li>
+      <li><b>군에 낸다</b><span></span></li>
+      <li><b>백업 자리를 한 번 확인한다</b><span>10장을 보세요</span></li>
+    </ol>
+
+    <h3>1번에서 눈여겨볼 것</h3>
+    <div class="표감"><table>
+      <tbody>
+        <tr><td style="width:9rem"><b>빈 칸</b></td>
+            <td>갔는데 안 찍은 날입니다. 그대로 두면 <b>청구에서 빠집니다</b></td></tr>
+        <tr><td><b>미제공 사유</b></td>
+            <td>안 적으면 저장이 안 됩니다. <b>노쇼인지 사전취소인지에 따라
+                돈이 나가는지가 갈립니다</b></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>2번에서 눈여겨볼 것</h3>
+    <div class="표감"><table>
+      <tbody>
+        <tr><td style="width:9rem"><b>한도 넘음</b></td>
+            <td>넘긴 몫은 군이 안 줍니다</td></tr>
+        <tr><td><b>본인부담 구간</b></td>
+            <td>어르신마다 0% / 20% / 100% 가 맞는지</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="조심">
+      <p class="머릿말">6번을 빠뜨리지 마세요</p>
+      <p style="margin-bottom:0"><b>백업은 열어 보기 전까지 백업이 아닙니다.</b> 10장을 보세요.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 7장 ══════════════ -->
+<div class="단계">
+  <div class="번호">7</div>
+  <div class="속살">
+    <h2>청구 시점 세 가지</h2>
+    <p class="걸림">처음 한 번만 정하면 됩니다</p>
+    <p><span class="누름">설정</span> → <span class="누름">계산 규칙</span>.
+       잘못 고르면 <b>엉뚱한 기간이 찍힌 청구서가 어르신께 갑니다.</b></p>
+    <div class="표감"><table>
+      <thead><tr><th style="width:12rem">고르는 것</th><th>무슨 뜻</th><th style="width:11rem">언제 고릅니까</th></tr></thead>
+      <tbody>
+        <tr><td><b>달마다</b></td>
+            <td>달력 달로 자릅니다. 8월분은 8월 1일~31일</td>
+            <td><b>대개 이것입니다.</b> 군 명단·기록지와 줄이 맞습니다</td></tr>
+        <tr><td>시작일부터 한 달씩</td>
+            <td>5월 11일 시작이면 5.11~6.10 이 1회차</td>
+            <td>군이 그렇게 요구할 때</td></tr>
+        <tr><td>기간이 끝날 때 한 번에</td>
+            <td>의뢰 기간이 끝나면 한 장으로 묶어서</td>
+            <td>짧은 단기 의뢰만 있을 때</td></tr>
+      </tbody>
+    </table></div>
+    <div class="짚기">
+      <p style="margin-bottom:0"><b>모르시면 「달마다」로 두세요.</b>
+         군에 내는 기록지가 달력 달 기준이라 그것과 줄이 맞는 것이
+         제일 덜 헷갈립니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 8장 ══════════════ -->
+<div class="단계">
+  <div class="번호">8</div>
+  <div class="속살">
+    <h2>기록지 뽑기</h2>
+
+    <h3>한 달치를 한 번에</h3>
+    <p>기록지 화면에서 그 달을 고르고 <span class="누름">한 번에 뽑기</span> 를 누르면
+       대상자별로 다 나옵니다.</p>
+
+    <h3>PDF 로 뽑으려면 「한글」이 필요합니다</h3>
+    <p>한글(2014 이상)이 깔려 있어야 합니다. 없으면 <b>.hwpx 파일로 받으신 뒤</b>,
+       한글이 있는 컴퓨터에서 뽑으시면 됩니다.</p>
+
+    <div class="큰일">
+      <p class="머릿말">한글의 「PDF로 저장」은 쓰지 마세요</p>
+      <p><span class="누름">인쇄</span> → <span class="누름">Microsoft Print to PDF</span>
+         로 뽑으셔야 합니다.</p>
+      <p style="margin-bottom:0">한글의 「PDF로 저장」은 <b>한 줄에 칸이 많은 표에서
+         마지막 칸을 빠뜨립니다.</b> 군에 낸 종이에서 마지막 칸이 비어 있으면 반려됩니다.</p>
+    </div>
+
+    <h3>경고창이 뜨면</h3>
+    <p>한글이 「이 파일은 다른 프로그램이 만든 것입니다」 같은 창을 띄울 수 있습니다.
+       그 창이 안 뜨게 하는 것을 프로그램에 함께 넣어 두었지만,
+       한글 버전에 따라 뜰 수 있습니다. <b>「예」를 누르시면 됩니다.</b></p>
+
+    <h3>서식은 한 글자도 안 바꿉니다</h3>
+    <p>우리가 채우는 것은 <b>값뿐</b>이고 모양은 편람 원본 그대로입니다.
+       프로그램을 만들 때마다 <b>원본과 한 글자도 다르지 않은지 세어 봅니다.</b></p>
+  </div>
+</div>
+
+<!-- ══════════════ 9장 ══════════════ -->
+<div class="단계">
+  <div class="번호">9</div>
+  <div class="속살">
+    <h2>USB 로 오가며 일하기</h2>
+    <p class="걸림">집에 들고 가실 때 · 제일 조심할 것</p>
+
+    <div class="못박기">집에 들고 나간 날은 사무실 PC 를 건드리지 않는다.</div>
+    <p>이 한 줄만 지키시면 아래 이야기는 읽지 않으셔도 됩니다.</p>
+
+    <h3>왜 어려운가</h3>
+    <p>이 프로그램의 자료는 <b>파일 하나</b>입니다. 들고 가는 순간
+       <b>자료함이 둘</b>이 됩니다. 그런데 화면은 집에서나 사무실에서나
+       똑같이 생겼습니다.</p>
+    <ol class="흐름">
+      <li><b>사무실 PC 에서 USB 로 백업</b><span>자료함이 USB 에 한 벌 복사됩니다</span></li>
+      <li><b>집에서 그 USB 로 일합니다</b><span>여기서부터 자료함이 둘입니다</span></li>
+      <li><b>다음 날 출근해서 USB 를 꽂습니다</b><span>어느 것이 맞는 것인가</span></li>
+    </ol>
+    <p>「어제 집에서 넣었는데 왜 없지」가 되고 나서야 둘이었다는 것을 압니다.
+       그때는 이미 <b>양쪽에 각각 며칠치</b>가 쌓여 있어서, 어느 쪽도 버릴 수 없습니다.</p>
+
+    <h3>프로그램이 알려 줍니다</h3>
+    <p>USB 를 꽂고 프로그램을 켜면 홈 맨 위에 띠가 하나 뜹니다.</p>
+    <div class="표감"><table>
+      <thead><tr><th style="width:20rem">띠에 적힌 말</th><th>뜻</th></tr></thead>
+      <tbody>
+        <tr><td><span class="뜬말">USB 에 이 컴퓨터에 없는 것이 있습니다</span></td>
+            <td>집에서 하신 것이 있습니다. <b>가져오시면 됩니다</b></td></tr>
+        <tr><td><span class="뜬말">USB 와 이 컴퓨터에서 따로 적으셨습니다</span></td>
+            <td><b>갈라졌습니다.</b> 아래를 보세요</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>갈라졌을 때 &mdash; 표를 이렇게 읽습니다</h3>
+    <div class="검은창">USB 에만 <span class="밝게">12건</span>,  이 컴퓨터에만 <span class="밝게">3건</span> 있습니다</div>
+    <div class="표감"><table>
+      <tbody>
+        <tr><td style="width:13rem"><b>USB 에만 12건</b></td><td>집에서 하신 일 12건</td></tr>
+        <tr><td><b>이 컴퓨터에만 3건</b></td><td>사무실에서 하신 일 3건</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="큰일">
+      <p class="머릿말">「이 컴퓨터에만」이 0 이 아니면, 가져올 때 그만큼 사라집니다</p>
+      <p style="margin-bottom:0">위 예에서 가져오기를 누르면
+         <b>사무실에서 한 3건이 없어집니다.</b></p>
+    </div>
+
+    <p>어느 쪽이 맞는지는 <b>사람만 알 수 있습니다.</b> 프로그램이 대신 정하지 않습니다.</p>
+    <ul>
+      <li><b>3건이 무엇인지 기억나신다면</b> &mdash; 가져온 뒤 그 3건만 다시 넣는 것이
+          제일 깨끗합니다</li>
+      <li><b>기억이 안 나신다면</b> &mdash; 가져오기 전에 <b>제공실적에서 그 며칠을 눈으로</b>
+          보고 적어 두세요</li>
+    </ul>
+
+    <div class="짚기">
+      <p><b>되돌릴 수 있습니다.</b> 가져오기 전에 프로그램이 이 컴퓨터 것을
+         한 부 떠 둡니다. 잘못했다 싶으면 <span class="누름">설정</span> →
+         <span class="누름">백업</span> → <span class="누름">되돌리기</span> 로
+         돌아갈 수 있습니다.</p>
+      <p style="margin-bottom:0"><b>가져온 뒤에는 껐다 켜 주세요.</b></p>
+    </div>
+
+    <h3>하면 안 되는 것 넷</h3>
+    <div class="표감"><table>
+      <thead><tr><th style="width:2rem"></th><th>무엇</th><th>왜</th></tr></thead>
+      <tbody>
+        <tr><td class="수">1</td><td><b>집과 사무실에서 같은 날 둘 다 적기</b></td>
+            <td>갈라지는 원인의 거의 전부입니다</td></tr>
+        <tr><td class="수">2</td><td>USB 를 뽑은 채로 「가져오기」 누르기</td>
+            <td>읽을 것이 없습니다</td></tr>
+        <tr><td class="수">3</td><td><b>집 컴퓨터만 새 버전으로 올리기</b></td>
+            <td>USB 자료함이 더 새 버전이 되어 <b>사무실에서 못 가져옵니다</b></td></tr>
+        <tr><td class="수">4</td><td>USB 자료함을 손으로 복사해 덮어쓰기</td>
+            <td>어느 쪽이 사라졌는지 아무도 모르게 됩니다</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>화면에 이런 말이 뜨면</h3>
+    <div class="표감"><table>
+      <thead><tr><th style="width:20rem">뜬 말</th><th>무엇을 하면 됩니까</th></tr></thead>
+      <tbody>
+        <tr><td><span class="뜬말">USB 의 자료함이 더 새 버전입니다</span></td>
+            <td><b>사무실 PC 를 먼저 새 버전으로</b> 올리세요</td></tr>
+        <tr><td><span class="뜬말">USB 의 자료함이 비어 있습니다</span></td>
+            <td>다른 파일을 고르셨습니다</td></tr>
+        <tr><td><span class="뜬말">백업 자리를 아직 안 정하셨습니다</span></td>
+            <td>설정 · 일반 · 백업에서 USB 폴더를 정하세요</td></tr>
+        <tr><td><span class="뜬말">백업 자리가 이 컴퓨터 안입니다</span></td>
+            <td>USB 나 외장 디스크를 정하셔야 오갈 수 있습니다</td></tr>
+        <tr><td><span class="뜬말">그 폴더를 열지 못했습니다</span></td>
+            <td>USB 가 빠졌습니다</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ══════════════ 10장 ══════════════ -->
+<div class="단계">
+  <div class="번호">10</div>
+  <div class="속살">
+    <h2>백업과 되돌리기</h2>
+
+    <h3>자료는 한 곳에 있습니다</h3>
+    <div class="검은창"><span class="밝게">C:\통돌Note\data\tongdol.db</span></div>
+    <p>이 파일 하나가 기관의 전부입니다. <b>폴더째 복사하면 그것이 백업입니다.</b></p>
+
+    <h3>프로그램도 알아서 떠 둡니다</h3>
+    <p><span class="길">data\보관</span> 폴더에 <b>여섯 시간마다</b> 한 부씩 뜹니다.
+       부수가 차면 오래된 것부터 지웁니다.</p>
+
+    <h3>USB 나 외장 디스크를 정해 두세요</h3>
+    <p><span class="누름">설정</span> → <span class="누름">일반</span> →
+       <span class="누름">백업 자리</span>.</p>
+    <div class="조심">
+      <p style="margin-bottom:0">같은 컴퓨터 안에만 두면, <b>그 컴퓨터가 고장 났을 때
+         백업도 같이 없어집니다.</b></p>
+    </div>
+
+    <div class="못박기">백업은 열어 보기 전까지 백업이 아닙니다.</div>
+    <p>「파일이 생겼다」만 보면 <b>속이 빈 파일</b>도 통과합니다.
+       석 달에 한 번쯤은 백업 파일을 <b>실제로 열어</b> 대상자 수가 맞는지 봐 주세요.</p>
+
+    <h3>되돌리기</h3>
+    <p><span class="누름">설정</span> → <span class="누름">백업</span> →
+       <span class="누름">되돌리기</span>.
+       되돌리기 전에 지금 것을 한 부 더 떠 두므로, <b>되돌린 것도 되돌릴 수 있습니다.</b></p>
+  </div>
+</div>
+
+<!-- ══════════════ 11장 ══════════════ -->
+<div class="단계">
+  <div class="번호">11</div>
+  <div class="속살">
+    <h2>옆 컴퓨터에서 열기</h2>
+    <p class="걸림">사무실에 컴퓨터가 여럿일 때</p>
+    <p>한 대에만 깔고 <b>나머지는 들어와서</b> 쓸 수 있습니다.</p>
+
+    <h3>여는 법</h3>
+    <p><span class="누름">설정</span> → <span class="누름">일반</span> →
+       <span class="누름">사무실 열기</span>. 시간을 고르고
+       <span class="누름">엽니다</span> 를 누르면
+       <b>주소와 여섯 자리 번호</b>가 나옵니다.</p>
+    <p>옆 컴퓨터의 브라우저에 그 주소를 치면 <b>번호를 먼저 묻고</b>,
+       넣으면 평소 로그인 화면이 나옵니다.</p>
+
+    <h3>알아 두실 것</h3>
+    <div class="표감"><table>
+      <tbody>
+        <tr><td style="width:12rem"><b>저절로 닫힙니다</b></td>
+            <td>정한 시각이 되면 스스로 닫힙니다. 잊고 퇴근해도 밤새 열려 있지 않습니다</td></tr>
+        <tr><td><b>번호를 틀리면</b></td>
+            <td>여러 번 틀리면 잠깐 쉬게 합니다 (여섯 번째부터 30초)</td></tr>
+        <tr><td><b>사무실 밖에서는</b></td>
+            <td><b>안 들어와집니다.</b> 같은 와이파이·같은 랜선 안에서만 됩니다</td></tr>
+        <tr><td><b>자료함은 한 곳</b></td>
+            <td>깔린 컴퓨터에만 있습니다. 옆 컴퓨터는 화면만 봅니다</td></tr>
+      </tbody>
+    </table></div>
+    <div class="짚기">
+      <p style="margin-bottom:0">두 사람이 같은 순간에 저장하면
+         <span class="뜬말">다른 곳에서 저장하는 중입니다</span> 가 뜰 수 있습니다.
+         <b>방금 적으신 것은 그대로 있습니다.</b> 잠시 뒤에 다시 누르시면 됩니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 12장 ══════════════ -->
+<div class="단계">
+  <div class="번호">12</div>
+  <div class="속살">
+    <h2>새 버전</h2>
+
+    <h3>저절로</h3>
+    <p>프로그램이 <b>하루 한 번</b> 스스로 확인합니다. 새 버전이 있으면 화면 위에
+       띠가 뜨고, <span class="누름">지금 바꾸기</span> 를 누르면 알아서 갈아 끼웁니다.</p>
+    <ul>
+      <li>자료함(<span class="길">data</span>)은 <b>건드리지 않습니다</b></li>
+      <li>옛 프로그램은 <span class="길">data\update\이전버전</span> 에 그대로 남습니다</li>
+      <li>나가는 것은 <b>버전 번호를 묻는 것뿐</b>입니다. 어르신 자료는 한 글자도
+          안 나갑니다</li>
+    </ul>
+
+    <h3>파일로 받으셨으면</h3>
+    <p>새 zip 을 풀고 <span class="누름">통돌Note 설치.bat</span> 를 다시 누르시면 됩니다.
+       <b>같은 자리</b>(<span class="길">C:\통돌Note</span>)를 알려 주시면
+       프로그램만 갈아 끼우고 자료함은 손도 대지 않습니다.</p>
+    <div class="조심">
+      <p class="머릿말">새 폴더에 따로 풀어 켜지 마세요</p>
+      <p style="margin-bottom:0">자료가 없는 것처럼 보입니다.
+         <b>지워진 것이 아니라</b> 옛 폴더에 그대로 있습니다.</p>
+    </div>
+
+    <h3>갈아 끼울 때 백신이 뭐라 할 수 있습니다</h3>
+    <p>서명 인증서가 없는 프로그램이라 바꾸는 순간 백신이 잠깐 잡을 수 있습니다.
+       <b>잡히더라도 자료는 안전합니다</b> &mdash; 옛 프로그램이 그대로 남아 있고
+       <span class="길">data</span> 는 건드린 적이 없습니다.</p>
+  </div>
+</div>
+
+<!-- ══════════════ 13장 ══════════════ -->
+<div class="단계">
+  <div class="번호">13</div>
+  <div class="속살">
+    <h2>안 될 때</h2>
+    <div class="표감"><table>
+      <thead><tr><th style="width:20rem">이런 일이</th><th>이렇게</th></tr></thead>
+      <tbody>
+        <tr><td>두 번 눌러도 아무 일이 없다</td>
+            <td>백신이 막았습니다. 검역소·격리 목록을 보세요</td></tr>
+        <tr><td>브라우저가 안 열린다</td>
+            <td>검은 창에 적힌 주소를 브라우저에 직접 넣으세요</td></tr>
+        <tr><td><span class="뜬말">서버가 응답하지 않습니다</span></td>
+            <td>검은 창이 꺼진 것입니다. 다시 켜세요</td></tr>
+        <tr><td>기록지에서 PDF 를 못 고른다</td>
+            <td>「한글」이 안 깔린 컴퓨터입니다</td></tr>
+        <tr><td><b>뽑은 종이의 마지막 칸이 비었다</b></td>
+            <td>한글의 「PDF로 저장」을 쓰셨습니다.
+                <b>인쇄 → Microsoft Print to PDF</b> 로 다시</td></tr>
+        <tr><td><span class="뜬말">다른 곳에서 저장하는 중입니다</span></td>
+            <td>잠시 뒤에 다시 누르세요. <b>적으신 것은 그대로 있습니다</b></td></tr>
+        <tr><td><span class="뜬말">이 계획은 한도를 넘습니다</span></td>
+            <td>4장을 보세요</td></tr>
+        <tr><td>자료가 어제 것으로 보인다</td>
+            <td>9장(USB)을 보세요</td></tr>
+        <tr><td>비밀번호를 잊었다</td>
+            <td><b>되돌릴 수 없습니다.</b> 만든 사람도 모릅니다</td></tr>
+      </tbody>
+    </table></div>
+    <div class="짚기">
+      <p style="margin-bottom:0"><b>물어보실 때는</b>
+         <span class="누름">설정</span> → <span class="누름">이 프로그램</span> 의
+         <b>버전 번호</b>를 함께 알려 주세요. 그것만 있으면 대개 어디가 문제인지
+         바로 압니다.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 부록 ══════════════ -->
+<h2>부록 · 한도와 규칙 한 장</h2>
+<p class="작게">2026년 해남군 통합돌봄 편람 기준입니다.
+   다른 지자체면 <span class="누름">설정</span> → <span class="누름">계산 규칙</span>
+   에서 고쳐 쓰십니다.</p>
+
+<h3>기관 전체에 걸리는 것</h3>
+<div class="표감"><table>
+  <tbody>
+    <tr><td style="width:16rem">1인 <b>연간</b> 지원한도</td>
+        <td class="수"><b>1,500,000원</b></td>
+        <td>안전생활환경은 이 바깥</td></tr>
+    <tr><td>안전생활환경 <b>생애</b> 한도</td>
+        <td class="수"><b>1,000,000원</b></td><td>생애 1회</td></tr>
+    <tr><td>하루 최대 서비스 시간</td>
+        <td class="수"><b>3시간</b></td><td>평일 9~18시</td></tr>
+    <tr><td>시간 셈하기</td>
+        <td class="수"><b>30분 단위</b></td><td>15분부터 한 칸</td></tr>
+    <tr><td>본인부담</td>
+        <td class="수"><b>0% · 20% · 100%</b></td><td>세 구간</td></tr>
+    <tr><td>본인부담금 끝자리</td>
+        <td class="수">10원 반올림</td><td>설정에서 고칩니다</td></tr>
+    <tr><td>휴일 할증</td><td class="수">꺼짐</td><td>편람에 근거가 없습니다</td></tr>
+    <tr><td>선납 / 후납</td><td class="수">후납</td><td>설정에서 고칩니다</td></tr>
+  </tbody>
+</table></div>
+
+<h3>서비스별</h3>
+<div class="표감"><table>
+  <thead><tr><th>서비스</th><th class="수">단가</th><th>월 한도</th><th>제공 기간</th></tr></thead>
+  <tbody>
+    <tr><td>가사지원</td><td class="수">24,000원 / 시간</td><td>월 12시간</td><td>개시일부터 2개월</td></tr>
+    <tr><td>식사지원</td><td class="수">11,000원 / 끼</td><td>월 8회</td><td>개시일부터 2개월</td></tr>
+    <tr><td>동행지원</td><td class="수">27,000원 / 시간</td><td><b>월 6시간 · 2회</b></td><td>개시일부터 2개월</td></tr>
+    <tr><td>이미용</td><td class="수">24,000원 / 회</td><td><b>월 1회</b></td><td>개시일부터 2개월</td></tr>
+    <tr><td>안전생활환경개선</td><td class="수">실비</td><td>생애 1회 · 100만원</td><td>&mdash;</td></tr>
+  </tbody>
+</table></div>
+<div class="짚기">
+  <p style="margin-bottom:0"><b>방문목욕은 없습니다.</b>
+     해남군 통합돌봄 다섯 가지에 들어 있지 않습니다
+     (장기요양시설에서 하는 것입니다).</p>
+</div>
+
+<h3>시간이 어떻게 인정되나</h3>
+<div class="표감"><table>
+  <thead><tr><th class="수">실제로 있었던 시간</th><th class="수">인정</th></tr></thead>
+  <tbody>
+    <tr><td class="수">14분</td><td class="수"><b>0원</b></td></tr>
+    <tr><td class="수">15분 ~ 44분</td><td class="수">30분</td></tr>
+    <tr><td class="수">45분 ~ 1시간 14분</td><td class="수">1시간</td></tr>
+    <tr><td class="수">1시간 15분 ~ 1시간 44분</td><td class="수">1시간 30분</td></tr>
+  </tbody>
+</table></div>
+<p class="작게"><b>30분마다 그대로 되풀이됩니다.</b> 하루 3시간까지입니다.</p>
+
+<h3>식사지원 비대면 배달</h3>
+<p><b>3회 연속</b> 대면 수령을 못 하면 <b>식사지원을 포함한 통합돌봄 서비스 전체가
+   중지</b> 대상입니다 (계약서 5-2조).</p>
+<ul>
+  <li><b>중지는 사람이 정합니다.</b> 프로그램은 알려만 줍니다</li>
+  <li>한 번이라도 대면으로 받으시면 <b>0 으로 돌아갑니다</b></li>
+  <li>「연속」으로 셀지 「누적」으로 셀지는 <b>설정에서</b> 고릅니다.
+      해남군은 <b>연속</b>입니다</li>
+</ul>
+
+</div>
+<div class="발">
+<p><b>통돌 Note</b> &mdash; 통합돌봄 서비스 제공기관 업무 프로그램<br>
+자료는 이 컴퓨터의 자료함 파일 한 곳에만 저장됩니다. 바깥으로 나가지 않습니다.</p>
+<p style="margin-bottom:0">설치는 함께 드린 <b>설치 안내</b>를 보세요.</p>
+</div>
+</div>
+</body>
+</html>

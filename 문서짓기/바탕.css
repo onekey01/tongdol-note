@@ -1,0 +1,222 @@
+/* ═══════════════════════════════════════════════════════════
+   통돌 Note — 문서 공통 바탕
+
+   ── 글꼴을 인터넷에서 안 받아옵니다 ★ ─────────────────────
+   이 프로그램은 **인터넷이 없어도 되는 것**이 전제입니다. 웹 글꼴을
+   쓰면 인터넷이 없는 기관 PC 에서 글자가 무너집니다. 윈도에 늘 있는
+   맑은 고딕으로 짜고, **크기·굵기·자간**으로 모양을 냅니다.
+
+   ── 색은 프로그램에서 그대로 가져옵니다 ───────────────────
+   현장앱과 화면이 이미 쓰는 값입니다. 문서만 다른 초록을 쓰면
+   같은 제품으로 안 보입니다.
+
+   ── 밝은 쪽으로 못박습니다 ────────────────────────────────
+   종이로 뽑아 PC 옆에 두는 문서라 어두운 모드를 따라가지 않습니다.
+   대신 **모든 색을 빠짐없이 칠합니다** — 어느 브라우저에서 열어도
+   같은 모양이어야 합니다.
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --ink:#1b1d1a; --ink2:#43483f; --muted:#6f766c; --faint:#9aa196;
+  --line:#e2e5df; --line2:#eef1ec;
+  --paper:#ffffff; --ground:#f4f6f2; --sunk:#f8faf7;
+  --green:#3f6b4a; --green-deep:#2f5239; --green-soft:#e8f0e9;
+  --warn:#8a5a1c; --warn-soft:#fdf3e3; --warn-line:#e8d3ad;
+  --bad:#8f3630;  --bad-soft:#fbeceb;  --bad-line:#eccbc8;
+  --글꼴:"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",
+        "Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --숫자:"Segoe UI","맑은 고딕",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--글꼴); font-size:16.5px; line-height:1.85;
+  word-break:keep-all; overflow-wrap:anywhere;
+}
+
+/* ── 종이 ────────────────────────────────────────────────── */
+.종이{max-width:52rem; margin:0 auto; background:var(--paper);
+  box-shadow:0 1px 2px rgba(27,29,26,.05), 0 8px 40px rgba(27,29,26,.07);}
+.속{padding:0 clamp(1.4rem,5vw,4.2rem)}
+
+/* ── 머리 ────────────────────────────────────────────────── */
+.머리{background:var(--green); color:#fff; padding:3.2rem clamp(1.4rem,5vw,4.2rem) 2.6rem;}
+.머리 .표시{display:flex; align-items:center; gap:.85rem; margin-bottom:2.2rem}
+.머리 .표시 svg{width:34px; height:34px; display:block}
+.머리 .표시 b{font-size:1.02rem; font-weight:600; letter-spacing:-.01em}
+.머리 h1{margin:0; font-size:clamp(1.9rem,5.2vw,2.7rem); font-weight:700;
+  letter-spacing:-.035em; line-height:1.25; text-wrap:balance}
+.머리 .한줄{margin:.8rem 0 0; font-size:1.06rem; color:#d5e4d8; line-height:1.7}
+.머리 .꼬리{margin-top:2rem; padding-top:1.1rem; border-top:1px solid rgba(255,255,255,.22);
+  display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; font-size:.87rem; color:#c3d8c8}
+.머리 .꼬리 b{color:#fff; font-weight:600; font-family:var(--숫자)}
+
+/* ── 글 ──────────────────────────────────────────────────── */
+h2{margin:3.4rem 0 1.1rem; font-size:1.42rem; font-weight:700; letter-spacing:-.028em;
+  line-height:1.4; text-wrap:balance; color:var(--ink)}
+h3{margin:2.2rem 0 .7rem; font-size:1.1rem; font-weight:700; letter-spacing:-.02em; color:var(--ink)}
+h4{margin:1.6rem 0 .5rem; font-size:.99rem; font-weight:700; color:var(--ink2)}
+p{margin:0 0 1.05rem}
+b,strong{font-weight:700}
+a{color:var(--green-deep)}
+.작게{font-size:.9rem; color:var(--muted); line-height:1.75}
+.가운데{text-align:center}
+
+/* 첫 h2 위 여백은 머리와 겹치므로 줄입니다 */
+.속>h2:first-child{margin-top:2.6rem}
+
+ul,ol{margin:0 0 1.05rem; padding-left:1.35rem}
+li{margin:.34rem 0}
+li::marker{color:var(--faint)}
+
+/* ── 눈에 띄는 이름표 ────────────────────────────────────── */
+.이름표{display:inline-block; font-size:.73rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--green-deep); background:var(--green-soft);
+  padding:.2rem .55rem; border-radius:3px}
+
+/* ── 차례 ────────────────────────────────────────────────── */
+.차례{background:var(--sunk); border:1px solid var(--line); border-radius:6px;
+  padding:1.4rem 1.6rem; margin:0 0 1.4rem}
+.차례 ol{margin:0; padding-left:0; list-style:none; counter-reset:ch}
+.차례 li{counter-increment:ch; display:flex; gap:.85rem; align-items:baseline;
+  padding:.42rem 0; border-bottom:1px solid var(--line2)}
+.차례 li:last-child{border-bottom:0}
+.차례 li::before{content:counter(ch); font-family:var(--숫자); font-size:.82rem;
+  font-weight:700; color:var(--green); min-width:1.5rem; flex:none}
+.차례 li em{font-style:normal; color:var(--muted); font-size:.9rem; margin-left:auto;
+  padding-left:1rem; text-align:right; flex:none}
+
+/* ── 차례 단계 ★ 이 문서는 진짜 순서입니다 ──────────────── */
+.단계{display:grid; grid-template-columns:3.2rem 1fr; gap:0 1.3rem;
+  margin:2.8rem 0 0; padding-top:2rem; border-top:1px solid var(--line)}
+.단계:first-of-type{border-top:0; padding-top:0}
+.단계 .번호{font-family:var(--숫자); font-size:1.5rem; font-weight:700; color:var(--green);
+  line-height:1.5; letter-spacing:-.03em; font-variant-numeric:tabular-nums}
+.단계 .속살{min-width:0}
+.단계 h2{margin:0 0 .3rem; font-size:1.32rem}
+.단계 .걸림{font-size:.86rem; color:var(--muted); margin:0 0 1rem}
+
+/* ── 알림 상자 ───────────────────────────────────────────── */
+.짚기{border-left:3px solid var(--green); background:var(--green-soft);
+  padding:1rem 1.2rem; margin:1.3rem 0; border-radius:0 4px 4px 0}
+.짚기>:last-child{margin-bottom:0}
+.조심{border-left:3px solid var(--warn); background:var(--warn-soft);
+  border-top:1px solid var(--warn-line); border-right:1px solid var(--warn-line);
+  border-bottom:1px solid var(--warn-line);
+  padding:1rem 1.2rem; margin:1.3rem 0; border-radius:0 4px 4px 0}
+.조심>:last-child{margin-bottom:0}
+.조심 .머릿말{font-weight:700; color:var(--warn); margin:0 0 .35rem; font-size:.95rem}
+.큰일{border-left:3px solid var(--bad); background:var(--bad-soft);
+  border-top:1px solid var(--bad-line); border-right:1px solid var(--bad-line);
+  border-bottom:1px solid var(--bad-line);
+  padding:1rem 1.2rem; margin:1.3rem 0; border-radius:0 4px 4px 0}
+.큰일>:last-child{margin-bottom:0}
+.큰일 .머릿말{font-weight:700; color:var(--bad); margin:0 0 .35rem; font-size:.95rem}
+
+/* 한 줄로 못박는 것 */
+.못박기{margin:1.5rem 0; padding:1.15rem 1.3rem; background:var(--green-deep);
+  color:#fff; border-radius:5px; font-size:1.08rem; font-weight:700;
+  line-height:1.6; letter-spacing:-.015em}
+
+/* ── 표 ──────────────────────────────────────────────────── */
+.표감{overflow-x:auto; margin:1.2rem 0; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; font-size:.94rem; line-height:1.65}
+th,td{text-align:left; padding:.62rem .8rem; border-bottom:1px solid var(--line2);
+  vertical-align:top}
+thead th{font-size:.79rem; font-weight:700; letter-spacing:.05em; color:var(--muted);
+  text-transform:uppercase; border-bottom:1px solid var(--line); white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.수, th.수{font-family:var(--숫자); font-variant-numeric:tabular-nums; white-space:nowrap}
+
+/* ── 눌러야 하는 것 · 화면에 뜨는 글 ─────────────────────── */
+.누름{display:inline-block; font-size:.9em; font-weight:600; background:var(--sunk);
+  border:1px solid var(--line); border-bottom-color:#d6dbd2; border-radius:4px;
+  padding:.06em .42em; white-space:nowrap; color:var(--ink)}
+.길{font-family:var(--숫자); font-size:.92em; color:var(--ink2); white-space:nowrap}
+/* 화면에 실제로 뜨는 글. 낫표를 붙여 문장 안에서 경계가 보이게 합니다. */
+.뜬말{font-style:normal; color:var(--green-deep); font-weight:600}
+.뜬말::before{content:"「"} .뜬말::after{content:"」"}
+
+/* ── 검은 창 ─────────────────────────────────────────────── */
+.검은창{background:#1a1f1b; color:#dfe6e0; border-radius:5px; padding:1.05rem 1.2rem;
+  margin:1.2rem 0; font-family:var(--숫자); font-size:.88rem; line-height:1.75;
+  overflow-x:auto; white-space:pre; box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.검은창 .밝게{color:#fff; font-weight:600}
+.검은창 .흐리게{color:#8fa093}
+
+/* ── 윈도 경고창 흉내 ★ ─────────────────────────────────── */
+.윈도창{max-width:25rem; margin:1.4rem auto; border-radius:7px; overflow:hidden;
+  background:#f3f3f3; color:#1b1b1b; border:1px solid #d8d8d8;
+  box-shadow:0 10px 30px rgba(20,24,20,.16); font-size:.9rem; line-height:1.6}
+.윈도창 .창머리{background:#fff; padding:1.05rem 1.25rem .3rem;
+  font-size:1.02rem; font-weight:700; color:#1b1b1b}
+.윈도창 .창몸{background:#fff; padding:.2rem 1.25rem 1.25rem; color:#3a3a3a}
+.윈도창 .더보기{display:inline-block; color:#1a5fb4; text-decoration:underline;
+  margin-top:.6rem; cursor:default}
+.윈도창 .창발{display:flex; justify-content:flex-end; gap:.5rem;
+  padding:.85rem 1.25rem; border-top:1px solid #e6e6e6}
+.윈도창 .단추{border:1px solid #cfcfcf; background:#fdfdfd; border-radius:4px;
+  padding:.32rem 1.15rem; font-size:.87rem}
+.윈도창 .단추.짙게{background:var(--green); border-color:var(--green); color:#fff; font-weight:600}
+.창설명{max-width:25rem; margin:-.6rem auto 1.4rem; font-size:.86rem; color:var(--muted);
+  text-align:center; line-height:1.7}
+
+/* ── 흐름 그림 ───────────────────────────────────────────── */
+.흐름{list-style:none; margin:1.4rem 0; padding:0; counter-reset:fl}
+.흐름 li{counter-increment:fl; position:relative; padding:0 0 1.35rem 3rem; margin:0}
+.흐름 li::before{content:counter(fl); position:absolute; left:0; top:.1rem;
+  width:1.85rem; height:1.85rem; border-radius:50%; background:var(--green-soft);
+  color:var(--green-deep); font-family:var(--숫자); font-size:.85rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center}
+.흐름 li::after{content:""; position:absolute; left:.9rem; top:2.05rem; bottom:.1rem;
+  width:1px; background:var(--line)}
+.흐름 li:last-child{padding-bottom:0}
+.흐름 li:last-child::after{display:none}
+.흐름 li b{display:block; font-size:1.02rem; margin-bottom:.12rem}
+.흐름 li span{display:block; font-size:.9rem; color:var(--muted); line-height:1.7}
+
+/* ── 발 ──────────────────────────────────────────────────── */
+.발{margin-top:4rem; padding:2rem clamp(1.4rem,5vw,4.2rem) 2.6rem;
+  border-top:1px solid var(--line); background:var(--sunk);
+  font-size:.88rem; color:var(--muted); line-height:1.8}
+.발 b{color:var(--ink2)}
+
+/* ── 인쇄 ★ A4 로 뽑아 PC 옆에 둡니다 ───────────────────── */
+
+/* ── 화면 그림 ★ ─────────────────────────────────────────────
+   진짜 프로그램을 띄워 찍은 것입니다(도구/화면찍기.ts). 손으로 그린
+   그림은 언젠가 실제와 달라지고, 달라진 줄 아무도 모릅니다.
+   파일 안에 심어 두므로(data URI) 한 장만 옮겨도 안 깨집니다. */
+.그림{margin:1.5rem 0; }
+.그림 img{display:block; width:100%; height:auto;
+  border:1px solid var(--line); border-radius:6px;
+  box-shadow:0 2px 12px rgba(27,29,26,.08)}
+.그림 figcaption{margin-top:.65rem; font-size:.88rem; color:var(--muted);
+  line-height:1.75}
+.그림 figcaption b{color:var(--ink2)}
+.그림 figcaption .짚음{color:var(--green-deep); font-weight:700}
+.그림.좁게{max-width:34rem}
+.그림.아주좁게{max-width:24rem}
+
+@media print{
+  .그림 img{box-shadow:none}
+  @page{size:A4; margin:15mm 14mm}
+  body{background:#fff; font-size:10.4pt; line-height:1.65}
+  .종이{box-shadow:none; max-width:none}
+  .속{padding:0}
+  .머리{padding:0 0 1.1rem; background:#fff; color:var(--ink);
+    border-bottom:2.5pt solid var(--green); margin-bottom:1.4rem}
+  .머리 .표시{margin-bottom:.8rem}
+  .머리 .표시 b{color:var(--green-deep)}
+  .머리 .한줄{color:var(--ink2)}
+  .머리 .꼬리{border-top-color:var(--line); color:var(--muted)}
+  .머리 .꼬리 b{color:var(--ink)}
+  .못박기{background:#fff; color:var(--ink); border:1.5pt solid var(--green)}
+  .검은창{background:#fff; color:var(--ink); border:.7pt solid var(--line); box-shadow:none}
+  .검은창 .밝게{color:var(--ink)} .검은창 .흐리게{color:var(--muted)}
+  .윈도창{box-shadow:none; border:.7pt solid #bbb}
+  .발{background:#fff}
+  h2,h3,h4{break-after:avoid-page}
+  .단계,.짚기,.조심,.큰일,.윈도창,table,.흐름 li{break-inside:avoid}
+  .안찍기{display:none !important}
+}

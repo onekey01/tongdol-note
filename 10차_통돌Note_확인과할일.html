@@ -1,0 +1,460 @@
+<title>통돌 Note 확인·할일</title>
+<style>
+  :root {
+    --ink: #1b1d1a; --ink-2: #43483f; --muted: #7b8177;
+    --line: #e2e5df; --line-strong: #c9cec3;
+    --surface: #ffffff; --surface-2: #f5f7f3;
+    --accent: #3f6b4a; --accent-soft: #e8f0e9;
+    --warn: #8a5a1c; --warn-soft: #fdf3e3;
+    --bad: #8f3630; --bad-soft: #fbeceb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e8ebe5; --ink-2: #c2c8bd; --muted: #8d9488;
+      --line: #32362f; --line-strong: #474d43;
+      --surface: #161815; --surface-2: #1e211c;
+      --accent: #8fc09b; --accent-soft: #1f2b22;
+      --warn: #d8a866; --warn-soft: #2b2317;
+      --bad: #e08a83; --bad-soft: #2d1c1a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e8ebe5; --ink-2: #c2c8bd; --muted: #8d9488;
+    --line: #32362f; --line-strong: #474d43;
+    --surface: #161815; --surface-2: #1e211c;
+    --accent: #8fc09b; --accent-soft: #1f2b22;
+    --warn: #d8a866; --warn-soft: #2b2317;
+    --bad: #e08a83; --bad-soft: #2d1c1a;
+  }
+
+  body {
+    background: var(--surface); color: var(--ink);
+    font-family: "IBM Plex Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    font-size: 16px; line-height: 1.75; margin: 0;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 120px; }
+
+  h1 { font-size: 2rem; line-height: 1.25; letter-spacing: -.03em; margin: 0 0 6px; }
+  h2 {
+    font-size: 1.3rem; letter-spacing: -.02em; margin: 64px 0 4px;
+    padding-top: 20px; border-top: 2px solid var(--line-strong);
+  }
+  h3 { font-size: 1.02rem; margin: 34px 0 4px; letter-spacing: -.01em; }
+  p, li { color: var(--ink-2); }
+  p { margin: 12px 0; }
+  ul, ol { padding-left: 22px; margin: 12px 0; }
+  li { margin: 6px 0; }
+  b, strong { color: var(--ink); font-weight: 600; }
+  code {
+    font-family: "Cascadia Mono", Consolas, monospace; font-size: .88em;
+    background: var(--surface-2); border: 1px solid var(--line);
+    border-radius: 4px; padding: 1px 5px;
+  }
+  pre {
+    background: var(--surface-2); border: 1px solid var(--line);
+    border-radius: 8px; padding: 14px 16px; overflow-x: auto;
+    font-family: "Cascadia Mono", Consolas, monospace;
+    font-size: .84rem; line-height: 1.6; color: var(--ink-2);
+  }
+  pre code { background: none; border: 0; padding: 0; font-size: 1em; }
+
+  .lede { font-size: 1.05rem; color: var(--ink-2); margin: 18px 0 0; }
+  .meta { color: var(--muted); font-size: .86rem; margin: 4px 0 0; }
+  .muted { color: var(--muted); font-size: .84rem; }
+
+  .note, .warn, .bad {
+    border-radius: 8px; padding: 14px 16px; margin: 20px 0;
+    border: 1px solid var(--line); background: var(--surface-2);
+  }
+  .warn { border-color: var(--warn); background: var(--warn-soft); }
+  .bad  { border-color: var(--bad);  background: var(--bad-soft); }
+  .note > :first-child, .warn > :first-child, .bad > :first-child { margin-top: 0 }
+  .note > :last-child,  .warn > :last-child,  .bad > :last-child  { margin-bottom: 0 }
+
+  .tbl { overflow-x: auto; margin: 20px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td {
+    border-bottom: 1px solid var(--line); padding: 9px 12px;
+    text-align: left; vertical-align: top; color: var(--ink-2);
+  }
+  th { color: var(--ink); font-weight: 600; background: var(--surface-2); white-space: nowrap; }
+  td code { white-space: nowrap; }
+
+  .tag {
+    display: inline-block; font-size: .72rem; font-weight: 600;
+    padding: 1px 8px; border-radius: 999px; vertical-align: 2px;
+    border: 1px solid var(--line-strong); color: var(--muted);
+  }
+  .tag.on   { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  .tag.todo { border-color: var(--warn);   color: var(--warn);   background: var(--warn-soft); }
+  .tag.no   { border-color: var(--bad);    color: var(--bad);    background: var(--bad-soft); }
+
+  td.ok  { background: var(--accent-soft); color: var(--accent); }
+  td.no  { background: var(--bad-soft);    color: var(--bad); }
+
+  .toc { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin: 34px 0 0; }
+  .toc ol { margin: 8px 0 0; }
+  .toc a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+  .toc a:hover { color: var(--accent); border-color: var(--accent); }
+
+  figure { margin: 24px 0; }
+  figcaption { color: var(--muted); font-size: .84rem; margin-top: 8px; }
+  svg { max-width: 100%; height: auto; display: block; }
+</style>
+
+<div class="wrap">
+
+
+<h1>통돌 Note — 확인해 주실 것과, 앞으로 할 일</h1>
+<p class="lede">시범자료를 넣고 화면을 하나씩 열어 본 뒤에 적습니다.
+<b>제가 정하면 안 되는 것</b>과 <b>다음에 무엇부터 할지</b>를 한 장에 모았습니다.</p>
+<p class="meta">10차 · 2026-09-05 · v1.9.27 · 자료함 v27</p>
+
+<div class="bad">
+<p><b>★ 이 문서에서 제일 급한 것 ★</b></p>
+<p>아래 <a href="#물음">1절의 다섯 가지</a>는 <b>돈을 세는 규칙</b>입니다.
+제가 임의로 정하면 나중에 청구서를 다시 뽑아야 하고, 이미 지자체에 낸 종이가
+있으면 그것까지 손봐야 합니다. <b>특히 A와 B는 지금 화면에 숫자로 떠 있어서</b>
+파일럿에 들어가기 전에 정해야 합니다.</p>
+</div>
+
+<div class="toc">
+<b>차례</b>
+<ol>
+  <li><a href="#물음">답만 주시면 되는 것</a> — 다섯 가지 <span class="tag no">급함</span></li>
+  <li><a href="#손">무무가 직접 하셔야 하는 것</a> — 제가 못 하는 것</li>
+  <li><a href="#눈">눈으로 봐 주셔야 하는 것</a> — 시범자료로 확인</li>
+  <li><a href="#순서">앞으로 할 일</a> — 우선순위 순</li>
+  <li><a href="#오늘">오늘 고친 것</a> — 이력</li>
+  <li><a href="#수치">전체 공정</a></li>
+</ol>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2 id="물음">1. 답만 주시면 되는 것</h2>
+
+<p>다섯 가지입니다. <b>고르시기만 하면</b> 제가 코드를 고치고 시험을 붙입니다.
+각각 「모르면 무엇이 틀어지나」와 <b>제 의견</b>을 같이 적었습니다 —
+제 의견은 <b>참고일 뿐</b>이고, 정하시는 것은 무무 님입니다.</p>
+
+<h3>A. 안전생활환경개선 생애한도 — 100만원입니까, 200만원입니까 <span class="tag no">급함</span></h3>
+
+<div class="bad">
+<p><b>설정 화면 한 장 안에 두 숫자가 적혀 있습니다.</b></p>
+<ul>
+<li>위쪽 <b>계산 규칙</b> → 「안전생활환경 생애한도 <b>1,000,000</b>」</li>
+<li>아래 <b>서비스 단가</b> 표 → 「생애한도 <b>2,000,000원</b>」</li>
+</ul>
+<p>통계 화면은 200만을, 대상자 화면의 한도 경고는 100만을 봅니다.
+<b>설정에서 100만으로 고쳐도 통계는 계속 200만이라고 말합니다.</b></p>
+</div>
+
+<p><b>모르면</b> — 어느 화면을 믿어야 할지 아무도 모릅니다. 한도를 넘긴 공사비는
+기관이 떠안는데, 화면이 두 말을 하면 넘긴 줄도 모릅니다.</p>
+<p><b>제 의견</b> — 숫자가 어느 쪽이든, <b>고치는 자리는 한 곳이어야</b> 합니다.
+설정의 「생애한도」 칸 하나만 두고 서비스 표는 그것을 따라가게 하겠습니다.
+숫자 자체는 편람에 적힌 것을 알려 주십시오.</p>
+
+<h3>B. 연간 150만원은 무엇을 기준으로 셉니까 <span class="tag no">급함</span></h3>
+
+<p>지금은 <b>총 서비스 비용</b>으로 셉니다. 그래서 <b>본인부담 100%인 분도
+한도가 깎입니다</b> (시범자료의 이복순 어르신 — 전액 본인 부담인데 한도에서 27% 를 씀).</p>
+
+<p><b>가르는 말</b> — 계약서 4조가 「<b>연간 지원</b>한도액에서 차감됩니다」라고
+적혀 있습니다. 「지원」이 지자체가 대는 돈을 뜻하면, 본인이 전액 내신 분은
+한도를 안 깎아야 맞습니다.</p>
+
+<p><b>모르면</b> — 본인부담이 있는 분들의 한도가 실제보다 빨리 찹니다.
+서비스를 더 받으실 수 있는데 「한도가 다 됐습니다」가 됩니다.
+반대로 틀리면 한도를 넘겨 놓고 모릅니다.</p>
+<p><b>제 의견</b> — 군에 물으실 때 <b>「총 서비스 비용 기준입니까, 지자체 부담액
+기준입니까」</b> 한 줄로 물으시면 됩니다.</p>
+
+<h3>C. 상태변화를 안 골랐는데 서식에 「변화없음」으로 나갑니다</h3>
+
+<p>기록지 화면에서 상태변화를 고르지 않으면, 서식에 <b>「변화없음」이 ☑ 로 찍혀</b>
+지자체에 나갑니다. <b>사람이 판단하지 않은 것을 프로그램이 판단해서 내는 것</b>입니다.</p>
+
+<p><b>모르면</b> — 나중에 「이 어르신 그달에 상태가 나빠졌는데 왜 변화없음으로
+냈습니까」를 들었을 때 댈 말이 없습니다.</p>
+<p><b>제 의견</b> — <b>안 고르면 비워 두는 것</b>이 맞다고 봅니다. 다만 서식에
+나가는 값이라 여쭙습니다. (빈칸으로 나가면 지자체가 되돌려보낼 수도 있으니,
+그건 군에 한 번 물어보시는 편이 낫겠습니다.)</p>
+
+<h3>D. 안전생활환경개선 공사비를 어디에 적습니까</h3>
+
+<p>단가가 <b>0원</b>이라 생애한도가 늘 「<b>0원 / 200만원</b>」으로 뜹니다.
+공사비는 건마다 다른데 <b>지금은 넣을 칸이 아예 없습니다.</b></p>
+
+<p><b>모르면</b> — 생애한도 기능이 있으나 마나입니다. 200만원짜리 공사를 두 번
+해도 화면은 0원이라고 합니다.</p>
+<p><b>제 의견</b> — 실적 칸을 눌렀을 때 <b>「이 공사 얼마」</b>를 적는 자리를 하나
+만들면 됩니다. 견적서 금액을 그대로 적는 식입니다. 만들까요?</p>
+
+<h3>E. 의뢰 횟수가 서비스 월 한도를 넘을 때 알려 드릴까요</h3>
+
+<p>시범자료에 「식사지원 <b>주 5회</b>」 의뢰가 있는데, 서비스 월 한도는 <b>8회</b>
+입니다. 한 달에 22번 가야 하는 계획인데 8번까지만 됩니다. 둘 중 하나가 틀린
+것인데 <b>지금은 아무도 안 짚어 줍니다.</b></p>
+
+<p><b>제 의견</b> — 배정 화면에 <b>「의뢰 22회 · 한도 8회 — 확인해 주세요」</b>
+정도의 조용한 표시를 붙이면 됩니다. 막지는 않습니다 — 지자체와 조정하는
+경우가 있으니까요.</p>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2 id="손">2. 무무가 직접 하셔야 하는 것</h2>
+
+<p>제가 대신 못 하는 것들입니다. <b>사고 · 신고 · 물어보기</b> 세 갈래입니다.</p>
+
+<div class="tbl">
+<table>
+<thead><tr><th></th><th>무엇</th><th>왜 급한가</th><th>얼마나</th></tr></thead>
+<tbody>
+<tr><td><b>1</b></td>
+    <td><b>도메인 사서 붙이기</b><br>
+        <span class="muted">지금 <code>tongdol-local.netlify.app</code></span></td>
+    <td class="no"><b>제공인력이 생기기 전에.</b> 주소가 바뀌면 그때까지 등록한
+        폰이 <b>전부 다시 등록</b>해야 합니다. 지금은 무무 폰 하나뿐이라 값이
+        없지만, 파일럿이 돌면 열 분을 다 부르는 일이 됩니다.</td>
+    <td>연 2만원쯤<br>붙이기 10분</td></tr>
+<tr><td><b>2</b></td>
+    <td><b>군에 물을 것</b> — 위 1절의 A · B · C</td>
+    <td class="no">돈 세는 규칙입니다. 파일럿 전에.</td><td>전화 한 통</td></tr>
+<tr><td>3</td>
+    <td><b>사업자등록</b></td>
+    <td class="todo">유료 고객이 생기기 전에</td><td>—</td></tr>
+<tr><td>4</td>
+    <td><b>개인정보처리방침</b> · <b>위탁계약 표준서식</b><br>
+        <span class="muted">유료 고객이 생기는 순간 무무 님이 <b>수탁자</b>가 됩니다</span></td>
+    <td class="todo"><b>실제 어르신 자료를 받기 전에.</b>
+        그때까지는 시범자료로만 돌리세요.</td><td>—</td></tr>
+<tr><td>5</td>
+    <td>Supabase 의 <b>시험용 기관</b> 치우기</td>
+    <td class="todo">지저분할 뿐, 해는 없습니다</td><td>5분</td></tr>
+<tr><td>6</td>
+    <td><b>「주소 찾기」 실물 확인</b><br>
+        <span class="muted">개발 쪽은 바깥이 막혀 진짜 검색창을 못 봤습니다</span></td>
+    <td class="todo">언제 해도 값이 같습니다</td><td>2분</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2 id="눈">3. 눈으로 봐 주셔야 하는 것</h2>
+
+<p>시범자료가 들어가 있으니 <b>화면을 눌러 보시면 됩니다.</b>
+제가 브라우저로 훑었지만, <b>현장을 아시는 눈</b>으로 봐야 보이는 것이 있습니다.
+오늘 「비대면은 서명을 못 받는다」도 제가 아니라 무무 님이 잡으신 것입니다.</p>
+
+<div class="tbl">
+<table>
+<thead><tr><th></th><th>어디를</th><th>무엇을 보나</th></tr></thead>
+<tbody>
+<tr><td><b>1</b></td><td><b>제공실적 → 박옥례</b> (식사지원)</td>
+    <td>칸을 눌러 창을 열고 <b>진행시간·식단·서명</b>이 제대로 보이는지.
+        「비대면」 칸 두 개가 <b>미제공(✕)이 아니라 제공(◎)</b> 쪽에 있는지.</td></tr>
+<tr><td><b>2</b></td><td><b>제공실적 → 최말순</b>, 달을 <b>8월</b>로</td>
+    <td>「이 달 12시간/6시간 · <b>4/2회 넘음</b>」이 주황으로 뜨는지.
+        월 한도를 넘긴 모습입니다.</td></tr>
+<tr><td><b>3</b></td><td><b>대상자 → 서정도</b></td>
+    <td>「2026년 남은 한도」가 <b>넘긴 것으로</b> 뜨는지.
+        오늘 고친 자리라, 여기가 맞아야 정산과 같은 말을 하는 것입니다.</td></tr>
+<tr><td><b>4</b></td><td><b>기록지 → 8월</b></td>
+    <td>서식3·4·5를 <b>실제로 뽑아</b> 편람 원본과 겹쳐 보시는 것.
+        <b>이건 제가 못 합니다</b> — 한글 프로그램이 필요합니다.</td></tr>
+<tr><td><b>5</b></td><td><b>현장앱</b> (폰)</td>
+    <td>박옥례 어르신 건에서 <b>「비대면 배달」을 고르고</b> 끝까지 가 보시는 것.
+        서명을 안 묻고, <b>사진이 없으면 「사진 찍으러 가기」</b>가 떠야 맞습니다.</td></tr>
+<tr><td>6</td><td><b>정산 → 9월</b></td>
+    <td>「청구서 한꺼번에」로 PDF 를 뽑아 <b>금액이 맞는지</b>.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note">
+<p><b>시범자료는 언제든 지웁니다.</b> 「시범자료 지우기.bat」 하나면 됩니다.
+표가 달린 것만 지우니 손으로 넣으신 자료는 안 건드립니다.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2 id="순서">4. 앞으로 할 일 — 우선순위</h2>
+
+<p>순서를 정한 기준은 <b>「안 하면 못 파는가」</b> 하나입니다.
+그다음이 「미루면 값이 오르는가」입니다.</p>
+
+<h3>1순위 — 안 하면 못 파는 것 (E단계)</h3>
+
+<div class="tbl">
+<table>
+<thead><tr><th></th><th>무엇</th><th>왜 필수인가</th><th>크기</th></tr></thead>
+<tbody>
+<tr><td><b>1</b></td><td><b>최초 설정 마법사</b></td>
+    <td class="no">산 기관이 <b>맨 처음 켰을 때</b> 기관명·사업자번호·대표자·계좌·
+        지역 규칙·서비스 단가를 물어 넣는 자리. 이게 없으면 무무 님이 기관마다
+        직접 가서 설정해 드려야 합니다. <b>파는 물건이 못 됩니다.</b></td>
+    <td>큼</td></tr>
+<tr><td><b>2</b></td><td><b>설치 안내문 · 사용설명서</b></td>
+    <td class="no">받아서 <b>혼자 켤 수 있어야</b> 합니다.
+        <b>계정 접속과 기기 변경 절차</b>를 반드시 적습니다 —
+        말은 「승인」이 아니라 <b>「사무실에 알려집니다」</b>로.</td>
+    <td>중간</td></tr>
+<tr><td>3</td><td><b>빈 자료함으로 시작하기</b></td>
+    <td class="todo">지금은 시험 찌꺼기가 섞일 수 있습니다.
+        산 기관은 <b>텅 빈 채로</b> 시작해야 합니다.</td><td>작음</td></tr>
+<tr><td>4</td><td><b>인쇄 7화면</b></td>
+    <td class="todo">화면을 그대로 A4 로. 통계는 됐고 나머지가 남았습니다.</td><td>중간</td></tr>
+<tr><td>5</td><td><b>내보내기</b></td>
+    <td class="todo">기관이 그만둘 때 <b>자기 자료를 들고 나갈 수</b> 있어야 합니다.
+        이게 없으면 「가둬 두는 물건」이 됩니다.</td><td>중간</td></tr>
+<tr><td>6</td><td><b>아이콘 · 새 판 알림</b></td>
+    <td class="todo">파는 물건의 마감입니다.</td><td>작음</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>2순위 — 오늘 찾았는데 안 고친 것</h3>
+
+<div class="tbl">
+<table>
+<thead><tr><th></th><th>무엇</th><th>왜</th></tr></thead>
+<tbody>
+<tr><td><b>1</b></td><td><b>통계에 처리율 125% 가 뜹니다</b></td>
+    <td class="no">월 단위 서비스는 계획이 「월 2회」인데 제공은 실제 횟수라
+        분모가 작습니다. <b>지자체에 내는 표에 100% 넘는 숫자가 있으면
+        신뢰를 잃습니다.</b></td></tr>
+<tr><td>2</td><td><b>홈에 월 한도 초과 알림이 없습니다</b></td>
+    <td class="todo">연간·생애만 봅니다. 월 한도를 넘긴 것은
+        <b>그 사람 실적 화면에 들어가야만</b> 보입니다.</td></tr>
+<tr><td>3</td><td><b>대상자 화면에 노쇼 누적이 안 보입니다</b></td>
+    <td class="todo">시범자료의 이복순 어르신이 3회 연속인데
+        그 화면 어디에도 없습니다.</td></tr>
+<tr><td>4</td><td><b>「사무실에서 고치기」 단추가 너무 흐립니다</b></td>
+    <td class="todo">현장 실수를 바로잡는 핵심 자리인데 눈에 안 띕니다.
+        고령의 제공인력이 잘못 찍는 일이 잦다고 하셨으니
+        <b>관리자가 자주 쓸 자리</b>입니다.</td></tr>
+<tr><td>5</td><td><b>실적 목록의 주황 동그라미 숫자</b></td>
+    <td class="todo">⑦ ⑱ ⑪ 이 무슨 뜻인지 화면에 아무 설명이 없습니다.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>3순위 — 밀린 빚 (9차에서 넘어온 것)</h3>
+
+<div class="tbl">
+<table>
+<thead><tr><th></th><th>무엇</th><th>지금 상태</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><b>사진을 서식 뒷장에 붙이기</b></td>
+    <td class="todo">지금은 「(서명 받음)」 글자만. 그림이 안 들어갑니다 —
+        한글이 표 칸 안 그림을 어디에 놓을지 종잡을 수 없습니다.
+        <b>비대면 증빙 사진이 생겼으니 값이 올라갔습니다.</b></td></tr>
+<tr><td>2</td><td><b>「지금 받기」 단추</b></td>
+    <td class="todo">주소(<code>/api/records/pull</code>)는 이미 있습니다.
+        제공실적 화면에 단추만 붙이면 됩니다. <b>작습니다.</b></td></tr>
+<tr><td>3</td><td>기관 열쇠쌍을 <b>여러 PC 에서 나눠 쓰기</b></td>
+    <td class="todo">지금은 한 PC 에만 있습니다.
+        사무실에 PC 가 둘이면 한 대에서만 폰을 등록할 수 있습니다.</td></tr>
+<tr><td>4</td><td><b>폴더째 자동 백업</b></td>
+    <td class="todo">자료함만 뜹니다. 사진은 안 뜹니다.</td></tr>
+<tr><td>5</td><td><b>시험 파일 정리</b></td>
+    <td class="todo">뿌리에 45개가 널려 있습니다. 파는 물건에는 안 나가야 합니다.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>4순위 — 파일럿 직전</h3>
+
+<ul>
+<li><b>해남 파일럿 기관 한 곳을 정하고</b> 한 달 돌려 보기 — 무료</li>
+<li>그때 나오는 것을 받아 고치기 (여기서 나오는 것이 제일 값집니다)</li>
+<li>전남·광주로 넓히기</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2 id="오늘">5. 오늘 고친 것</h2>
+
+<p>시범자료를 넣고 화면을 하나씩 열어 보다가 나온 것들입니다.
+<b>여덟 가지 중 셋이 돈이 걸린 것</b>이었습니다.</p>
+
+<div class="tbl">
+<table>
+<thead><tr><th></th><th>무엇이 틀렸나</th><th>어떻게 됐나</th></tr></thead>
+<tbody>
+<tr><td><b>1</b></td>
+    <td><b>연간 한도가 시간을 안 셌습니다</b><br>
+        세 시간 다녀온 것을 <b>한 시간 값</b>으로 셈.
+        정산 3,096,000원 / 한도 1,032,000원 (같은 사람, 같은 실적)</td>
+    <td class="ok">청구서가 쓰는 셈 한 곳을 <b>같이 쓰게</b> 했습니다.
+        서정도 어르신이 <b>206%</b> 로 뜹니다.</td></tr>
+<tr><td><b>2</b></td>
+    <td><b>현장에서 올라온 건에 진행시간(분)이 안 적혔습니다</b><br>
+        <b>두 시간 일한 것이 한 시간으로 청구</b>되고 있었습니다.
+        기관이 손해 보는 쪽이라 아무도 항의를 안 합니다.</td>
+    <td class="ok">시작·종료에서 분을 재어 적습니다.
+        사무실에서 시각을 고칠 때도 같이 갑니다.</td></tr>
+<tr><td><b>3</b></td>
+    <td><b>「비대면배달」이 자료함에 안 남았습니다</b><br>
+        계약서 5-2조 <b>3회 연속 중지</b> 셈이 한 번도 안 돌았습니다.</td>
+    <td class="ok">자료함 칸에 넣고, 받을 때마다 다시 셉니다.</td></tr>
+<tr><td><b>4</b></td>
+    <td><b>비대면인데 서명을 물어 앱이 막혔습니다</b> <span class="muted">— 무무 님이 잡으심</span><br>
+        서명 화면에서 빠져나갈 길이 없어, 제공인력이 할 수 있는 일은
+        <b>안 보내거나 자기가 대신 긋거나</b> 둘뿐이었습니다.</td>
+    <td class="ok">비대면이면 서명을 건너뜁니다.
+        서명 화면에도 「문 앞에 두고 왔습니다」 곁길.</td></tr>
+<tr><td><b>5</b></td>
+    <td><b>비대면 증빙 사진</b> <span class="muted">— 무무 님이 잡으심</span></td>
+    <td class="ok">사진이 없으면 보내기 대신 <b>「사진 찍으러 가기」</b>.
+        대면은 안 막습니다(서명이 이미 근거).</td></tr>
+<tr><td>6</td>
+    <td><b>홈의 「대기중」이 퇴사자 배정을 「붙었다」로</b> 봤습니다</td>
+    <td class="ok">담당이 퇴사했거나 비어 있으면 대기중으로 뜹니다.</td></tr>
+<tr><td>7</td>
+    <td><b>달력 아래 안내문이 틀린 말을 했습니다</b> <span class="muted">— 무무 님이 잡으심</span><br>
+        「눌러서 ○→●→✕ 로 돕니다」(지금은 창이 뜸),
+        「휴일은 할증이 붙으므로」(이 기관은 할증을 안 씀)</td>
+    <td class="ok">고치고, 열한 줄을 일곱 줄로 줄였습니다.</td></tr>
+<tr><td>8</td>
+    <td>서명이 그림이 아니면 <b>깨진 그림</b>이 떴습니다</td>
+    <td class="ok">그림일 때만 그림으로 그립니다.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note">
+<p><b>짚어 둘 것</b> — 1번(연간 한도)은 <code>한도시험.ts</code> 32가지가
+<b>전부 통과하고 있었는데도</b> 있던 결함입니다. 시험이 <b>한 시간짜리만</b>
+보고 있어서 못 잡았습니다. 시험이 있다고 안심할 일이 아니라는 뜻입니다.</p>
+</div>
+
+<p>새 시험 <b>29가지</b>를 붙였습니다 (<code>시범점검시험.ts</code> 16 ·
+<code>비대면서명시험.ts</code> 13). 고친 자리를 하나씩 <b>되돌려 놓고 돌려
+보아</b> 시험이 정말 무는지 확인했습니다.</p>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2 id="수치">6. 전체 공정</h2>
+
+<div class="tbl">
+<table>
+<thead><tr><th>단계</th><th>무엇</th><th></th></tr></thead>
+<tbody>
+<tr><td><b>A</b></td><td>관리자 화면 — 대상자·배정·실적·정산·한도·통계</td><td class="ok">끝</td></tr>
+<tr><td><b>B</b></td><td>제출 서식 — 계약서·영수증·비용총괄·<b>제공기록지 3·4·5</b></td><td class="ok">끝</td></tr>
+<tr><td><b>C</b></td><td>현장앱 — 등록·오늘 갈 곳·방문 찍기·확인사항·서명·사진·보내기<br>
+        <span class="muted">이번 주·이번 달까지</span></td><td class="ok">끝</td></tr>
+<tr><td><b>D</b></td><td>권한·계정 — 역할 넷, 계정 로그인, 기기 변경, 사무실 안에서 열기</td><td class="ok">끝</td></tr>
+<tr><td><b>E</b></td><td><b>파는 준비</b> — 마법사·설명서·인쇄·내보내기·아이콘</td><td class="todo"><b>남음</b></td></tr>
+</tbody>
+</table>
+</div>
+
+<p><b>다섯 단계 중 넷이 끝났고, E단계 하나가 남았습니다.</b></p>
+
+<div class="warn">
+<p><b>다음에 이어서 할 때는</b> — 1절의 다섯 가지에 답을 주셨으면
+<b>그것부터 고치고</b>, 아니면 <b>E단계 1번(최초 설정 마법사)</b>부터입니다.
+그것이 <b>파는 물건과 아닌 것을 가르는 하나</b>입니다.</p>
+</div>
+
+</div>

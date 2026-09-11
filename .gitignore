@@ -1,0 +1,54 @@
+node_modules/
+dist-web/
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# 만들면서 나오는 것 — 실행 파일과 내보낼 꾸러미
+tongdol-note
+tongdol-note.exe
+통돌Note
+통돌Note.exe
+통돌Note_*/
+통돌Note_*.zip
+
+# 옛 이름(챙김 Note) 때 나온 것들
+chaengkim-note
+chaengkim-note.exe
+챙김Note
+챙김Note.exe
+챙김Note_*/
+챙김Note_*.zip
+배포_*/
+배포_*.zip
+
+# 우편함(Supabase) 열쇠 — 절대 밖으로 나가면 안 됩니다
+#
+# ★ 이름이 .env 로 **끝나는** 것도 다 막습니다 ★
+#   「_백업.env」 같은 파일이 실제로 있었고, 위의 세 줄로는 안 막혔습니다.
+#   열쇠가 든 파일이 배포 꾸러미에 딸려 나가면 그걸로 끝입니다.
+.env
+.env.*
+*.env
+!.env.보기
+
+# ── 묶음과 치울 것 (2026-09-11) ─────────────────────────────
+#
+# ★ 이 줄들이 없어서 열쇠가 새어 나갔습니다.
+#   _to_delete\_ship.tgz **안에** .env 가 들어 있었고, 이름은 .tgz 라
+#   「.env 는 막았으니 괜찮다」가 통하지 않았습니다. 공개 저장소였습니다.
+#
+#   묶음은 소스가 아닙니다. 저장소에 있을 까닭이 없습니다.
+_to_delete/
+*.tgz
+*.tar
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# 내보낼 때 만들어지는 것 — 소스가 아닙니다 (2026-09-11)
+#   올릴것\ 에는 40MB 짜리 zip 과 version.json 이 들어갑니다.
+#   그것은 Release 로 올리는 것이지 저장소에 둘 것이 아닙니다.
+올릴것/

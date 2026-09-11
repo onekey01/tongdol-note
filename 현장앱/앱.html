@@ -1,0 +1,2829 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3f6b4a">
+<title>통돌 Note 현장</title>
+<!-- 홈 화면 아이콘. 바깥에서 받아 오게 하면 신호 약한 마당에서 안 뜹니다. -->
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;통돌 Note 현장&quot;,&quot;short_name&quot;:&quot;통돌현장&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;%23ffffff&quot;,&quot;theme_color&quot;:&quot;%233f6b4a&quot;}">
+<style>
+  /*
+   * 현장에서 쓰는 화면입니다. 어르신 댁 마당에서, 한 손으로, 밝은 볕 아래.
+   * 그래서 글자를 키우고 단추를 크게 잡았습니다.
+   */
+  :root {
+    --ink:#1b1d1a; --ink2:#43483f; --muted:#7b8177;
+    --line:#e2e5df; --surface:#fff; --surface2:#f5f7f3;
+    --green:#3f6b4a; --green-soft:#e8f0e9;
+    --warn:#8a5a1c; --warn-soft:#fdf3e3;
+    --bad:#8f3630; --bad-soft:#fbeceb;
+  }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent }
+  html,body { margin:0; background:var(--surface2); color:var(--ink);
+    font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+    font-size:17px; line-height:1.65; -webkit-text-size-adjust:100% }
+  .판 { max-width:520px; margin:0 auto; padding:20px 18px 64px; min-height:100vh }
+  h1 { font-size:1.35rem; margin:0 0 4px; letter-spacing:-.02em }
+  h2 { font-size:1.1rem; margin:26px 0 8px; letter-spacing:-.01em }
+  p { margin:10px 0; color:var(--ink2) }
+  .작게 { font-size:.88rem; color:var(--muted) }
+  .머리 { display:flex; align-items:center; gap:10px; padding:6px 0 14px; border-bottom:1px solid var(--line); margin-bottom:18px }
+  .머리 b { font-size:1.05rem }
+  .칸 { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px; margin:14px 0 }
+  .칸.초록 { border-color:var(--green); background:var(--green-soft) }
+  .칸.노랑 { border-color:var(--warn); background:var(--warn-soft) }
+  .칸.빨강 { border-color:var(--bad); background:var(--bad-soft) }
+  button, .단추 {
+    display:block; width:100%; padding:16px; font-size:1.05rem; font-weight:600;
+    border:1px solid var(--line); border-radius:12px; background:var(--surface);
+    color:var(--ink); cursor:pointer; font-family:inherit; margin-top:10px;
+  }
+  button.크게 { background:var(--green); border-color:var(--green); color:#fff; font-size:1.15rem; padding:18px }
+  button:disabled { opacity:.45 }
+  /*
+   * 「방문표가 없습니다」 단추.
+   * **일부러 작고 흐리게** 둡니다 — 이것이 시원한 지름길로 보이면
+   * 아무도 종이를 안 찍고 다 이 단추를 누릅니다.
+   */
+  button.곁길 { padding:9px; font-size:.85rem; font-weight:500;
+    color:var(--muted); border-color:transparent; background:transparent; margin-top:2px }
+
+  /* ── 목록에서 누르는 줄 ─────────────────────────────────── */
+  .사람.누름 { position:relative; padding-right:24px; cursor:pointer }
+  .사람.누름:active { background:var(--surface2) }
+  .사람 .화살 { position:absolute; right:2px; top:50%; transform:translateY(-50%);
+    color:var(--muted); font-size:1.6rem; line-height:1 }
+
+  /* ── 확인사항 ───────────────────────────────────────────── */
+  .이름표 { display:block; font-weight:600; font-size:.95rem; margin-bottom:4px }
+  textarea { width:100%; padding:14px; font-size:1.05rem; border:1px solid var(--line);
+    border-radius:10px; font-family:inherit; background:var(--surface); color:var(--ink);
+    resize:vertical; line-height:1.6 }
+
+  /*
+   * ── 들어가기 칸 (아이디·비밀번호·기관) ────────────────────
+   *
+   * 글씨를 **16px 아래로 내리면 안 됩니다.** 사파리가 그보다 작은 칸을
+   * 누르면 화면을 제멋대로 확대합니다. 확대된 채로 비밀번호를 치면
+   * 다음 칸이 화면 밖에 있습니다.
+   *
+   * 그리고 어르신 댁 마당에서 장갑 낀 손으로 누르는 칸이라
+   * 높이를 넉넉히 잡습니다.
+   */
+  #본문 input[type=text], #본문 input[type=password], #본문 select {
+    width:100%; padding:14px; font-size:1.05rem; border:1px solid var(--line);
+    border-radius:10px; font-family:inherit; background:var(--surface);
+    color:var(--ink); margin-bottom:12px; -webkit-appearance:none; appearance:none }
+  #본문 select { background-image:none }
+  #본문 input[type=text]:focus, #본문 input[type=password]:focus,
+  #본문 select:focus { outline:2px solid var(--green); outline-offset:1px }
+  /*
+   * 고르는 칸은 **손가락 크기**로 잡습니다.
+   * 어르신 댁 마당에서 장갑 낀 손으로 누르는 것이라,
+   * 화면에 예쁘게 들어가는 것보다 안 빗나가는 것이 먼저입니다.
+   */
+  /*
+   * 한 줄에 하나씩 둡니다.
+   * 두 줄로 놓아 봤더니 「옷입기보조」가 「옷입기보 / 조」로 잘렸습니다.
+   * 잘린 글자를 볕 아래에서 읽게 하느니 스크롤을 한 번 더 하는 편이 낫습니다.
+   * 덤으로 누르는 자리가 화면 너비만큼 넓어져 장갑 낀 손으로도 안 빗나갑니다.
+   */
+  .고름 { display:grid; grid-template-columns:1fr; gap:7px }
+  .고름.둘 { grid-template-columns:1fr 1fr }
+  .칸고름 { display:flex; align-items:center; gap:10px; padding:12px 13px;
+    border:1px solid var(--line); border-radius:11px; background:var(--surface);
+    font-size:1rem; cursor:pointer; user-select:none; word-break:keep-all }
+  .칸고름 input { width:22px; height:22px; margin:0; flex:0 0 auto; accent-color:var(--green) }
+  .칸고름 span b { color:var(--muted); font-weight:600; margin-right:2px }
+  .칸고름:has(input:checked) { border-color:var(--green); background:var(--green-soft) }
+
+  /* ── 사진 ───────────────────────────────────────────────── */
+  /*
+   * 네모난 칸을 나란히 둡니다. 다 찍은 뒤 한눈에 세어 보게 하려는 것입니다.
+   * 손가락으로 지우는 ✕ 는 **모서리에 크게** 둡니다 — 작으면
+   * 지우려다 사진이 열립니다.
+   */
+  .사진판 { display:grid; grid-template-columns:repeat(auto-fill, minmax(94px, 1fr));
+    gap:8px; margin-top:4px }
+  .사진하나 { position:relative; aspect-ratio:1/1; border-radius:10px;
+    overflow:hidden; border:1px solid var(--line); background:var(--surface2) }
+  .사진하나 img { width:100%; height:100%; object-fit:cover; display:block }
+  .사진빼기 { position:absolute; top:2px; right:2px; width:30px; height:30px;
+    padding:0; margin:0; border-radius:50%; border:0; line-height:30px;
+    background:rgba(0,0,0,.62); color:#fff; font-size:1rem; font-weight:700 }
+  .사진넣기 { display:flex; align-items:center; justify-content:center;
+    aspect-ratio:1/1; border:2px dashed var(--line); border-radius:10px;
+    background:var(--surface); color:var(--muted); text-align:center;
+    font-size:1.4rem; line-height:1.25; cursor:pointer }
+  .사진넣기 b { font-size:.82rem; font-weight:600 }
+  /*
+   * 사진 고르는 칸은 눈에 안 보이지만 **자리는 있습니다.**
+   * `hidden` 을 쓰면 브라우저에 따라 아예 없는 것으로 쳐서
+   * 손잡이가 안 걸립니다(시험에서 걸렸습니다, 2026-09-05).
+   */
+  .숨은칸 { position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0 }
+  .사진넣기:active { background:var(--surface2) }
+
+  /* ── 서명 ───────────────────────────────────────────────── */
+  .서명칸 { width:100%; height:200px; border:2px dashed var(--line);
+    border-radius:10px; background:var(--surface); touch-action:none; display:block }
+  .서명본 { width:100%; max-width:320px; border:1px solid var(--line);
+    border-radius:10px; background:#fff; margin:8px auto; display:block }
+  input {
+    width:100%; padding:14px; font-size:1.1rem; border:1px solid var(--line);
+    border-radius:10px; font-family:inherit; background:var(--surface); color:var(--ink);
+  }
+  .숫자칸 { font-size:2rem; letter-spacing:.6em; text-align:center; padding:18px 14px }
+  .사람 { border-bottom:1px solid var(--line); padding:14px 0 }
+  .사람:last-child { border-bottom:0 }
+  .사람 .이름 { font-size:1.15rem; font-weight:600 }
+  /*
+   * 이름표와 값이 나란한 줄.
+   * 처음에는 `.사람 .줄` 로만 두었다가, 집 화면(사람 목록 바깥)에서
+   * 「주소해남군…」처럼 **붙어 나왔습니다** (2026-09-05 시험 그림에서 발견).
+   * 목록 안팎 어디서나 같아야 하므로 자리를 안 가립니다.
+   */
+  .줄 { display:flex; gap:8px; margin-top:4px; color:var(--ink2); font-size:.95rem }
+  .줄 span:first-child { color:var(--muted); min-width:3.2em; flex:0 0 auto }
+  a.전화 { color:var(--green); font-weight:600; text-decoration:none; border-bottom:1px solid currentColor }
+  .딱지 { display:inline-block; font-size:.78rem; font-weight:600; padding:2px 9px;
+    border-radius:999px; background:var(--green-soft); color:var(--green) }
+  .가운데 { text-align:center }
+  .숨김 { display:none !important }
+  /*
+   * ── 오늘 · 이번 주 · 이번 달 띠 ─────────────────────────
+   *
+   * 손가락으로 누르는 것이라 **넉넉히** 잡습니다. 장갑 낀 손으로
+   * 어르신 댁 마당에서 누르는 화면입니다.
+   */
+  .앞날띠 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-bottom:12px }
+  .띠칸 { padding:11px 4px; font-size:1rem; border:1px solid var(--line);
+    border-radius:10px; background:var(--surface); color:var(--ink);
+    cursor:pointer; margin:0 }
+  .띠칸.고름 { border-color:var(--green); background:var(--green-soft); font-weight:700 }
+
+  .앞날날 { padding:10px 0; border-bottom:1px solid var(--line) }
+  .앞날날:last-child { border-bottom:0 }
+  .앞날날머리 { font-weight:700; margin-bottom:4px }
+
+  .돌아감 { display:inline-block; width:15px; height:15px; border:2px solid var(--line);
+    border-top-color:var(--green); border-radius:50%; animation:돌기 .8s linear infinite; vertical-align:-2px }
+  @keyframes 돌기 { to { transform:rotate(360deg) } }
+</style>
+
+<div class="판">
+  <div class="머리">
+    <b>통돌 Note</b>
+    <span class="작게" id="머리말"></span>
+  </div>
+  <div id="본문"></div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+ *  통돌 Note — 현장앱
+ *
+ *  이 파일 하나가 앱 전부입니다. 올릴 때 이것만 올리면 됩니다.
+ *
+ *  아래 자물쇠 코드는 손으로 베낀 것이 아니라
+ *  server/우편함자물쇠.ts 를 **지을 때 그대로 심은 것**입니다.
+ *  두 곳에 같은 코드가 따로 살면 언젠가 어긋나고,
+ *  어긋나면 현장에서 못 엽니다.
+ * ═══════════════════════════════════════════════════════════ */
+
+const 설정 = /*{{설정}}*/;
+
+/*{{자물쇠}}*/
+
+/*{{QR읽개}}*/   /* ← 여기서 globalThis.jsQR 이 생깁니다 */
+
+// ── 화면 그리기 도구 ────────────────────────────────────────
+const $ = (id) => document.getElementById(id);
+const 본문 = () => $("본문");
+const 머리말 = (s) => { $("머리말").textContent = s || ""; };
+const 안전 = (s) => String(s ?? "").replace(/[&<>"]/g, (c) =>
+  ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+
+/*
+ * 화면을 갈아 끼웁니다.
+ *
+ * ★ 갈아 끼울 때 **카메라를 끕니다.**
+ *   끄는 일을 화면마다 따로 적어 두면 언젠가 한 군데를 빠뜨립니다.
+ *   실제로 빠뜨렸습니다 — 찍기 화면에서 「그만두기」로 나갔더니
+ *   렌즈가 살아 있었습니다 (2026-09-05, 시험에서 걸림).
+ *   그래서 **모든 화면이 지나가는 이 자리 한 곳**에서 끕니다.
+ *   (찍기 화면은 이 함수를 먼저 부르고 그 뒤에 카메라를 엽니다.)
+ */
+function 그리기(html) {
+  if (typeof 카메라끄기 === "function") 카메라끄기();
+  본문().innerHTML = html;
+}
+
+// ── 폰에 잠가 두기 ──────────────────────────────────────────
+/*
+ * 개인쪽 자물쇠와 기관 열쇠를 폰에 둡니다.
+ * 그냥 두면 폰을 주운 사람이 그대로 씁니다. 그래서 **6자리로 잠급니다.**
+ *
+ * 6자리는 짧습니다. 그래서 푸는 데 일부러 시간이 걸리게(60만 번 되풀이) 하고,
+ * **열 번 틀리면 스스로 지웁니다.** 지워져도 사무실에서 다시 등록하면 됩니다.
+ */
+const 자리 = "통돌.기기";
+const 되풀이 = 600000;
+
+async function 여섯자리열쇠(여섯자리, 소금) {
+  const 씨 = await crypto.subtle.importKey(
+    "raw", new TextEncoder().encode(여섯자리), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    { name:"PBKDF2", salt:소금, iterations:되풀이, hash:"SHA-256" },
+    씨, { name:"AES-GCM", length:256 }, false, ["encrypt","decrypt"]);
+}
+
+/*
+ * 푼 자물쇠를 들고 있습니다.
+ * 우편함 표딱지(refresh token)는 쓸 때마다 새것으로 바뀌므로 **다시 잠가 둬야** 합니다.
+ * 그때마다 여섯 자리를 또 물어볼 수는 없으니, 자물쇠를 기억해 둡니다.
+ * (화면을 닫으면 사라집니다 — 저장소에는 안 남습니다.)
+ */
+let 현재자물쇠 = null;
+let 현재소금 = null;
+
+async function 폰에잠그기(여섯자리, 속) {
+  현재소금 = crypto.getRandomValues(new Uint8Array(new ArrayBuffer(16)));
+  현재자물쇠 = await 여섯자리열쇠(여섯자리, 현재소금);
+  await 다시잠그기(속);
+}
+
+/** 자물쇠를 그대로 두고 속만 새로 잠급니다. 소금은 그대로, 소(IV)만 새로. */
+async function 다시잠그기(속) {
+  if (!현재자물쇠) return;              // 아직 안 열린 상태면 할 일 없음
+  const 소 = crypto.getRandomValues(new Uint8Array(new ArrayBuffer(12)));
+  const 잠긴 = new Uint8Array(await crypto.subtle.encrypt(
+    { name:"AES-GCM", iv:소 }, 현재자물쇠, new TextEncoder().encode(JSON.stringify(속))));
+  localStorage.setItem(자리, JSON.stringify({
+    v:1, 소금:예순넷(현재소금), 소:예순넷(소), 잠긴것:예순넷(잠긴), 실패:0,
+  }));
+}
+
+async function 폰에서풀기(여섯자리) {
+  const 통 = JSON.parse(localStorage.getItem(자리) || "null");
+  if (!통) throw new Error("등록된 것이 없습니다");
+  const 소금 = 예순넷풀기(통.소금);
+  const 자 = await 여섯자리열쇠(여섯자리, 소금);
+  try {
+    const 푼 = await crypto.subtle.decrypt(
+      { name:"AES-GCM", iv:예순넷풀기(통.소) }, 자, 예순넷풀기(통.잠긴것));
+    통.실패 = 0; localStorage.setItem(자리, JSON.stringify(통));
+    현재자물쇠 = 자; 현재소금 = 소금;      // 다시 잠글 때 씁니다
+    return JSON.parse(new TextDecoder().decode(푼));
+  } catch {
+    통.실패 = (통.실패 || 0) + 1;
+    if (통.실패 >= 10) { localStorage.removeItem(자리); throw new Error("지움"); }
+    localStorage.setItem(자리, JSON.stringify(통));
+    throw new Error(`틀렸습니다 (${10 - 통.실패}번 남았습니다)`);
+  }
+}
+
+const 등록됨 = () => !!localStorage.getItem(자리);
+
+/*
+ * ── 저절로 잠그기 ───────────────────────────────────────────
+ *
+ * 「잠그기」 단추만 두면 아무도 안 누릅니다. 사람은 원래 그렇습니다.
+ * 그래서 **10분 동안 손대지 않으면 저절로 잠급니다.**
+ *
+ * 어르신 정보가 열린 채로 폰이 책상에 놓여 있는 시간을 줄이는 것이
+ * 목적입니다. 손을 대고 있는 동안에는 안 잠깁니다.
+ */
+let 놀린시간 = 10 * 60 * 1000;   // 시험에서 줄여 봅니다
+let 잠금시계 = null;
+
+function 시계다시() {
+  clearTimeout(잠금시계);
+  if (!몸) return;                       // 잠겨 있으면 셀 것이 없습니다
+  잠금시계 = setTimeout(() => {
+    if (몸) 화면잠그기("10분 동안 안 쓰셔서 잠갔습니다.");
+  }, 놀린시간);
+}
+for (const 짓 of ["click", "keydown", "touchstart", "visibilitychange"])
+  document.addEventListener(짓, 시계다시, { passive: true });
+
+// ── 우편함에 말 걸기 ────────────────────────────────────────
+let 표딱지 = null;   // access_token
+
+async function 우편함(길, 옵션 = {}) {
+  const 머리 = { apikey: 설정.열쇠, "content-type": "application/json", ...(옵션.headers || {}) };
+  if (표딱지) 머리.Authorization = "Bearer " + 표딱지;
+  const r = await fetch(설정.주소 + 길, { ...옵션, headers: 머리 });
+  if (!r.ok) {
+    let 말 = await r.text();
+    try { 말 = JSON.parse(말).message || JSON.parse(말).error_description || 말; } catch {}
+    throw new Error(`(${r.status}) ${말}`);
+  }
+  /*
+   * 몸이 없는 답이 옵니다.
+   *   204  — 지웠을 때
+   *   201  — `Prefer: return=minimal` 로 넣었을 때
+   * 201 을 그냥 r.json() 하면 「Unexpected end of JSON input」으로
+   * 죽습니다. 보낸 것은 잘 들어갔는데 실패로 보게 됩니다.
+   *
+   * ★ 그렇다고 201 을 **무조건** 버리면 안 됩니다 (2026-09-05 에 걸림) ★
+   *   `Prefer: return=representation` 으로 넣어도 201 이 옵니다.
+   *   이때는 **몸에 넣은 줄이 들어 있습니다.** 옛 코드는 그것까지
+   *   버려서, 로그인 요청을 잘 내 놓고도 「요청을 내지 못했습니다」가
+   *   떴습니다. 몸이 있으면 읽고, 없으면 null 입니다 —
+   *   비어 있는지를 **몸을 보고** 가릅니다. 번호로 미리 재지 않습니다.
+   */
+  if (r.status === 204) return null;
+  const 글 = await r.text();
+  if (!글) return null;
+  try { return JSON.parse(글); } catch { return null; }
+}
+
+/**
+ * 이름 없는 손님으로 들어갑니다. 표를 내기 전에는 아무것도 못 봅니다.
+ *
+ * ★ **제 번호를 챙깁니다.** 로그인 요청을 낼 때 「이 요청은 내가 냈다」를
+ *   적어야 하고, 그래야 답을 나만 가져갑니다. 우편함이 그 줄을
+ *   `device_user_id = auth.uid()` 로 막고 있습니다 — 남의 이름으로는
+ *   못 냅니다.
+ */
+let 내번호 = null;
+
+async function 손님으로들어가기() {
+  const j = await 우편함("/auth/v1/signup", { method:"POST", body:"{}" });
+  표딱지 = j.access_token;
+  내번호 = (j.user && j.user.id) || null;
+  return j.refresh_token;
+}
+
+async function 표딱지새로(refresh) {
+  const j = await 우편함("/auth/v1/token?grant_type=refresh_token",
+    { method:"POST", body: JSON.stringify({ refresh_token: refresh }) });
+  표딱지 = j.access_token;
+  return j.refresh_token;
+}
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+ *  화면 다섯
+ *    ① 처음   — 아직 등록 안 됨
+ *    ② 등록   — 주소에 표가 실려 들어왔을 때
+ *    ③ 잠금   — 등록은 됐고 6자리를 물어봄
+ *    ④ 오늘   — 오늘 갈 곳
+ *    ⑤ 찍기   — 어르신 댁 방문표를 카메라로 읽음
+ * ═══════════════════════════════════════════════════════════ */
+
+let 몸 = null;   // 풀어 둔 것 { 개인키, 기관열쇠, 인력번호, refresh, 방문 }
+
+// ── ① 처음 — 아이디·비밀번호로 들어갑니다 ──────────────────
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  왜 QR 이 아니라 아이디·비밀번호인가
+ * ═══════════════════════════════════════════════════════════
+ *
+ * 등록을 **브라우저**에 두었던 것이 잘못이었습니다. 같은 폰이라도
+ * 삼성인터넷에서 등록하고 크롬으로 열면 아무것도 없습니다. 브라우저에게
+ * 둘은 남남입니다. 아이폰 사파리는 한동안 안 쓴 사이트의 저장소를
+ * **스스로 지우기까지** 합니다. 그때마다 사무실에 다시 와서 QR 을
+ * 찍어야 했습니다.
+ *
+ * 한때 「앱 안 브라우저에서는 등록하지 마세요」라는 빨간 칸을 띄웠습니다.
+ * **그건 답이 아니었습니다.** 무무가 곧바로 물렸습니다 —
+ * 「앱 실행을 브라우저로 제한하면 안돼. 그 기기 안에선 어떤 브라우저로
+ *  접속하더라도 문제없이 실행되어야 해.」 맞는 말입니다. 우리 사정을
+ * 이용자에게 지키라고 하고 있었습니다.
+ *
+ * 그래서 **사람을 기억합니다.** 어느 브라우저로 열든, 폰을 바꾸든,
+ * 아이디와 비밀번호만 있으면 들어갑니다.
+ *
+ * ★ 비밀번호는 **폰에 저장하지 않고, 맨몸으로 나가지도 않습니다.**
+ *   기관 공개열쇠로 싸서 보내고, 푸는 것은 사무실 컴퓨터뿐입니다.
+ *   우편함은 그 덩어리를 못 엽니다.
+ */
+let 기관목록 = null;
+let 손님표 = null;          // 익명 계정의 refresh — 들어가면 그대로 씁니다
+
+/**
+ * ★ 익명 계정을 **재사용합니다** (2026-09-05 에 고침) ★
+ *
+ *   옛 코드는 앱을 열 때마다, 「다시 해 보기」를 누를 때마다 우편함에
+ *   새 익명 계정을 만들었습니다. 지우는 코드는 어디에도 없습니다.
+ *   비밀번호가 기억 안 나 대여섯 번 시도한 분 한 명이 계정 여섯 개를
+ *   남겼습니다. 무료 등급을 갉아먹는 쪽으로 계속 자라기만 합니다.
+ *
+ *   그래서 이 브라우저의 임시 보관함(sessionStorage)에 표를 둡니다.
+ *   창을 닫으면 사라지는 자리라 남는 것이 없고, 등록에 성공하면
+ *   어차피 잠긴 보관함으로 옮겨 갑니다.
+ */
+const 손님칸 = "통돌.손님";
+
+async function 손님챙기기() {
+  if (표딱지 && 내번호 && 손님표) return 손님표;
+
+  try {
+    const 있던것 = JSON.parse(sessionStorage.getItem(손님칸) || "null");
+    if (있던것 && 있던것.표) {
+      손님표 = await 표딱지새로(있던것.표);
+      내번호 = 있던것.번호 || null;
+      if (내번호) {
+        sessionStorage.setItem(손님칸, JSON.stringify({ 표: 손님표, 번호: 내번호 }));
+        return 손님표;
+      }
+    }
+  } catch { /* 표가 죽었으면 새로 만듭니다 */ }
+
+  손님표 = await 손님으로들어가기();
+  try {
+    sessionStorage.setItem(손님칸, JSON.stringify({ 표: 손님표, 번호: 내번호 }));
+  } catch { /* 못 두어도 도는 데는 지장 없습니다 */ }
+  return 손님표;
+}
+
+/**
+ * ── 이 휴대폰의 **표식** ────────────────────────────────────
+ *
+ * 왜 필요한가 —
+ *
+ *   브라우저를 바꿔 들어올 때마다 사무실 홈에 「새 휴대폰으로 들어왔습니다」가
+ *   뜨면, 사무실은 곧 그 알림을 **안 읽게 됩니다.** 그러면 정작 남이
+ *   들어왔을 때도 넘겨 버립니다. 거짓 알림이 잦은 알림은 죽은 알림입니다.
+ *   (2026-09-05 무무 — 「브라우저만 바뀐 경우엔 안뜨고 기기변경 시에만」)
+ *
+ * ═══════════════════════════════════════════════════════════
+ *  ★ UA 로는 안 됩니다 — 처음에 그렇게 만들었다가 갈아엎었습니다 ★
+ * ═══════════════════════════════════════════════════════════
+ *
+ *   크롬 110 부터 안드로이드 UA 를 **얼렸습니다.** 어느 폰이든
+ *   `Android 10; K` 라고만 말합니다. 실제로 돌려 본 것 —
+ *
+ *     갤S24 크롬        Android 10 · K          ← 다른 폰인데
+ *     갤A54 크롬        Android 10 · K          ← 같게 나옴
+ *     갤S24 삼성인터넷  Android 14 · SM-S921N   ← 같은 폰인데
+ *     갤S24 파이어폭스  Android 14 · Mobile     ← 다르게 나옴
+ *
+ *   **양쪽 다 틀립니다.** 남이 들어와도 조용하고, 브라우저만 바꿔도
+ *   알림이 뜹니다. 고치려던 것이 안 고쳐지고 새 구멍만 생겼습니다.
+ *
+ * ═══════════════════════════════════════════════════════════
+ *  그래서 두 층으로 나눕니다
+ * ═══════════════════════════════════════════════════════════
+ *
+ *   **강한 쪽** — 크로미움 계열(크롬·삼성인터넷·엣지)이 물어보면
+ *   내주는 진짜 모델명입니다(`userAgentData`). 얼린 UA 와 달리
+ *   **브라우저가 달라도 같은 값**이 나옵니다. 이게 있으면 이걸 씁니다.
+ *
+ *   **약한 쪽** — 모델을 못 얻는 브라우저(사파리·파이어폭스)용입니다.
+ *   바탕(Android/iOS) · 화면 크기 · 화면 배율 · CPU 코어 수.
+ *   같은 기종 폰 두 대는 못 가리지만, 그건 넘어가기로 했습니다.
+ *
+ *   ★ 화면 크기는 **작은 쪽·큰 쪽 차례로** 적습니다. 그냥 가로x세로면
+ *     폰을 눕히기만 해도 다른 기기가 됩니다.
+ *
+ *   ★ 화면 크기를 못 읽으면(0) 약한 쪽을 **아예 안 보냅니다.**
+ *     0x0 을 보내면 세상 모든 폰이 같은 폰이 됩니다.
+ *
+ * 이 표식은 **잠겨서** 나갑니다. 우편함은 못 봅니다.
+ */
+function 바탕이름(u) {
+  if (/Android/i.test(u)) return "Android";
+  if (/iPhone|iPad|iPod/.test(u)) return /iPad/.test(u) ? "iPad" : "iPhone";
+  if (/Windows NT/.test(u)) return "Windows";
+  if (/Mac OS X/.test(u)) return "Mac";
+  if (/CrOS/.test(u)) return "ChromeOS";
+  if (/Linux/.test(u)) return "Linux";
+  return "기타";
+}
+
+async function 기기표식() {
+  const u = navigator.userAgent || "";
+  const 표 = { 바탕: 바탕이름(u) };
+
+  /*
+   * 크로미움 계열에만 있습니다. 물어보는 데 잠깐 걸리므로 await 합니다.
+   * 없거나 거절당하면 그냥 넘어갑니다 — 약한 쪽만으로 갑니다.
+   */
+  try {
+    const d = navigator.userAgentData;
+    if (d && d.getHighEntropyValues) {
+      const h = await d.getHighEntropyValues(["model", "platformVersion"]);
+      const m = (h.model || "").trim();
+      if (m) 표.모델 = m;
+      const v = (h.platformVersion || "").trim();
+      if (v) 표.판 = v.split(".")[0];      // 잔판까지 보면 업데이트마다 바뀝니다
+    }
+  } catch { /* 못 물어보면 약한 쪽만 */ }
+
+  /*
+   * 아이폰은 사파리든 크롬이든 UA 의 iOS 판이 같습니다 — 믿을 만합니다.
+   * 안드로이드 UA 판은 얼려 있어서 **안 씁니다.**
+   */
+  if (표.바탕 === "iPhone" || 표.바탕 === "iPad") {
+    const v = u.match(/OS (\d+)[_\d]* like Mac/);
+    if (v) 표.판 = v[1];
+  }
+
+  const 짧 = Math.min(screen.width || 0, screen.height || 0);
+  const 긴 = Math.max(screen.width || 0, screen.height || 0);
+  if (짧 > 0 && 긴 > 0) {
+    표.화면 = `${짧}x${긴}`;
+    표.배율 = Math.round((window.devicePixelRatio || 1) * 100) / 100;
+  }
+  const c = navigator.hardwareConcurrency;
+  if (typeof c === "number" && c > 0) 표.코어 = c;
+
+  return 표;
+}
+
+async function 처음화면() {
+  머리말("");
+  그리기(`<div class="칸"><h1>들어가기</h1>
+    <p id="첫진행"><span class="돌아감"></span> 기관을 불러옵니다…</p></div>`);
+
+  try {
+    await 손님챙기기();
+    기관목록 = await 우편함("/rest/v1/org?select=id,name,pub_key&order=name");
+  } catch (e) {
+    /*
+     * 여기서 막히는 것은 거의 **신호**입니다. 아이디가 틀린 것이 아니니
+     * 그렇게 말하면 안 됩니다 — 현장에서 비밀번호를 몇 번씩 고쳐 치게 됩니다.
+     */
+    return 그리기(`<div class="칸 빨강">
+      <h1>지금은 들어갈 수 없습니다</h1>
+      <p>인터넷이 되는 곳에서 다시 열어 주세요.</p>
+      <p class="작게">${안전(e.message)}</p>
+      <button onclick="location.reload()">다시 해 보기</button>
+    </div>`);
+  }
+
+  const 쓸것 = (기관목록 || []).filter((o) => o.pub_key);
+  if (!쓸것.length) {
+    return 그리기(`<div class="칸 빨강">
+      <h1>사무실 준비가 아직입니다</h1>
+      <p>사무실 컴퓨터에서 <b>통돌 Note 를 한 번 켜야</b> 들어갈 수 있습니다.</p>
+      <p class="작게">사무실에 「통돌 Note 를 켜 달라」고 말씀해 주시고,
+        잠시 뒤 다시 해 보세요.</p>
+      <button onclick="location.reload()">다시 해 보기</button>
+    </div>`);
+  }
+
+  const 고르기 = 쓸것.length === 1
+    ? `<input type="hidden" id="기관고름" value="${안전(쓸것[0].id)}">
+       <p class="작게">기관 · <b>${안전(쓸것[0].name)}</b></p>`
+    : `<label class="이름표" for="기관고름">기관</label>
+       <select id="기관고름">
+         <option value="">고르세요</option>
+         ${쓸것.map((o) => `<option value="${안전(o.id)}">${안전(o.name)}</option>`).join("")}
+       </select>`;
+
+  그리기(`
+    <div class="칸">
+      <h1>들어가기</h1>
+      ${고르기}
+      <label class="이름표" for="아이디칸">아이디</label>
+      <input id="아이디칸" type="text" inputmode="text" autocomplete="username"
+             autocapitalize="off" autocorrect="off" spellcheck="false">
+      <label class="이름표" for="비번칸">비밀번호</label>
+      <input id="비번칸" type="password" autocomplete="current-password">
+      <button id="들어가기단추" style="margin-top:12px">들어가기</button>
+      <p class="작게">사무실 컴퓨터가 <b>켜져 있어야</b> 들어갑니다.
+        꺼져 있으면 켜질 때까지 기다립니다.</p>
+    </div>
+`);
+
+  $("들어가기단추").onclick = 들어가기누름;
+  $("비번칸").onkeydown = (e) => { if (e.key === "Enter") 들어가기누름(); };
+}
+
+function 들어가기누름() {
+  const 기관id = ($("기관고름") || {}).value || "";
+  const 아이디 = ($("아이디칸").value || "").trim();
+  const 비번 = $("비번칸").value || "";
+  const 기관 = (기관목록 || []).find((o) => o.id === 기관id);
+  if (!기관) return alert("기관을 골라 주세요.");
+  if (!아이디 || !비번) return alert("아이디와 비밀번호를 넣어 주세요.");
+  들어가는중(기관, 아이디, 비번);
+}
+
+/**
+ * 사무실 컴퓨터가 답해 줄 때까지 기다립니다.
+ *
+ * 왜 기다려야 하나 — 비밀번호를 맞춰 보는 것도, 기관 열쇠를 내주는 것도
+ * **사무실 컴퓨터만** 할 수 있기 때문입니다. 우편함은 못 합니다.
+ * 그것이 「우편함이 털려도 잃을 것이 없다」의 값입니다.
+ */
+async function 들어가는중(기관, 아이디, 비번) {
+  머리말("들어가는 중");
+  그리기(`<div class="칸"><h1>들어가고 있습니다</h1>
+    <p id="진행"><span class="돌아감"></span> 잠시만 기다려 주세요…</p></div>`);
+  const 말하기 = (s) => { const e = $("진행"); if (e) e.innerHTML = s; };
+
+  try {
+    말하기('<span class="돌아감"></span> 이 휴대폰의 자물쇠를 만듭니다…');
+    const 쌍 = await 키쌍만들기();
+
+    말하기('<span class="돌아감"></span> 사무실에 여쭙니다…');
+    const 싼것 = await 싸기(기관.pub_key,
+      JSON.stringify({ 아이디, 비밀번호: 비번, 공개쪽: 쌍.공개, 표식: await 기기표식() }));
+    비번 = "";                       // 들고 있을 까닭이 없습니다
+
+    /*
+     * ★ 요청 번호를 **폰이 미리 정합니다.**
+     *
+     *   보내는 데는 성공했는데 **답이 오다 끊기면**(현장 신호가 그렇습니다)
+     *   서버에는 요청이 들어갔는데 폰은 그 번호를 모릅니다. 그러면 다시
+     *   눌러도 새 요청만 쌓이고, 사무실에는 같은 사람의 요청이 여러 줄
+     *   뜹니다. 번호를 미리 정해 두면 그냥 그 번호를 다시 물어보면 됩니다.
+     */
+    const 요청번호 = crypto.randomUUID();
+    await 우편함("/rest/v1/device_request", {
+      method: "POST",
+      headers: { Prefer: "return=minimal" },
+      body: JSON.stringify({
+        id: 요청번호, org_id: 기관.id, device_user_id: 내번호, asked_enc: 싼것,
+      }),
+    });
+
+    말하기('<span class="돌아감"></span> 사무실 컴퓨터가 확인하고 있습니다…');
+    let 답 = null, 연달아막힘 = 0;
+    for (let i = 0; i < 90 && !답; i++) {
+      await new Promise((r) => setTimeout(r, 2000));
+      /*
+       * ★ 한 번 막혔다고 통째로 그만두면 안 됩니다 (2026-09-05 에 고침) ★
+       *
+       *   3분 동안 아흔 번을 물어보는데, 옛 코드는 그중 **한 번만**
+       *   502 나 시간 초과가 나도 「들어가지 못했습니다」로 끝났습니다.
+       *   현장 신호가 나쁜 곳에서 제일 자주 터질 자리였습니다.
+       *   요청 번호를 미리 정해 둔 까닭이 바로 **다시 물어보려는 것**인데,
+       *   정작 다시 안 물어보고 있었습니다.
+       *
+       *   그러니 그냥 다음 차례로 넘깁니다. 열 번 내리 막히면
+       *   그때는 신호가 정말 없는 것이니 사람에게 알립니다.
+       */
+      let 줄 = null;
+      try {
+        줄 = await 우편함(
+          `/rest/v1/device_request?id=eq.${요청번호}` +
+          `&select=status,answer_enc,worker_id,reason`);
+        연달아막힘 = 0;
+      } catch (err) {
+        연달아막힘++;
+        if (연달아막힘 >= 10) throw err;
+        continue;
+      }
+      if (줄 && 줄[0] && 줄[0].status !== "기다림") 답 = 줄[0];
+      /*
+       * 30초쯤 지나면 「사무실 컴퓨터가 꺼져 있을 수 있다」를 알려 줍니다.
+       * 그 전에 말하면 괜히 놀라게 하고, 안 하면 3분을 멍하니 봅니다.
+       */
+      if (i === 15) 말하기('<span class="돌아감"></span> 아직 답이 없습니다…' +
+        '<br><span class="작게">사무실 컴퓨터가 꺼져 있으면 켤 때까지 기다립니다.</span>');
+    }
+
+    if (!답) throw new Error(
+      "사무실 컴퓨터에서 답이 오지 않았습니다. 사무실에 통돌 Note 가 켜져 있는지 " +
+      "여쭤보시고 다시 해 주세요.");
+    if (답.status === "거절")
+      throw new Error(답.reason || "들어가지 못했습니다.");
+
+    말하기('<span class="돌아감"></span> 열쇠를 풉니다…');
+    const 기관열쇠 = await 싼것풀기(쌍.개인, 답.answer_enc);
+
+    여섯자리정하기({
+      개인키: 쌍.개인, 기관열쇠,
+      인력번호: 답.worker_id, 기관번호: 기관.id, refresh: 손님표,
+    });
+  } catch (e) {
+    그리기(`<div class="칸 빨강">
+      <h1>들어가지 못했습니다</h1>
+      <p>${안전(e.message)}</p>
+      <button onclick="location.hash='';location.reload()">다시 해 보기</button>
+    </div>`);
+  }
+}
+
+// ── ② 등록 ─────────────────────────────────────────────────
+async function 등록화면(표) {
+  머리말("등록 중");
+  그리기(`<div class="칸"><h1>등록하고 있습니다</h1>
+    <p id="진행"><span class="돌아감"></span> 잠시만 기다려 주세요…</p></div>`);
+  const 말하기 = (s) => { const e = $("진행"); if (e) e.innerHTML = s; };
+
+  try {
+    말하기('<span class="돌아감"></span> 이 휴대폰의 자물쇠를 만듭니다…');
+    const 쌍 = await 키쌍만들기();
+
+    말하기('<span class="돌아감"></span> 우편함에 들어갑니다…');
+    let refresh = await 손님으로들어가기();
+
+    말하기('<span class="돌아감"></span> 등록표를 냅니다…');
+    await 우편함("/rest/v1/rpc/register_device", {
+      method:"POST",
+      body: JSON.stringify({ token: 표, p_pub_key: 쌍.공개 }),
+    });
+
+    /*
+     * 열쇠는 QR 에 없습니다. 사무실 컴퓨터가 방금 올린 공개쪽으로
+     * **싸서** 우편함에 놓아 줍니다. 그때까지 기다립니다.
+     */
+    말하기('<span class="돌아감"></span> 사무실에서 열쇠를 보내 주기를 기다립니다…');
+    let 싼것 = null, 인력 = null, 기관번호 = null;
+    for (let i = 0; i < 60 && !싼것; i++) {
+      const 줄 = await 우편함("/rest/v1/worker_device?select=worker_id,wrapped_key,org_id");
+      if (줄[0] && 줄[0].wrapped_key) {
+        싼것 = 줄[0].wrapped_key; 인력 = 줄[0].worker_id;
+        // 사진을 둘 자리의 첫 칸이 기관번호입니다. 지금 받아 둡니다.
+        기관번호 = 줄[0].org_id;
+      }
+      else await new Promise((r) => setTimeout(r, 2000));
+    }
+    if (!싼것)
+      throw new Error("사무실에서 열쇠가 오지 않았습니다. 관리자 화면이 켜져 있는지 확인하고 다시 해 주세요.");
+
+    말하기('<span class="돌아감"></span> 열쇠를 풉니다…');
+    const 기관열쇠 = await 싼것풀기(쌍.개인, 싼것);
+
+    여섯자리정하기({ 개인키: 쌍.개인, 기관열쇠, 인력번호: 인력, 기관번호, refresh });
+  } catch (e) {
+    그리기(`<div class="칸 빨강">
+      <h1>등록하지 못했습니다</h1>
+      <p>${안전(e.message)}</p>
+      <p class="작게">사무실에서 <b>새 그림을 다시 받아</b> 찍어 주세요.
+      그림은 15분이 지나면 못 씁니다.</p>
+      <button onclick="location.hash='';location.reload()">처음으로</button>
+    </div>`);
+  }
+}
+
+// ── 6자리 정하기 ────────────────────────────────────────────
+function 여섯자리정하기(속) {
+  머리말("");
+  그리기(`
+    <div class="칸 초록">
+      <h1>거의 다 됐습니다</h1>
+      <p>앞으로 이 앱을 열 때 쓸 <b>여섯 자리 숫자</b>를 정해 주세요.</p>
+      <p class="작게">생일이나 1234 같은 것은 피해 주세요.
+      <b>열 번 틀리면 이 휴대폰의 등록이 지워집니다</b> (사무실에서 다시 하면 됩니다).</p>
+      <input id="p1" class="숫자칸" inputmode="numeric" maxlength="6" placeholder="······">
+      <p class="작게" style="margin-bottom:4px">한 번 더</p>
+      <input id="p2" class="숫자칸" inputmode="numeric" maxlength="6" placeholder="······">
+      <p id="말" class="작게" style="color:var(--bad)"></p>
+      <button class="크게" id="정함">정하기</button>
+    </div>`);
+
+  const 숫자만 = (e) => { e.target.value = e.target.value.replace(/\D/g, "").slice(0, 6); };
+  $("p1").addEventListener("input", 숫자만);
+  $("p2").addEventListener("input", 숫자만);
+  $("p1").focus();
+
+  $("정함").onclick = async () => {
+    const a = $("p1").value, b = $("p2").value;
+    if (a.length !== 6) return ($("말").textContent = "여섯 자리를 채워 주세요.");
+    if (a !== b) return ($("말").textContent = "두 번 넣은 숫자가 다릅니다.");
+    if (/^(\d)\1{5}$/.test(a) || "012345678901234567890".includes(a))
+      return ($("말").textContent = "너무 쉬운 숫자입니다. 다른 것으로 해 주세요.");
+    $("정함").disabled = true;
+    $("정함").innerHTML = '<span class="돌아감"></span> 잠그는 중…';
+    await 폰에잠그기(a, 속);
+    몸 = 속;
+    await 저장소붙들기();                                 // 브라우저가 안 지우게
+    history.replaceState(null, "", location.pathname);   // 주소에서 표를 지웁니다
+    끝났다화면();
+  };
+}
+
+/*
+ * ── 브라우저가 등록을 지우지 않게 붙듭니다 ──────────────────
+ *
+ * 등록한 것은 이 브라우저의 저장소 한 곳에만 있습니다. 그런데 브라우저는
+ * **자리가 모자라거나 오래 안 쓰면 스스로 지웁니다.** 지워지면 제공인력은
+ * 아침에 「등록되지 않았습니다」를 보고, **안 보낸 보고까지 같이 사라집니다.**
+ * 실제로 두 번 겪었습니다 (2026-09-05 무무).
+ *
+ * `persist()` 는 브라우저에게 **「이건 지우지 마세요」**라고 표시하는 것입니다.
+ * 크롬(안드로이드)에서 듣습니다. 사파리(아이폰)는 이걸 안 듣고,
+ * 대신 **홈 화면에 추가**하면 오래 남습니다 — 그래서 아래 화면에서
+ * 그것을 작은 곁말이 아니라 **할 일**로 내놓습니다.
+ *
+ * 되든 안 되든 **막지 않습니다.** 등록은 이미 끝났고, 이건 덤입니다.
+ */
+async function 저장소붙들기() {
+  try {
+    if (navigator.storage && navigator.storage.persist) await navigator.storage.persist();
+  } catch { /* 안 되는 브라우저도 있습니다. 그냥 넘어갑니다. */ }
+}
+
+function 끝났다화면() {
+  머리말("");
+  그리기(`<div class="칸 초록 가운데">
+    <h1>등록이 끝났습니다</h1>
+    <p>이제 이 휴대폰으로 오늘 갈 곳을 볼 수 있습니다.</p>
+  </div>
+
+  <div class="칸">
+    <div class="이름표">한 가지만 더 해 주세요</div>
+    <p><b>이 화면을 「홈 화면에 추가」 해 주세요.</b></p>
+    <p class="작게">브라우저 메뉴(아이폰은 아래 <b>내보내기</b> 그림, 안드로이드는
+      오른쪽 위 <b>⋮</b>)를 누르고 <b>「홈 화면에 추가」</b>를 고르시면 됩니다.</p>
+    <p class="작게">앱처럼 한 번에 열려서 편하기도 하지만, 더 중요한 까닭이 있습니다 —
+      <b>이렇게 두지 않으면 휴대폰이 등록을 스스로 지워 버리는 일이 있습니다.</b>
+      그러면 아침에 「등록되지 않았습니다」가 뜨고,
+      <b>아직 사무실로 안 보낸 것이 있었다면 그것도 함께 사라집니다.</b></p>
+  </div>
+
+  <button class="크게" onclick="오늘화면()">오늘 갈 곳 보기</button>`);
+}
+
+// ── ③ 잠금 ─────────────────────────────────────────────────
+function 잠금화면(알림) {
+  머리말("");
+  그리기(`
+    <div class="칸">
+      <h1>여섯 자리를 넣어 주세요</h1>
+      ${알림 ? `<p style="color:var(--bad)">${안전(알림)}</p>` : ""}
+      <input id="p" class="숫자칸" inputmode="numeric" maxlength="6" placeholder="······">
+      <p id="말" class="작게" style="color:var(--bad)"></p>
+      <button class="크게" id="열기">열기</button>
+    </div>`);
+  const 넣기 = $("p");
+  넣기.addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/\D/g, "").slice(0, 6);
+    if (e.target.value.length === 6) $("열기").click();
+  });
+  넣기.focus();
+
+  $("열기").onclick = async () => {
+    const v = 넣기.value;
+    if (v.length !== 6) return;
+    $("열기").disabled = true;
+    $("열기").innerHTML = '<span class="돌아감"></span> 여는 중…';
+    try {
+      몸 = await 폰에서풀기(v);
+      오늘화면();
+    } catch (e) {
+      if (e.message === "지움") return 처음화면();
+      $("말").textContent = e.message;
+      넣기.value = ""; 넣기.focus();
+      $("열기").disabled = false; $("열기").textContent = "열기";
+    }
+  };
+}
+</script>
+
+<script>
+// ── ④ 오늘 갈 곳 ────────────────────────────────────────────
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  현장에서 도는 차례
+ *
+ *    오늘 갈 곳   ← 이름 · 서비스가 한 줄씩. 누르면 들어갑니다
+ *        ↓
+ *    그 집        ← 주소·연락처·메모, 그리고 큰 단추 하나
+ *        ↓ 「서비스 시작」
+ *    찍기         ← 문에 붙은 방문표를 카메라로. 시작시간이 적힙니다
+ *        ↓
+ *    확인사항      ← ★ 서비스마다 다릅니다 (편람 서식3·4·5)
+ *        ↓ 「서비스 끝」
+ *    찍기         ← 다시 찍습니다. 종료시간
+ *        ↓
+ *    서명         ← 이용자 확인서명. 손가락으로
+ *
+ *  ── 왜 목록에 단추를 안 두었나 ────────────────────────────
+ *
+ *  처음에는 목록마다 「시작 찍기」를 붙였습니다. 그러면 **찍는 것이
+ *  주인공인 화면**이 됩니다. 실제로 찍는 것은 문을 여는 열쇠일 뿐이고,
+ *  남겨야 하는 것은 **그 집에서 무엇을 했는가**입니다.
+ *  (2026-09-04 무무 지적으로 다시 지었습니다.)
+ *
+ *  ── 확인사항은 아무 때나 ─────────────────────────────────
+ *
+ *  시작을 찍은 뒤로는 언제든 열립니다. 청소를 끝내고 한 칸, 세탁을
+ *  끝내고 한 칸 — 그렇게 적어도 되고, 다 하고 나서 한꺼번에 적어도
+ *  됩니다. 현장이 어느 쪽일지 모르니 **막지 않습니다.**
+ * ═══════════════════════════════════════════════════════════ */
+
+/*
+ * 오늘 푼 목록. 화면들이 이것을 보고 그립니다.
+ * 잠그면 비웁니다 — 잠긴 폰에 어르신 이름이 남아 있으면 안 됩니다.
+ */
+let 오늘것들 = [];
+
+function 오늘날짜() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+/*
+ * 날짜는 **머리말 한 곳에만** 둡니다.
+ * 처음에는 머리말과 제목 아래 두 군데에 찍었는데, 한 화면에 같은 날짜가
+ * 두 번 나올 까닭이 없습니다 (2026-09-05 무무 지적).
+ */
+function 오늘말() {
+  const d = new Date(), 요일 = "일월화수목금토"[d.getDay()];
+  return `${d.getMonth()+1}월 ${d.getDate()}일 (${요일})`;
+}
+
+/* ═══════════════════════════════════════════════════════════
+ *  앞날 일정 — 이번 주 · 이번 달
+ *
+ *  ── 왜 넣었나 ────────────────────────────────────────────
+ *
+ *  지금까지 폰에는 **오늘치만** 보였습니다. 그래서 「내일 어디 가지」를
+ *  알려면 사무실에 전화해야 했습니다.
+ *  (2026-09-05 무무 — 「본인에게 할당 된 당일일정과 주간일정, 월간일정」)
+ *
+ *  ── ★ 본인 할당분 말고는 **서버가 안 내려줍니다** ★ ───────
+ *
+ *  화면에서 감추는 것이 아닙니다. 우편함의 RLS 가
+ *  `worker_id = my_worker()` 로 막고 있어서, 남의 일정은 **자료 자체가
+ *  안 옵니다.** 주소창을 쳐도, 앱을 뜯어 봐도 나오지 않습니다.
+ *
+ *  ── 여기서는 **찍지 않습니다** ───────────────────────────
+ *
+ *  앞날 화면은 **보기만** 합니다. 시작·끝을 찍는 것은 오늘 화면에서만
+ *  합니다. 내일 것을 미리 찍어 두는 일이 생기면 안 됩니다.
+ * ═══════════════════════════════════════════════════════════ */
+
+const 요일이름 = ["일", "월", "화", "수", "목", "금", "토"];
+
+function 날글(ymd) {
+  const d = new Date(`${ymd}T00:00:00`);
+  return `${d.getMonth() + 1}월 ${d.getDate()}일 (${요일이름[d.getDay()]})`;
+}
+
+/** 이번 주 월요일 ~ 일요일. 우리 달력은 일요일부터지만 일하는 주는 월요일부터입니다. */
+function 이번주범위() {
+  const d = new Date(`${오늘날짜()}T00:00:00`);
+  const 요일 = d.getDay();                       // 0=일
+  const 월요일까지 = 요일 === 0 ? 6 : 요일 - 1;
+  const 첫 = new Date(d.getTime() - 월요일까지 * 86400_000);
+  const 끝 = new Date(첫.getTime() + 6 * 86400_000);
+  const 글 = (x) => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-` +
+                     `${String(x.getDate()).padStart(2, "0")}`;
+  return { 첫날: 글(첫), 끝날: 글(끝) };
+}
+
+function 이번달범위() {
+  const d = new Date(`${오늘날짜()}T00:00:00`);
+  const 첫 = new Date(d.getFullYear(), d.getMonth(), 1);
+  const 끝 = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+  const 글 = (x) => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-` +
+                     `${String(x.getDate()).padStart(2, "0")}`;
+  return { 첫날: 글(첫), 끝날: 글(끝) };
+}
+
+/** 세 화면을 오가는 띠. */
+function 앞날띠(지금) {
+  const 하나 = (값, 글) =>
+    `<button class="띠칸${지금 === 값 ? " 고름" : ""}" onclick="${
+      값 === "오늘" ? "오늘화면()" : `앞날화면('${값}')`}">${글}</button>`;
+  return `<div class="앞날띠">${하나("오늘", "오늘")}${
+    하나("주", "이번 주")}${하나("달", "이번 달")}</div>`;
+}
+
+/**
+ * 앞날 일정을 보여 줍니다.
+ *
+ * ★ **지난 날은 안 옵니다.** 사무실이 오늘부터만 올리기 때문입니다
+ *   (`할일보내기.ts` 의 `보낼범위`). 이미 다녀온 집의 주소를 폰이
+ *   계속 들고 있을 까닭이 없습니다.
+ */
+async function 앞날화면(어느것) {
+  if (!몸) return 화면잠그기();
+  머리말(어느것 === "주" ? "이번 주" : "이번 달");
+  그리기(`${앞날띠(어느것)}<div class="칸"><p><span class="돌아감"></span> 불러옵니다…</p></div>`);
+
+  try {
+    표딱지 = null;
+    몸.refresh = await 표딱지새로(몸.refresh);
+    await 다시잠그기(몸);
+
+    const { 첫날, 끝날 } = 어느것 === "주" ? 이번주범위() : 이번달범위();
+    const 줄들 = await 우편함(
+      `/rest/v1/job?served_on=gte.${첫날}&served_on=lte.${끝날}` +
+      `&select=id,served_on,payload_enc&order=served_on`);
+
+    // 날짜별로 묶습니다.
+    const 날마다 = new Map();
+    for (const j of 줄들) {
+      let 것;
+      try { 것 = await 짐풀기(몸.기관열쇠, j.payload_enc); }
+      catch { 것 = { 못품: true }; }
+      const 통 = 날마다.get(j.served_on) ?? [];
+      통.push(것);
+      날마다.set(j.served_on, 통);
+    }
+
+    const 날들 = [...날마다.keys()].sort();
+    const 모두 = 줄들.length;
+
+    if (!모두) {
+      return 그리기(`${앞날띠(어느것)}<div class="칸 가운데">
+        <h1>${어느것 === "주" ? "이번 주" : "이번 달"}에 갈 곳이 없습니다</h1>
+        <p class="작게">사무실에서 아직 안 올렸을 수도 있습니다.<br>
+          <b>지난 날은 안 보입니다</b> — 오늘부터 앞날만 옵니다.</p>
+        <button onclick="오늘화면()">오늘로</button>
+      </div>`);
+    }
+
+    그리기(`
+      ${앞날띠(어느것)}
+      <h1>${어느것 === "주" ? "이번 주" : "이번 달"}
+        <span class="딱지">${모두}곳</span></h1>
+      <div class="칸" style="padding:4px 18px">
+        ${날들.map((날) => `
+          <div class="앞날날">
+            <div class="앞날날머리">${안전(날글(날))}
+              ${날 === 오늘날짜() ? '<span class="딱지">오늘</span>' : ""}</div>
+            ${날마다.get(날).map((p) => p.못품
+              ? `<div class="줄"><span style="color:var(--bad)">열지 못한 건</span></div>`
+              : `<div class="줄">
+                   <span>${안전(p.이름 || "이름 없음")}</span>
+                   <span class="작게">${안전(p.서비스 || "")}</span>
+                 </div>`).join("")}
+          </div>`).join("")}
+      </div>
+      <p class="작게 가운데" style="margin-top:14px">
+        <b>보기만 하는 화면입니다.</b> 시작·끝을 찍는 것은
+        <b>오늘 갈 곳</b>에서 합니다.<br>
+        일정이 바뀌면 사무실이 올린 뒤 여기에도 바뀝니다.
+      </p>
+      <button onclick="오늘화면()">오늘로 돌아가기</button>
+      <button onclick="화면잠그기()">잠그고 나가기</button>
+    `);
+    시계다시();
+  } catch (e) {
+    그리기(`${앞날띠(어느것)}<div class="칸 빨강">
+      <h1>가져오지 못했습니다</h1>
+      <p>${안전(e.message)}</p>
+      <button onclick="앞날화면('${어느것}')">다시 해 보기</button>
+      <button onclick="오늘화면()">오늘로</button>
+    </div>`);
+  }
+}
+
+async function 오늘화면() {
+  보는집 = null;                 // 목록으로 나왔으니 집 화면을 다시 그리면 안 됩니다
+  머리말(오늘말());
+  그리기(`<div class="칸"><p><span class="돌아감"></span> 오늘 갈 곳을 가져옵니다…</p></div>`);
+  try {
+    /*
+     * ★ 우편함 표딱지는 쓸 때마다 새것으로 바뀝니다 ★
+     * 새것을 안 저장하면 **다음에 열 때 못 들어갑니다.**
+     */
+    표딱지 = null;
+    몸.refresh = await 표딱지새로(몸.refresh);
+    await 다시잠그기(몸);
+
+    const 줄들 = await 우편함(
+      `/rest/v1/job?served_on=eq.${오늘날짜()}&select=id,served_on,payload_enc&order=created_at`);
+
+    if (!줄들.length) {
+      오늘것들 = [];
+      return 그리기(`${앞날띠("오늘")}<div class="칸 가운데">
+        <h1>오늘은 갈 곳이 없습니다</h1>
+        <p class="작게">사무실에서 아직 안 올렸을 수도 있습니다.<br>
+        조금 뒤에 다시 보시거나 사무실에 물어봐 주세요.</p>
+        <button onclick="오늘화면()">다시 보기</button>
+        <button onclick="화면잠그기()">잠그고 나가기</button>
+      </div>`);
+    }
+
+    /*
+     * 여기서 처음으로 사람 이름이 나옵니다.
+     * 우편함에는 잠긴 덩어리로만 있었고, **이 휴대폰에서만** 풀립니다.
+     */
+    const 것들 = [];
+    for (const j of 줄들) {
+      try { 것들.push({ id: j.id, ...(await 짐풀기(몸.기관열쇠, j.payload_enc)) }); }
+      catch { 것들.push({ id: j.id, 못품: true }); }
+    }
+    오늘것들 = 것들;
+    /*
+     * ── 사무실이 되돌린 건은 처음으로 ──────────────────────
+     *
+     * 사무실이 제공실적에서 「제공」을 「계획」으로 되돌리면, 그 건은
+     * **다시 해야 하는 일**이 됩니다. 그런데 폰은 자기가 적어 둔 기록을
+     * 보고 「전송 완료」로 두고 있어 서로 다른 것을 보게 됩니다.
+     * (2026-09-05 무무 지시 — 「폰도 처음으로 되돌려야 해.」)
+     *
+     * 사무실은 되돌릴 때마다 **새 표**를 붙여 보냅니다. 폰이 들고 있는
+     * 표와 다르면 그 건의 기록을 지웁니다. 표가 같으면 아무 일도 없습니다.
+     */
+    await 되돌린것치우기();
+    /*
+     * 목록을 새로 받은 김에 **아직 못 보낸 것**을 보냅니다.
+     * 어제 마당에서 신호가 없어 못 보낸 것이 여기서 나갑니다.
+     * 기다리지 않습니다 — 화면은 바로 떠야 합니다.
+     */
+    밀린것보내기().then((n) => { if (n) 오늘화면(); });
+
+    그리기(`
+      ${앞날띠("오늘")}
+      <h1>오늘 갈 곳 <span class="딱지">${것들.length}곳</span></h1>
+      <div class="칸" style="padding:4px 18px">
+        ${것들.map((p, i) => p.못품 ? `
+          <div class="사람"><div class="이름" style="color:var(--bad)">열지 못한 건이 있습니다</div>
+          <div class="작게">사무실에 알려 주세요.</div></div>
+        ` : `
+          <div class="사람 누름" onclick="집화면(${i})">
+            <div class="이름">${안전(p.이름 || "이름 없음")}
+              ${p.서비스 ? `<span class="딱지" style="margin-left:6px">${안전(p.서비스)}</span>` : ""}</div>
+            <div class="줄"><span>${상태표(p)}</span></div>
+            <span class="화살">›</span>
+          </div>`).join("")}
+      </div>
+      <p class="작게 가운데" style="margin-top:14px">
+        서명까지 마치면 <b>그 자리에서 사무실로</b> 갑니다.<br>
+        신호가 약해 못 보낸 것은 이 화면을 다시 열 때 저절로 나갑니다.
+      </p>
+      <button onclick="오늘화면()">새로 고치기</button>
+      <button onclick="화면잠그기()">잠그고 나가기</button>
+      <p class="작게 가운데" style="margin-top:6px">
+        어르신 정보가 화면에 남지 않게 덮어 둡니다.
+        <b>10분 동안 안 쓰시면 저절로 잠깁니다.</b>
+      </p>
+    `);
+    시계다시();
+  } catch (e) {
+    그리기(`<div class="칸 빨강">
+      <h1>가져오지 못했습니다</h1>
+      <p>${안전(e.message)}</p>
+      <p class="작게">신호가 약한 곳일 수 있습니다. 잠시 뒤 다시 눌러 주세요.</p>
+      <button onclick="오늘화면()">다시 해 보기</button>
+      <button onclick="화면잠그기()">잠그고 나가기</button>
+    </div>`);
+  }
+}
+
+/** 목록 한 줄에 붙는 지금 상태. 한눈에 어디까지 했는지 보여 줍니다. */
+/**
+ * 사무실이 되돌린 건의 기록을 **처음으로 되돌립니다.**
+ *
+ * 무엇을 지우나 — 시작·끝·서명·적은 것·사진, 그 건의 기록 전부입니다.
+ * 사무실에는 이미 아무것도 없으니(제공실적에서 지워졌습니다) 폰만
+ * 남겨 두면 두 곳이 어긋난 채로 갑니다.
+ *
+ * **말해 줍니다.** 적어 둔 것이 사라지는 일이라 조용히 하면 안 됩니다.
+ */
+async function 되돌린것치우기() {
+  if (!몸) return;
+  let 치운것 = [];
+  for (const p of 오늘것들) {
+    const 표 = p.되돌림표 || "";
+    if (!표) continue;
+    const 기 = 몸.방문 && 몸.방문[p.id];
+    if (!기) {
+      // 적은 것이 없으면 표만 적어 둡니다. 다음에 견줄 것이 있어야 합니다.
+      if (!몸.방문) 몸.방문 = {};
+      몸.방문[p.id] = { 되돌림표: 표 };
+      continue;
+    }
+    if (기.되돌림표 === 표) continue;        // 이미 아는 되돌림입니다
+    // 정말로 지웁니다.
+    몸.방문[p.id] = { 되돌림표: 표 };
+    치운것.push(p.이름 || "");
+  }
+  if (!치운것.length) return;
+  await 다시잠그기(몸);
+  alert(
+    "사무실에서 되돌린 건이 있습니다.\n\n" +
+    치운것.join(", ") + " 어르신 건은 사무실이 「계획」으로 되돌렸습니다.\n" +
+    "적어 두셨던 것은 지워졌고, 처음부터 다시 하시면 됩니다.\n" +
+    "까닭이 궁금하시면 사무실에 물어봐 주세요."
+  );
+}
+
+/**
+ * 이 건에 **이용자 확인서명을 받을 수 있나.**
+ *
+ * ═══════════════════════════════════════════════════════════
+ *  ★ 비대면 배달은 서명을 못 받습니다 ★
+ * ═══════════════════════════════════════════════════════════
+ *
+ * (2026-09-05 무무 — 「식사지원 시 비대면배달은 서명을 받을 수 없어!」)
+ *
+ * 문 앞 보온함에 두고 오는 것이 비대면 배달입니다. 어르신을 못 뵙는데
+ * 서명을 받을 길이 없습니다. 그런데 이 앱은 **시작 → 끝 → 서명 → 보내기**
+ * 로 한 줄이라, 서명 자리에서 **더 갈 데가 없었습니다.**
+ *
+ * 그 화면에 갇힌 제공인력이 할 수 있는 일은 둘뿐이었습니다 —
+ *   ① 그냥 두고 안 보낸다   → 그날 실적이 사무실에 안 갑니다
+ *   ② **자기가 대신 긋는다** → 이용자 확인서명을 위조하는 것입니다
+ *
+ * 둘 다 있으면 안 되는 일이고, ②는 특히 그렇습니다. 서식3·4·5 의
+ * 「이용자 (서명)」은 그 자리에서 받은 것이라야 근거가 됩니다.
+ *
+ * 그래서 **비대면이면 서명 단계를 아예 건너뜁니다.** 서식의 서명 칸은
+ * 그대로 두고 비워 둡니다 — 서식은 손대지 않습니다.
+ */
+function 서명받을수있나(p, 기) {
+  const 값 = (기 && 기.적은것) || {};
+  if (p.갈래 === "식사" && 값.제공형태 === "비대면배달") return false;
+  return true;
+}
+
+/**
+ * 이 건은 **사진이 있어야 보낼 수 있나.**
+ *
+ * ═══════════════════════════════════════════════════════════
+ *  ★ 비대면 배달은 사진이 서명을 대신합니다 ★
+ * ═══════════════════════════════════════════════════════════
+ *
+ * (2026-09-05 무무 — 「비대면이어도 식사 전달 사진은 있어야 해.
+ *  마루 및 현관 등에 놓고 온 증빙용으로 필요」)
+ *
+ * 대면 배달은 **이용자 확인서명**이 「드렸다」는 근거입니다.
+ * 비대면은 그 서명을 받을 수가 없습니다 — 그러면 근거가 하나도 없이
+ * 「문 앞에 두고 왔습니다」라는 말만 남습니다. 나중에 「못 받았다」는
+ * 말이 나오면 기관이 댈 것이 없습니다.
+ *
+ * 그래서 비대면은 **마루나 현관에 놓인 것을 찍은 사진**이 그 자리를
+ * 대신합니다. 근거가 아예 없는 채로 보내지지 않게 여기서 막습니다.
+ *
+ * ── 대면은 왜 안 막나 ─────────────────────────────────────
+ *
+ * 대면은 서명이 이미 근거입니다. 사진도 받으면 좋지만(화면에 「필수」
+ * 딱지가 붙어 있습니다), 못 찍었다고 그날 실적을 통째로 못 보내게
+ * 하면 그게 더 나쁩니다. **근거가 하나도 없는 경우만** 막습니다.
+ *   — 이건 제(클로드) 판단입니다. 다르게 하라 하시면 한 줄 고칩니다.
+ */
+function 사진이꼭있어야하나(p, 기) {
+  return p.갈래 === "식사" && !서명받을수있나(p, 기);
+}
+
+function 상태표(p) {
+  const 기 = 방문기록(p.id);
+  /*
+   * 「사무실로 보냈나」를 굳이 보여 주는 까닭 —
+   * 신호가 약한 곳에서는 못 보낸 채로 다음 집에 갑니다. 그때
+   * 「아직 안 보냄」이 보여야, 저녁에 신호 되는 데서 앱을 한 번 열어
+   * 주십니다. 안 보이면 아무도 안 엽니다.
+   */
+  /*
+   * ★ 잘 갔으면 **「전송 완료」** 넉 자면 됩니다 (2026-09-05 무무 지시).
+   *   현장이 알고 싶은 것은 「내가 보낸 것이 갔나」 하나입니다.
+   *   사진이 아직 남았으면 그건 아직 다 간 것이 아니라고 적습니다.
+   */
+  if (기.서명 && 기.보냄) {
+    const 남 = 안올린사진수(p.id);
+    return 남
+      ? `<b style="color:var(--warn)">사진 ${남}장 남음</b> · ${시분(기.시작)} ~ ${시분(기.끝)}`
+      : `<b style="color:var(--green)">전송 완료</b> · ${시분(기.시작)} ~ ${시분(기.끝)}`;
+  }
+  if (기.서명)
+    return `<b style="color:var(--warn)">아직 안 보냄</b> · ${시분(기.시작)} ~ ${시분(기.끝)}`;
+  /*
+   * ★ 비대면 배달은 서명을 안 받으므로 「서명만 남았습니다」가
+   *   영영 안 없어집니다. 남은 일을 있는 그대로 적습니다.
+   */
+  if (기.끝 && !서명받을수있나(p, 기))
+    return 사진이꼭있어야하나(p, 기) && !사진들(p.id).length
+      ? `<b style="color:var(--bad)">사진이 없습니다</b> · ${시분(기.시작)} ~ ${시분(기.끝)}`
+      : `<b style="color:var(--warn)">보내기만 남았습니다</b> · ${시분(기.시작)} ~ ${시분(기.끝)}`;
+  if (기.끝)   return `<b style="color:var(--warn)">서명만 남았습니다</b>`;
+  if (기.시작) return `<b>하는 중</b> · ${시분(기.시작)} 에 시작`;
+  return `<span class="작게">아직 안 갔습니다</span>`;
+}
+
+function 화면잠그기(까닭) {
+  /*
+   * ★ 카메라를 반드시 끕니다.
+   *   안 끄면 잠긴 뒤에도 렌즈가 살아 있어, 폰이 주머니 속에서
+   *   계속 찍고 있게 됩니다. 배터리도 배터리지만 무엇보다 무섭습니다.
+   */
+  카메라끄기();
+  몸 = null; 표딱지 = null; 현재자물쇠 = null; 오늘것들 = [];
+  clearTimeout(잠금시계);
+  잠금화면(까닭);
+}
+
+// ── ⑤ 그 집 ────────────────────────────────────────────────
+/*
+ * 어르신 한 분의 서비스 하나. 여기가 현장에서 제일 오래 머무는 화면입니다.
+ *
+ * 단추를 **하나만** 크게 둡니다. 어르신 댁 마당에서 한 손으로,
+ * 볕 아래 보는 화면이라 고를 것이 여럿이면 못 씁니다.
+ * 지금 해야 할 일 하나만 크게 두고, 나머지는 작게 아래에 둡니다.
+ */
+/**
+ * 지금 어느 집 화면을 보고 있나. 보낸 뒤 **그 화면만** 다시 그리려고
+ * 들고 있습니다. 다른 데로 갔는데 그리면 보던 화면을 가로챕니다.
+ */
+let 보는집 = null;
+
+function 집화면(번) {
+  const p = 오늘것들[번];
+  if (!p) return 오늘화면();
+  보는집 = 번;
+  고치는중 = null;        // 그 집 화면으로 나오면 고치기는 끝난 것으로 봅니다
+  const 기 = 방문기록(p.id);
+  const 남은사진 = 안올린사진수(p.id);
+  머리말(안전(p.서비스 || ""));
+
+  const 할것 =
+    !기.시작 ? `<button class="크게" onclick="찍기화면(${번},'시작')">서비스 시작</button>
+                <button class="곁길" onclick="표없이적기(${번},'시작')">방문표가 없습니다</button>`
+    : !기.끝 ? `<button class="크게" onclick="확인사항화면(${번})">확인사항 적기</button>
+                <button onclick="찍기화면(${번},'끝')">서비스 끝</button>
+                <button class="곁길" onclick="표없이적기(${번},'끝')">방문표가 없습니다</button>`
+    : (!기.서명 && 서명받을수있나(p, 기))
+      ? `<button class="크게" onclick="서명화면(${번})">이용자 확인서명 받기</button>
+                <button onclick="확인사항화면(${번})">확인사항 고치기</button>
+                <button class="곁길" onclick="끝되돌리기(${번})">끝을 잘못 찍었습니다</button>`
+    : (!기.보냄 && 사진이꼭있어야하나(p, 기) && !사진들(p.id).length)
+      ? `<div class="칸 빨강" style="padding:12px 16px;margin-bottom:10px">
+           <b>사진을 한 장 찍어 주세요.</b>
+           <p class="작게" style="margin:4px 0 0">
+             문 앞에 두고 오신 것은 <b>어르신 서명을 못 받습니다.</b>
+             마루나 현관에 <b>놓아 둔 것을 찍은 사진</b>이 그 자리를 대신합니다.
+             사진이 없으면 나중에 댈 것이 없습니다.</p>
+         </div>
+         <button class="크게" onclick="확인사항화면(${번})">사진 찍으러 가기</button>
+         <button class="곁길" onclick="끝되돌리기(${번})">끝을 잘못 찍었습니다</button>`
+    : !기.보냄 ? `<button class="크게" onclick="지금보내기(${번})">사무실로 보내기</button>
+                <button onclick="확인사항화면(${번})">적은 것 보기</button>
+                <button class="곁길" onclick="끝되돌리기(${번})">끝을 잘못 찍었습니다</button>`
+    : `<button onclick="확인사항화면(${번})">적은 것 보기</button>`;
+
+  그리기(`
+    <h1 style="margin-bottom:2px">${안전(p.이름 || "")}</h1>
+    <p class="작게" style="margin-top:0">${안전(p.서비스 || "")}
+      ${서식말(p.갈래) ? `· ${서식말(p.갈래)}` : ""}</p>
+
+    <div class="칸" style="padding:12px 18px">
+      ${p.주소 ? `<div class="줄"><span>주소</span><span>${안전(p.주소)}</span></div>` : ""}
+      ${p.연락처 ? `<div class="줄"><span>연락처</span><span>
+        <a class="전화" href="tel:${안전(String(p.연락처).replace(/[^0-9+]/g,""))}">${안전(p.연락처)}</a>
+      </span></div>` : ""}
+      ${p.메모 ? `<div class="줄"><span>참고</span><span>${안전(p.메모)}</span></div>` : ""}
+    </div>
+
+    ${기.시작 ? `<div class="칸 ${기.보냄 && !남은사진 ? "초록" : ""}" style="padding:12px 18px">
+      <div class="줄"><span>시작</span><span><b>${시분(기.시작)}</b>${기.표없이 ? 표없이딱지 : ""}</span></div>
+      ${기.끝 ? `<div class="줄"><span>종료</span><span><b>${시분(기.끝)}</b></span></div>` : ""}
+      ${기.서명 ? `<div class="줄"><span>서명</span><span><b>받았습니다</b></span></div>` : ""}
+      ${기.서명 ? `<div class="줄"><span>사무실</span><span>${기.보냄
+        ? `<b style="color:var(--green)">보냈습니다</b> ${시분(기.보냄)}`
+        : `<b style="color:var(--warn)">아직 안 보냈습니다</b>`}</span></div>` : ""}
+      ${기.보냄 && 남은사진 ? `<div class="줄"><span>사진</span><span>
+        <b style="color:var(--warn)">${남은사진}장이 아직 안 갔습니다</b></span></div>` : ""}
+    </div>` : ""}
+
+    ${/*
+       ★ 보고는 갔는데 **사진만 안 간** 경우를 숨기지 않습니다.
+         예전에는 사진 올리기가 실패해도 화면이 초록으로 「보냈습니다」라고
+         했습니다. 사무실 제공실적에는 사진 칸이 비어 있는데 현장은 다 보낸
+         줄 알았습니다. 사진은 편람이 서식 뒷장에 붙이라고 한 근거입니다.
+     */""}
+    ${기.보냄 && 남은사진 ? `
+      <div class="칸">
+        <p class="작게" style="margin:0 0 8px">
+          <b>사진 ${남은사진}장이 아직 사무실로 안 갔습니다.</b>
+          적은 것과 서명은 갔습니다 — 사진만 남았습니다.
+          신호가 되는 곳에서 아래를 눌러 주세요.</p>
+        <button class="크게" onclick="지금보내기(${번})">사진 다시 보내기</button>
+      </div>` : ""}
+
+    ${할것}
+    <button class="곁길" onclick="오늘화면()">오늘 갈 곳으로</button>
+  `);
+  시계다시();
+}
+
+const 표없이딱지 =
+  ' <span class="딱지" style="background:var(--bad);color:#fff">표 없이</span>';
+
+function 서식말(갈래) {
+  return 갈래 === "가사" ? "서식3"
+       : 갈래 === "식사" ? "서식4"
+       : (갈래 === "동행" || 갈래 === "이미용") ? "서식5" : "";
+}
+
+// ── ⑥ 확인사항 ─────────────────────────────────────────────
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  서비스마다 다릅니다. 편람 서식을 그대로 따릅니다.
+ *
+ *  서식3  가사지원
+ *    「당일 제공한 서비스 해당란에 ○ 표시」
+ *    ① 목욕보조 ② 배변보조 ③ 옷입기보조 ④ 식사도움 ⑤ 체위변경
+ *    ⑥ 재활운동보조 ⑦ 청소 ⑧ 세탁 ⑨ 취사 ⑩ 외출동행 ⑪ 말벗
+ *    + 기타(직접기재) + 특이사항
+ *
+ *  서식4  식사 관리
+ *    제공형태(대면배달/비대면) · 장소 · **식단(죽·반찬)** · 특이사항
+ *    ★ 서식에 「식단 포함 **필수**」라고 못 박혀 있습니다.
+ *
+ *  서식5  병원동행 · 이미용
+ *    제공장소 · 서비스내용 (1. 2. 3. 4. 여러 줄) · 특이사항
+ *
+ *  ── 왜 앱에서 이걸 받나 ──────────────────────────────────
+ *
+ *  지금은 제공인력이 집에 돌아와 **기억으로** 적습니다. 열한 가지 중
+ *  무엇을 했는지, 식단이 무엇이었는지를 며칠 뒤에 떠올립니다.
+ *  그 자리에서 눌러 두면 기억이 아니라 기록이 됩니다.
+ *
+ *  ── 적는 대로 바로 잠급니다 ──────────────────────────────
+ *
+ *  칸 하나를 건드릴 때마다 폰에 잠가 둡니다. 어르신 댁에서 폰이
+ *  꺼지거나 배터리가 나가는 일이 있는데, 화면에만 들고 있으면
+ *  그때 통째로 날아갑니다.
+ * ═══════════════════════════════════════════════════════════ */
+
+/**
+ * 서식3 의 열한 가지. 편람의 번호와 말을 그대로 씁니다.
+ *
+ * ★ **이제 이것은 기본값일 뿐입니다.** 실제 목록은 사무실이 오늘 갈 곳
+ *   짐에 실어 보냅니다 (`p.확인사항`). 앱에 박아 두면 기관이 항목
+ *   하나를 더할 때마다 앱을 다시 올리고 폰마다 새로 받아야 합니다.
+ *   (2026-09-06 무무 — 「기관의 입맛에 변경하여 사용할 수 있도록」)
+ *
+ *   짐에 목록이 안 왔을 때만 이 열한 가지를 씁니다 — 옛 사무실 프로그램이
+ *   보낸 건, 또는 목록을 한 번도 안 고친 기관.
+ */
+const 가사항목 = [
+  "목욕보조", "배변보조", "옷입기보조", "식사도움", "체위변경",
+  "재활운동보조", "청소", "세탁", "취사", "외출동행", "말벗",
+];
+
+/** 이 건에 쓸 확인사항 목록. 짐에 온 것이 먼저입니다. */
+function 확인사항목록(p) {
+  const 온것 = p && p.확인사항;
+  return Array.isArray(온것) && 온것.length ? 온것 : 가사항목;
+}
+
+/** 적은 것을 꺼냅니다. 없으면 빈 것. */
+function 적은것(할일id) {
+  const 기 = 방문기록(할일id);
+  return 기.적은것 || {};
+}
+
+/**
+ * 칸 하나를 적고 **그 자리에서 잠급니다.**
+ * 화면은 다시 그리지 않습니다 — 글 쓰는 중에 커서가 튀면 못 씁니다.
+ */
+async function 적기(할일id, 무엇, 값) {
+  if (!몸.방문) 몸.방문 = {};
+  if (!몸.방문[할일id]) 몸.방문[할일id] = {};
+  const 기 = 몸.방문[할일id];
+  if (!기.적은것) 기.적은것 = {};
+  기.적은것[무엇] = 값;
+  await 다시잠그기(몸);
+}
+
+/*
+ * ── 끝난 뒤에는 잠급니다 (2026-09-05 무무 지시) ─────────────
+ *
+ * 서명까지 마친 건은 「적은 것 보기」로 **읽기만** 합니다.
+ * 실수로 글자를 건드려 이미 사무실로 간 것과 달라지면,
+ * 나중에 어느 쪽이 맞는지 아무도 모릅니다.
+ *
+ * 고쳐야 할 때가 분명히 있습니다 — 반찬 이름을 잘못 적었다든가.
+ * 그래서 **아래에 작은 수정 단추**를 둡니다. 누르면 그때부터 고쳐지고,
+ * **고친 시각이 기록에 남아** 사무실 화면에 뜹니다.
+ */
+let 고치는중 = null;      // 지금 고치고 있는 할 일 번호
+
+function 확인사항화면(번) {
+  const p = 오늘것들[번];
+  if (!p) return 오늘화면();
+  const 값 = 적은것(p.id);
+  const 기 = 방문기록(p.id);
+  const 갈래 = p.갈래 || "기타";
+  // 서명까지 끝났고, 지금 「수정」을 누른 상태가 아니면 읽기 전용입니다.
+  /*
+   * ★ 비대면 배달은 서명이 없습니다. 서명만 보고 잠그면 **영영 안 잠겨**
+   *   이미 사무실로 간 것을 나중에 조용히 고칠 수 있게 됩니다.
+   *   그래서 「보냈나」도 함께 봅니다.
+   */
+  const 잠김 = (!!기.서명 || !!기.보냄) && 고치는중 !== p.id;
+  머리말(잠김 ? "적은 것" : "확인사항");
+
+  const 속 =
+    갈래 === "가사" ? 가사칸(p, 값)
+    : 갈래 === "식사" ? 식사칸(p, 값)
+    : (갈래 === "동행" || 갈래 === "이미용") ? 동행칸(p, 값)
+    : 기타칸(p, 값);
+
+  const 고친이력 = (기.고침 || []);
+
+  그리기(`
+    <h1 style="margin-bottom:2px">${안전(p.이름 || "")}</h1>
+    <p class="작게" style="margin-top:0">${안전(p.서비스 || "")}
+      ${서식말(갈래) ? `· <b>${서식말(갈래)}</b> 대로 적습니다` : ""}</p>
+    ${잠김 ? `<div class="칸 노랑" style="padding:12px 16px">
+      <b>다 끝난 건입니다.</b>
+      <p class="작게" style="margin:4px 0 0">보기만 됩니다.
+        고치셔야 하면 맨 아래 <b>수정</b>을 눌러 주세요 —
+        고친 시각이 사무실에 남습니다.</p>
+    </div>` : ""}
+    ${고치는중 === p.id ? `<div class="칸 빨강" style="padding:12px 16px">
+      <b>고치는 중입니다.</b>
+      <p class="작게" style="margin:4px 0 0">
+        다 고치시면 <b>고친 것 보내기</b>를 눌러 주세요.
+        안 누르시면 사무실에는 옛것이 그대로 있습니다.</p>
+    </div>` : ""}
+    ${속}
+    ${사진칸(p)}
+    <div class="칸">
+      <label class="이름표" for="특이">특이사항</label>
+      <p class="작게" style="margin:0 0 6px">
+        이용자 상태나 서비스 제공과 관련해 적어 둘 것이 있으면 적습니다.
+        없으면 비워 두셔도 됩니다.</p>
+      <textarea id="특이" rows="3"
+        placeholder="예) 무릎이 아프시다고 하셔서 외출은 다음으로 미뤘습니다">${안전(값.특이사항 || "")}</textarea>
+    </div>
+    ${고친이력.length ? `<div class="칸" style="padding:12px 16px">
+      <div class="이름표">고친 기록</div>
+      ${고친이력.map((x) => `<div class="줄"><span>${안전(때말(x))}</span></div>`).join("")}
+    </div>` : ""}
+    ${고치는중 === p.id
+      ? `<button class="크게" onclick="고치기끝(${번})">고친 것 보내기</button>`
+      : 잠김
+        ? `<button class="크게" onclick="집화면(${번})">돌아가기</button>
+           <button class="곁길" onclick="고치기시작(${번})">수정</button>`
+        : `<button class="크게" onclick="집화면(${번})">다 적었습니다</button>`}
+  `);
+
+  // 읽기 전용이면 **정말로** 못 건드리게 합니다. 보이기만 흐리게 하면
+  // 손가락이 닿는 순간 값이 바뀝니다.
+  if (잠김)
+    for (const el of document.querySelectorAll("#본문 input, #본문 textarea, #본문 button.사진빼기"))
+      el.disabled = true;
+
+  // ── 손댈 때마다 곧바로 잠급니다 ───────────────────────────
+  const 잠깐 = {};
+  const 늦게적기 = (무엇, 값) => {           // 글 한 자마다 잠그면 폰이 버벅입니다
+    clearTimeout(잠깐[무엇]);
+    잠깐[무엇] = setTimeout(() => 적기(p.id, 무엇, 값), 400);
+  };
+
+  const 특이 = $("특이");
+  if (특이) 특이.addEventListener("input", (e) => 늦게적기("특이사항", e.target.value));
+  사진손잡이(p, 번);
+
+  for (const el of document.querySelectorAll("[data-적을것]")) {
+    const 무엇 = el.dataset.적을것;
+    if (el.type === "checkbox") {
+      el.addEventListener("change", () => {
+        const 고른것 = [...document.querySelectorAll('[data-적을것="한것"]')]
+          .filter((x) => x.checked).map((x) => x.value);
+        적기(p.id, "한것", 고른것);
+        const 세는곳 = $("몇가지");
+        if (세는곳) 세는곳.textContent = 고른것.length ? `${고른것.length}가지` : "";
+      });
+    } else {
+      el.addEventListener("input", (e) => 늦게적기(무엇, e.target.value));
+    }
+  }
+  시계다시();
+}
+
+/** 「2026-09-05 14:22」 처럼. 고친 기록에 씁니다. */
+function 때말(iso) {
+  const d = new Date(iso);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-`
+       + `${String(d.getDate()).padStart(2,"0")} ${시분(iso)}`;
+}
+
+/**
+ * 「수정」을 눌렀습니다. 그때부터 고칠 수 있습니다.
+ *
+ * 한 번 물어봅니다 — 다 끝난 것을 건드리는 일이라,
+ * 손가락이 스쳐서 열리면 안 됩니다.
+ */
+function 고치기시작(번) {
+  const p = 오늘것들[번];
+  if (!p) return;
+  if (!confirm(
+    "다 끝난 건을 고칩니다.\n\n" +
+    "고친 시각이 기록에 남고 사무실 화면에 보입니다. 고치시겠습니까?"
+  )) return;
+  고치는중 = p.id;
+  확인사항화면(번);
+}
+
+/**
+ * 다 고쳤습니다. **고친 시각을 남기고 다시 보냅니다.**
+ *
+ * 다시 보내는 것이 핵심입니다 — 폰에서만 고치고 안 보내면
+ * 사무실에는 옛것이 그대로 있고, 두 곳이 달라집니다.
+ * 보고 번호가 늘 같아서 사무실은 **덮어씁니다**(줄이 늘지 않습니다).
+ */
+async function 고치기끝(번) {
+  const p = 오늘것들[번];
+  if (!p) return;
+  const 기 = 몸.방문 && 몸.방문[p.id];
+  if (기) {
+    if (!기.고침) 기.고침 = [];
+    기.고침.push(지금());
+    기.보냄 = null;                 // 다시 보내야 합니다
+    await 다시잠그기(몸);
+  }
+  고치는중 = null;
+
+  const 단추 = document.querySelector("button.크게");
+  if (단추) { 단추.disabled = true; 단추.innerHTML = '<span class="돌아감"></span> 보내는 중…'; }
+  await 보내보기(번);
+  집화면(번);
+}
+
+/* ── 서식3 가사지원 ────────────────────────────────────────── */
+function 가사칸(p, 값) {
+  const 한것 = 값.한것 || [];
+  return `
+    <div class="칸">
+      <div class="이름표">오늘 해 드린 것 <span id="몇가지" class="딱지">${
+        한것.length ? `${한것.length}가지` : ""}</span></div>
+      <p class="작게" style="margin:0 0 8px">
+        해당하는 것을 눌러 주세요. <b>안 한 것은 비워 둡니다.</b>
+        (편람 서식3 — 「제공하지 않은 서비스는 공란 처리」)</p>
+      <div class="고름">
+        ${확인사항목록(p).map((이름, i) => `
+          <label class="칸고름">
+            <input type="checkbox" data-적을것="한것" value="${안전(이름)}"
+                   ${한것.includes(이름) ? "checked" : ""}>
+            <span><b>${i + 1}</b> ${안전(이름)}</span>
+          </label>`).join("")}
+      </div>
+      <label class="이름표" for="기타한것" style="margin-top:14px">기타 — 위에 없는 것</label>
+      <input id="기타한것" data-적을것="기타" value="${안전(값.기타 || "")}"
+             placeholder="예) 약 봉투 정리">
+    </div>`;
+}
+
+/* ── 서식4 식사 관리 ───────────────────────────────────────── */
+function 식사칸(p, 값) {
+  const 형태 = 값.제공형태 || "";
+  return `
+    <div class="칸">
+      <div class="이름표">제공 형태</div>
+      <div class="고름 둘">
+        ${["대면배달", "비대면배달"].map((x) => `
+          <label class="칸고름">
+            <input type="radio" name="형태" data-적을것="제공형태" value="${x}"
+                   ${형태 === x ? "checked" : ""}>
+            <span>${x}</span>
+          </label>`).join("")}
+      </div>
+      <p class="작게" style="margin:8px 0 0">
+        <b>대면</b>은 어르신을 뵙고 드린 것, <b>비대면</b>은 문 앞에 두고 온 것입니다.
+        이 값이 정산에 그대로 들어갑니다.</p>
+
+      <label class="이름표" for="장소" style="margin-top:14px">장소</label>
+      <input id="장소" data-적을것="장소" value="${안전(값.장소 || "")}" placeholder="예) 자택 현관">
+    </div>
+
+    <div class="칸">
+      <div class="이름표">식단 <span class="딱지" style="background:var(--bad);color:#fff">필수</span></div>
+      <p class="작게" style="margin:0 0 8px">
+        편람 서식4 에 <b>「식단 포함 필수」</b>라고 적혀 있습니다.
+        오늘 드린 것을 그대로 적어 주세요.</p>
+      <label class="이름표" for="주식">밥 · 죽</label>
+      <input id="주식" data-적을것="주식" value="${안전(값.주식 || "")}" placeholder="예) 흰죽">
+      <label class="이름표" for="반찬" style="margin-top:10px">반찬</label>
+      <textarea id="반찬" rows="2" data-적을것="반찬"
+        placeholder="예) 콩나물 무침, 미역줄기, 계란찜, 배추김치">${안전(값.반찬 || "")}</textarea>
+    </div>`;
+}
+
+/* ── 서식5 병원동행 · 이미용 ───────────────────────────────── */
+function 동행칸(p, 값) {
+  return `
+    <div class="칸">
+      <label class="이름표" for="장소">제공 장소</label>
+      <p class="작게" style="margin:0 0 6px">어디에서 해 드렸는지 적습니다.</p>
+      <input id="장소" data-적을것="장소" value="${안전(값.장소 || "")}"
+             placeholder="${p.갈래 === "이미용" ? "예) 자택 거실" : "예) 해남종합병원 정형외과"}">
+
+      <label class="이름표" for="내용" style="margin-top:14px">서비스 내용</label>
+      <p class="작게" style="margin:0 0 6px">
+        한 줄에 하나씩 적어 주세요. 편람 서식5 는 <b>1. 2. 3. 4.</b> 로 나뉘어 있습니다.</p>
+      <textarea id="내용" rows="5" data-적을것="내용"
+        placeholder="${p.갈래 === "이미용"
+          ? "커트\n염색\n세면 정리"
+          : "자택에서 병원까지 동행\n접수 · 수납 도움\n진료 내용 보호자에게 전달\n귀가 동행"}">${안전(값.내용 || "")}</textarea>
+    </div>`;
+}
+
+/* ── 그 밖의 서비스 ───────────────────────────────────────── */
+function 기타칸(p, 값) {
+  return `
+    <div class="칸">
+      <label class="이름표" for="내용">무엇을 해 드렸는지</label>
+      <p class="작게" style="margin:0 0 6px">
+        이 서비스는 정해진 확인 목록이 없습니다. 한 줄에 하나씩 적어 주세요.</p>
+      <textarea id="내용" rows="5" data-적을것="내용"
+        placeholder="한 줄에 하나씩">${안전(값.내용 || "")}</textarea>
+    </div>`;
+}
+
+// ── ⑦ 이용자 확인서명 ──────────────────────────────────────
+/*
+ * 편람 서식3·4·5 에 모두 **이용자 (서명)** 칸이 있습니다.
+ * 지금까지는 종이에 받아 왔습니다. 그 자리에서 손가락으로 받으면
+ * 종이를 잃어버릴 일이 없고, 언제 받았는지도 같이 남습니다.
+ *
+ * ── 그림은 어디에 두나 ────────────────────────────────────
+ *
+ * 다른 것과 똑같이 **폰에 잠가서** 둡니다. 서명은 그 자체로
+ * 개인정보라 잠기지 않은 채로 두면 안 됩니다.
+ *
+ * ── 왜 작게 만드나 ───────────────────────────────────────
+ *
+ * 서명 하나가 100KB 씩 되면 하루 열 건에 1MB 입니다. 그것이 나중에
+ * 우편함으로 올라갑니다. 흑백 두 색이면 되는 그림이라, 획만 남기고
+ * 크기를 줄여 **10KB 안쪽**으로 만듭니다.
+ */
+let 서명판 = null, 서명붓 = null, 그리는중 = false, 획있나 = false;
+
+/**
+ * 「문 앞에 두고 왔습니다」 — **서명 대신 비대면으로 적습니다.**
+ *
+ * 서명 화면에서 빠져나갈 길이 여기 하나 있어야 합니다. 없으면
+ * 제공인력이 자기 손으로 어르신 성함을 긋게 됩니다 — 그건 위조입니다.
+ *
+ * 그냥 건너뛰지 않고 **제공형태를 「비대면배달」로 적어 둡니다.**
+ * 그래야 사무실에서 계약서 5-2조 연속 셈이 돌고, 서식4 의 제공형태
+ * 칸도 저절로 채워집니다. 「서명을 안 받았다」만 남기면 왜 안 받았는지
+ * 아무 데도 안 남습니다.
+ */
+function 비대면이라서명못받음(번) {
+  const p = 오늘것들[번];
+  if (!p) return 오늘화면();
+  if (!confirm(
+    "문 앞에 두고 오신 것으로 적습니다.\n\n" +
+    "제공 형태가 「비대면 배달」이 되고, 이용자 확인서명은 받지 않습니다.\n" +
+    "비용은 그대로 나갑니다 — 음식은 이미 만들어졌습니다.\n\n" +
+    "이렇게 적을까요?"
+  )) return;
+  적기(p.id, "제공형태", "비대면배달");
+  집화면(번);
+}
+
+function 서명화면(번) {
+  const p = 오늘것들[번];
+  if (!p) return 오늘화면();
+  const 기 = 방문기록(p.id);
+  머리말("이용자 확인서명");
+
+  if (기.서명) {
+    return 그리기(`
+      <div class="칸 초록 가운데">
+        <h1>서명을 받았습니다</h1>
+        <img src="${기.서명}" alt="서명" class="서명본">
+        <p class="작게">${안전(p.이름 || "")} · ${시분(기.서명받은때)} 에 받았습니다</p>
+        <button onclick="서명다시(${번})">다시 받기</button>
+        <button class="크게" onclick="집화면(${번})">돌아가기</button>
+      </div>`);
+  }
+
+  그리기(`
+    <h1 style="margin-bottom:2px">${안전(p.이름 || "")} 어르신께</h1>
+    <p class="작게" style="margin-top:0">
+      휴대폰을 어르신께 드리고 <b>손가락으로 성함을 적어</b> 달라고 해 주세요.</p>
+    <div class="칸" style="padding:10px">
+      <canvas id="서명" class="서명칸"></canvas>
+      <p id="말" class="작게 가운데" style="margin:6px 0 0">여기에 적어 주세요</p>
+    </div>
+    <button class="크게" id="다됨" disabled>서명 다 됐습니다</button>
+    <button onclick="서명지우기()">지우고 다시</button>
+    ${p.갈래 === "식사"
+      ? `<button class="곁길" onclick="비대면이라서명못받음(${번})">
+           문 앞에 두고 왔습니다 — 서명을 못 받습니다</button>`
+      : ""}
+    <button class="곁길" onclick="집화면(${번})">나중에 받겠습니다</button>
+  `);
+
+  서명판 = $("서명");
+  /*
+   * 화면이 촘촘한 폰에서 흐릿하지 않게 실제 점 수만큼 잡습니다.
+   * 이걸 안 하면 서명이 뿌옇게 번져 보여 어르신이 다시 적으려고 하십니다.
+   */
+  const 배 = window.devicePixelRatio || 1;
+  const 폭 = 서명판.clientWidth, 높 = 200;
+  서명판.width = 폭 * 배; 서명판.height = 높 * 배;
+  서명판.style.height = 높 + "px";
+  서명붓 = 서명판.getContext("2d");
+  서명붓.scale(배, 배);
+  서명붓.lineWidth = 2.5;
+  서명붓.lineCap = "round";
+  서명붓.lineJoin = "round";
+  서명붓.strokeStyle = "#111";
+  획있나 = false;
+
+  const 자리 = (e) => {
+    const r = 서명판.getBoundingClientRect();
+    const t = e.touches ? e.touches[0] : e;
+    return { x: t.clientX - r.left, y: t.clientY - r.top };
+  };
+  const 시작 = (e) => {
+    e.preventDefault(); 그리는중 = true;
+    const { x, y } = 자리(e); 서명붓.beginPath(); 서명붓.moveTo(x, y);
+  };
+  const 긋기 = (e) => {
+    if (!그리는중) return;
+    e.preventDefault();
+    const { x, y } = 자리(e); 서명붓.lineTo(x, y); 서명붓.stroke();
+    if (!획있나) {
+      획있나 = true;
+      $("다됨").disabled = false;
+      $("말").textContent = "";
+    }
+  };
+  const 멈춤 = () => { 그리는중 = false; };
+
+  서명판.addEventListener("touchstart", 시작, { passive: false });
+  서명판.addEventListener("touchmove", 긋기, { passive: false });
+  서명판.addEventListener("touchend", 멈춤);
+  서명판.addEventListener("mousedown", 시작);
+  서명판.addEventListener("mousemove", 긋기);
+  window.addEventListener("mouseup", 멈춤);
+
+  $("다됨").onclick = async () => {
+    if (!획있나) return;
+    $("다됨").disabled = true;
+    $("다됨").innerHTML = '<span class="돌아감"></span> 저장하는 중…';
+    if (!몸.방문) 몸.방문 = {};
+    if (!몸.방문[p.id]) 몸.방문[p.id] = {};
+    몸.방문[p.id].서명 = 서명작게();
+    몸.방문[p.id].서명받은때 = 지금();
+    await 다시잠그기(몸);
+    /*
+     * 서명까지 받았으면 그 집 일은 끝입니다.
+     * **그 자리에서 사무실로 보냅니다** — 저녁에 몰아서 보내면
+     * 그날 안 보낸 것이 반드시 생깁니다.
+     * 안 되면 조용히 넘어갑니다. 다음에 다시 보냅니다.
+     */
+    집화면(번);
+    /*
+     * ★ 보내고 나면 **그 집 화면을 다시 그립니다.**
+     *   예전에는 안 그렸습니다. 그래서 다 보내고 나서도 화면에는
+     *   「아직 안 보냈습니다」가 그대로 남아 있었습니다. 사진만 못 간
+     *   경우도 마찬가지로 안 보였습니다. 제공인력이 다른 화면에 갔다
+     *   돌아와야 비로소 바뀌었습니다.
+     *
+     *   그새 다른 집으로 넘어갔으면 그리지 않습니다 — 보고 있는 화면을
+     *   가로채면 안 됩니다.
+     */
+    보내보기(번).then(() => { if (보는집 === 번) 집화면(번); });
+  };
+  시계다시();
+}
+
+/** 획만 남기고 작게. 흑백 두 색이면 되는 그림입니다. */
+function 서명작게() {
+  const 작판 = document.createElement("canvas");
+  작판.width = 480;
+  작판.height = Math.round(480 * 서명판.height / 서명판.width);
+  const 붓 = 작판.getContext("2d");
+  붓.fillStyle = "#fff";
+  붓.fillRect(0, 0, 작판.width, 작판.height);
+  붓.drawImage(서명판, 0, 0, 작판.width, 작판.height);
+  return 작판.toDataURL("image/png");
+}
+
+function 서명지우기() {
+  if (!서명붓 || !서명판) return;
+  서명붓.clearRect(0, 0, 서명판.width, 서명판.height);
+  획있나 = false;
+  const 단추 = $("다됨"); if (단추) 단추.disabled = true;
+  const 말 = $("말"); if (말) 말.textContent = "여기에 적어 주세요";
+}
+
+async function 서명다시(번) {
+  const p = 오늘것들[번];
+  if (!confirm(`${p.이름} 어르신의 서명을 지우고 다시 받습니다.`)) return;
+  delete 몸.방문[p.id].서명;
+  delete 몸.방문[p.id].서명받은때;
+  await 다시잠그기(몸);
+  서명화면(번);
+}
+
+// ── ⑧ 찍기 — 어르신 댁 방문표 읽기 ─────────────────────────
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  문 안쪽에 붙은 종이(방문표)를 카메라로 읽습니다.
+ *  들어가며 한 번, 나오며 한 번. 그 두 시각이 편람 서식의
+ *  「진행시간 ○○:○○ ~ ○○:○○」이 됩니다.
+ *
+ *  ── 아무 QR 이나 통하면 안 됩니다 ─────────────────────────
+ *
+ *  서명을 따로 만들지 않았습니다. 오늘 갈 곳은 이미 잠긴 채로 받아
+ *  이 폰에서 풀어 두었고, 그 안에 그 집의 집표가 들어 있습니다.
+ *  그러니 **읽은 값이 이 집 것인가**만 대조하면 됩니다.
+ *
+ *    · 냉장고에 붙은 아무 QR   → 머리(TDV1:)가 아님 → 물리침
+ *    · 옆집 방문표             → 집표가 다름       → 물리침
+ *    · 이 집 방문표            → 맞음
+ *
+ *  위조하려면 그 집의 집표를 알아야 하는데, 그것은 잠긴 짐 속에만
+ *  있습니다. 우편함도 못 봅니다.
+ *
+ *  ── 좌표를 안 쓰는 까닭 ───────────────────────────────────
+ *
+ *  시골에서 GPS 는 수십 미터씩 틀립니다. 그러면 **정말 갔는데
+ *  「안 갔다」**가 됩니다. 현장에서 이보다 나쁜 것이 없습니다.
+ *  문에 붙은 종이는 틀리지 않습니다.
+ * ═══════════════════════════════════════════════════════════ */
+
+const 방문표머리 = "TDV1:";
+
+/** 지금 시각을 폰이 적습니다. 나중에 서식으로 갑니다. */
+const 지금 = () => new Date().toISOString();
+
+/** 시:분 만. 화면에 보여 줄 때 씁니다. */
+function 시분(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+}
+
+/** 그 할 일의 방문 기록. 없으면 빈 것. */
+function 방문기록(할일id) {
+  return (몸 && 몸.방문 && 몸.방문[할일id]) || {};
+}
+
+/** 「1시간 30분」처럼 사람 말로. */
+function 걸린말(분) {
+  const h = Math.floor(분 / 60), m = 분 % 60;
+  if (h && m) return `${h}시간 ${m}분`;
+  if (h) return `${h}시간`;
+  return `${m}분`;
+}
+
+/**
+ * 계획한 시간에서 **몇 분 모자라나.** 채웠으면 0.
+ *
+ * 시간에 따라 값이 달라지는 서비스(가사지원 · 이동지원)에서만 씁니다.
+ * 사무실이 그 요일에 분을 안 적어 둔 배정은 `계획분` 이 없습니다 —
+ * 견줄 것이 없으니 0 으로 봅니다.
+ */
+function 모자란분(할일) {
+  const 기 = 방문기록(할일.id);
+  const 계획 = Number(할일.계획분);
+  if (!기.시작 || !(계획 > 0)) return 0;
+  const 한분 = Math.round((Date.now() - new Date(기.시작).getTime()) / 60000);
+  return Math.max(0, 계획 - 한분);
+}
+
+/**
+ * 계획한 시간을 못 채웠는데 끝내려 할 때 **한 번 물어봅니다.**
+ * (2026-09-05 무무 지시. 문구도 무무가 준 그대로입니다.)
+ *
+ * ★ **막지 않습니다.** 어르신이 「오늘은 그만하자」고 하시는 날이 있고,
+ *   그때 앱이 못 끝내게 하면 현장은 앱을 버리고 종이로 돌아갑니다.
+ *   모르고 지나가는 것만 막으면 됩니다.
+ */
+function 짧게끝내도되나(할일) {
+  const 남 = 모자란분(할일);
+  if (!남) return true;
+  return confirm(
+    `계획된 서비스 제공시간을 충족하지 못하였습니다(${걸린말(남)} 남음).\n\n` +
+    `정말로 종결 하시겠습니까?`
+  );
+}
+
+/**
+ * 찍은 것을 적고 **그 자리에서 다시 잠급니다.**
+ *
+ * 어르신 댁을 나서다 폰이 꺼지거나 배터리가 나가는 일이 있습니다.
+ * 화면에만 들고 있으면 그때 사라집니다.
+ */
+async function 찍은것적기(할일id, 무엇, 표없이) {
+  if (!몸.방문) 몸.방문 = {};
+  if (!몸.방문[할일id]) 몸.방문[할일id] = {};
+  몸.방문[할일id][무엇] = 지금();
+  if (표없이) 몸.방문[할일id].표없이 = true;
+  await 다시잠그기(몸);
+}
+
+/* ── 카메라 ────────────────────────────────────────────────── */
+
+let 카메라줄기 = null;      // MediaStream. 나갈 때 반드시 꺼야 합니다
+let 읽는중 = false;
+
+/** 카메라를 끕니다. 안 끄면 **불이 켜진 채로** 주머니에 들어갑니다. */
+function 카메라끄기() {
+  읽는중 = false;
+  if (카메라줄기) {
+    for (const 길 of 카메라줄기.getTracks()) { try { 길.stop(); } catch {} }
+    카메라줄기 = null;
+  }
+}
+
+/**
+ * 찍기 화면.
+ *   번   = 오늘 목록에서 몇째
+ *   무엇 = "시작" 또는 "끝"
+ */
+async function 찍기화면(번, 무엇) {
+  const 할일 = 오늘것들[번];
+  if (!할일) return 오늘화면();
+  머리말(`${무엇} 찍기`);
+  그리기(`
+    <h1 style="margin-bottom:2px">${안전(할일.이름 || "")} — 서비스 ${무엇}</h1>
+    <p class="작게" style="margin-top:0">문 안쪽에 붙은 <b>방문표</b>에 카메라를 대 주세요.</p>
+
+    <div style="position:relative;border-radius:14px;overflow:hidden;
+                background:#000;aspect-ratio:1/1;max-height:58vh;margin:10px 0">
+      <video id="눈" playsinline muted autoplay
+             style="width:100%;height:100%;object-fit:cover"></video>
+      <div style="position:absolute;inset:14%;border:3px solid rgba(255,255,255,.85);
+                  border-radius:12px;pointer-events:none"></div>
+    </div>
+
+    <p id="말" class="작게 가운데" style="min-height:1.6em"></p>
+    <button onclick="집화면(${번})">그만두기</button>
+    <p class="작게 가운데" style="margin-top:10px">
+      어두우면 잘 안 읽힙니다. 불을 켜 주시거나 종이에 더 가까이 대 주세요.
+    </p>`);
+
+  const 말하기 = (s, 빨강) => {
+    const e = $("말"); if (!e) return;
+    e.textContent = s; e.style.color = 빨강 ? "var(--bad)" : "var(--muted)";
+  };
+
+  try {
+    /*
+     * facingMode "environment" = 바깥쪽 렌즈.
+     * 이걸 안 주면 앞 렌즈가 열려 **제 얼굴이 뜹니다.**
+     */
+    카메라줄기 = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 } },
+      audio: false,
+    });
+  } catch (e) {
+    return 그리기(`<div class="칸 빨강">
+      <h1>카메라를 열지 못했습니다</h1>
+      <p class="작게">브라우저가 카메라를 쓰지 못하게 막고 있을 수 있습니다.
+      주소창 옆의 자물쇠를 눌러 <b>카메라를 허용</b>으로 바꿔 주세요.</p>
+      <p class="작게">${안전(e.message || String(e))}</p>
+      <button onclick="집화면(${번})">돌아가기</button>
+    </div>`);
+  }
+
+  const 눈 = $("눈");
+  if (!눈) return 카메라끄기();        // 그새 화면이 바뀌었으면 그만
+  눈.srcObject = 카메라줄기;
+  try { await 눈.play(); } catch {}
+
+  const 판 = document.createElement("canvas");
+  const 붓 = 판.getContext("2d", { willReadFrequently: true });
+
+  읽는중 = true;
+  let 헛읽음 = 0;
+
+  const 한번보기 = async () => {
+    if (!읽는중) return;
+    if (눈.readyState !== 눈.HAVE_ENOUGH_DATA || !눈.videoWidth)
+      return requestAnimationFrame(한번보기);
+
+    /*
+     * 긴 쪽을 640 으로 줄여서 봅니다.
+     * 1280 짜리를 그대로 훑으면 오래된 폰에서 화면이 뚝뚝 끊깁니다.
+     * 640 이면 34mm 짜리 종이도 넉넉히 읽힙니다 (시험으로 확인).
+     */
+    const 배 = Math.min(1, 640 / Math.max(눈.videoWidth, 눈.videoHeight));
+    판.width = Math.round(눈.videoWidth * 배);
+    판.height = Math.round(눈.videoHeight * 배);
+    붓.drawImage(눈, 0, 0, 판.width, 판.height);
+
+    const 본것 = jsQR(붓.getImageData(0, 0, 판.width, 판.height).data, 판.width, 판.height,
+                      { inversionAttempts: "dontInvert" });
+    if (!본것) return requestAnimationFrame(한번보기);
+
+    const 값 = String(본것.data || "");
+
+    if (!값.startsWith(방문표머리)) {
+      헛읽음++;
+      말하기(헛읽음 > 3
+        ? "이건 방문표가 아닙니다. 문 안쪽에 붙은 종이를 찾아 주세요."
+        : "다른 QR 입니다…", true);
+      return requestAnimationFrame(한번보기);
+    }
+
+    const 집표 = 값.slice(방문표머리.length);
+    if (집표 !== 할일.집표) {
+      /*
+       * 오늘 갈 다른 집이면 **누구 집인지 말해 줍니다.**
+       * 「안 맞습니다」만 뜨면 제공인력은 뭐가 틀렸는지 모릅니다.
+       */
+      const 다른집 = (오늘것들 || []).find((x) => x.집표 && x.집표 === 집표);
+      말하기(다른집
+        ? `여기는 ${다른집.이름} 어르신 댁입니다. ${할일.이름} 어르신 댁 표를 찍어 주세요.`
+        : "오늘 가실 곳의 방문표가 아닙니다.", true);
+      return requestAnimationFrame(한번보기);
+    }
+
+    // 맞았습니다
+    읽는중 = false;
+    카메라끄기();
+    try { navigator.vibrate && navigator.vibrate(120); } catch {}
+    /*
+     * 표는 맞게 찍었지만 **계획한 시간을 못 채웠으면** 한 번 묻습니다.
+     * 아니라고 하시면 시각을 안 적고 그 집 화면으로 돌아갑니다 —
+     * 조금 더 계시다가 다시 찍으시면 됩니다.
+     */
+    if (무엇 === "끝" && !짧게끝내도되나(할일)) return 집화면(번);
+    await 찍은것적기(할일.id, 무엇);
+    찍었다화면(번, 무엇);
+  };
+
+  requestAnimationFrame(한번보기);
+}
+
+function 찍었다화면(번, 무엇) {
+  const p = 오늘것들[번];
+  const 기 = 방문기록(p.id);
+  머리말("");
+  그리기(`
+    <div class="칸 초록 가운데">
+      <h1>${무엇}을 찍었습니다</h1>
+      <p style="font-size:2.1rem;font-weight:700;margin:6px 0">${시분(기[무엇])}</p>
+      <p>${안전(p.이름 || "")} 어르신 댁</p>
+    </div>
+    ${무엇 === "시작"
+      ? `<p class="작게 가운데">이제 서비스를 해 드리시고,
+           하신 것을 <b>확인사항</b>에 적어 주세요.<br>
+           나오실 때 <b>서비스 끝</b>을 한 번 더 눌러 주세요.</p>
+         <button class="크게" onclick="확인사항화면(${번})">확인사항 적기</button>
+         <button onclick="집화면(${번})">나중에 적겠습니다</button>`
+      : `<p class="작게 가운데">${시분(기.시작)} ~ ${시분(기.끝)} 으로 적었습니다.<br>
+           마지막으로 <b>이용자 확인서명</b>만 받으면 끝입니다.</p>
+         <button class="크게" onclick="서명화면(${번})">서명 받기</button>
+         <button onclick="집화면(${번})">나중에 받겠습니다</button>`}
+  `);
+  시계다시();
+}
+
+/*
+ * ── 방문표가 안 붙어 있을 때 ────────────────────────────────
+ *
+ * ★ 이것은 제 판단으로 넣은 것입니다 (무무 지시가 아닙니다).
+ *
+ * 까닭 — 방문표는 계약 상담 때 붙이고 오는 것이지만, 이 기능이
+ * 생기기 **전부터 이용 중이던 분들** 댁에는 아직 종이가 없습니다.
+ * 그 집에 간 제공인력이 찍을 방법이 없어 **일이 멈춥니다.**
+ * 멈추게 두느니, 표시를 남기고 넘어가게 합니다.
+ *
+ * 단추를 **일부러 작고 흐리게** 두었습니다. 이것이 시원한 지름길로
+ * 보이면 아무도 종이를 안 찍고 다 이 단추를 누릅니다.
+ *
+ * 필요 없다고 보시면 이 함수와 집화면의 단추 두 줄만 지우면 됩니다.
+ */
+async function 표없이적기(번, 무엇) {
+  const p = 오늘것들[번];
+  if (!p) return 오늘화면();
+  if (!confirm(
+    `${p.이름} 어르신 댁에 방문표가 안 붙어 있습니까?\n\n` +
+    `표 없이 ${무엇} 시각을 적습니다. 사무실에 「표 없이 적음」으로 남습니다.`
+  )) return;
+  // 표가 없는 집도 계획 시간은 똑같이 봅니다.
+  if (무엇 === "끝" && !짧게끝내도되나(p)) return 집화면(번);
+  await 찍은것적기(p.id, 무엇, true);
+  찍었다화면(번, 무엇);
+}
+
+/*
+ * ── 끝을 잘못 찍었을 때 ─────────────────────────────────────
+ *
+ * 어르신 댁에 들어서면서 **버릇처럼 큰 단추를 누르는** 일이 있습니다.
+ * 그런데 시작이 이미 찍혀 있으면 그 자리에 있는 것은 「서비스 끝」입니다.
+ * 그러면 **들어가자마자 끝난 것으로** 적히고, 지금까지는 되돌릴 길이
+ * 없었습니다. (2026-09-05 무무 — 「끝 qr코드를 실수로 찍었을 때
+ * 끝qr을 다시 찍을 방법도 없어.」)
+ *
+ * 계획 시간 경고가 1차 방어막이라면, 이것이 **2차 방어막**입니다.
+ * 1차는 사무실이 분을 안 적어 두면 안 뜹니다. 2차는 늘 있어야 합니다.
+ *
+ * ── 서명이 이미 있으면 서명도 지웁니다 ─────────────────────
+ *
+ * 이용자는 **「몇 시에 끝났다」는 종이에** 서명하신 것입니다. 끝 시각이
+ * 바뀌면 그 서명은 다른 것에 대한 서명이 됩니다. 그대로 두면 서류가
+ * 거짓이 됩니다. 그래서 지우고 다시 받습니다 — 미리 말씀드리고요.
+ *
+ * ── 이미 보낸 것은 여기서 못 고칩니다 ──────────────────────
+ *
+ * 사무실 실적에 이미 들어간 뒤라서, 폰이 혼자 되돌리면 두 곳이
+ * 어긋납니다. 그때는 사무실에서 고치는 것이 맞습니다.
+ */
+async function 끝되돌리기(번) {
+  const p = 오늘것들[번];
+  if (!p) return 오늘화면();
+  const 기 = 방문기록(p.id);
+  if (!기.끝) return 집화면(번);
+
+  if (기.보냄) {
+    alert(
+      "이미 사무실로 보낸 건이라 여기서는 못 되돌립니다.\n\n" +
+      "사무실에 말씀해 주세요. 사무실에서 고칠 수 있습니다."
+    );
+    return 집화면(번);
+  }
+
+  if (!confirm(
+    `${시분(기.끝)} 으로 적힌 종료 시각을 지웁니다.\n\n` +
+    (기.서명 ? "받아 둔 이용자 서명도 함께 지웁니다 — 끝 시각이 바뀌니\n다시 받으셔야 합니다.\n\n" : "") +
+    "시작 시각과 적어 두신 것, 사진은 그대로 둡니다.\n" +
+    "계속 서비스를 해 드리시고, 나오실 때 끝을 다시 찍어 주세요."
+  )) return 집화면(번);
+
+  delete 기.끝;
+  delete 기.서명;
+  delete 기.서명받은때;
+  /*
+   * **되돌린 것을 남깁니다.** 사무실이 「이 집은 왜 끝이 두 번 찍혔나」를
+   * 볼 수 있어야 합니다. 조용히 지우면 아무도 모릅니다.
+   */
+  if (!기.되돌림) 기.되돌림 = [];
+  기.되돌림.push(지금());
+  await 다시잠그기(몸);
+  집화면(번);
+}
+
+
+// ── ⑩ 사진 ─────────────────────────────────────────────────
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  편람은 서비스 제공 뒤 **사진을 서식 뒷장에 붙이라**고 합니다.
+ *  식사지원의 전달사진이 대표입니다.
+ *
+ *  ── 원본은 폰에 남습니다 ─────────────────────────────────
+ *
+ *  `capture` 를 안 붙입니다. 그래서 누르면 폰이 **카메라와 갤러리를
+ *  같이** 물어봅니다. 카메라를 고르면 폰의 기본 카메라 앱이 뜨고,
+ *  찍은 원본은 **갤러리에 그대로 남습니다.**
+ *  나중에 「그때 그 사진 좀」이라고 하면 폰에서 꺼낼 수 있어야 합니다.
+ *
+ *  ── 올릴 때는 줄여서 ─────────────────────────────────────
+ *
+ *  요즘 폰 사진은 한 장에 3~6MB 입니다. 하루 스무 건이면 100MB.
+ *  그게 **제공인력의 데이터 요금**으로 나갑니다.
+ *  긴 쪽 1600픽셀로 줄이고 JPEG 로 다시 만듭니다 — 보통 200~400KB.
+ *  밥상 사진을 확인하는 데 그 이상은 필요 없습니다.
+ *
+ *  ── 잠가서 올립니다 ──────────────────────────────────────
+ *
+ *  올라가는 것은 사진이 아니라 **잠근 덩어리**입니다.
+ *  우편함도, 그 서버를 만지는 누구도 어르신 댁 안을 못 봅니다.
+ * ═══════════════════════════════════════════════════════════ */
+
+const 사진최대 = 4;        // 한 건에 넉 장까지 (무무 지시, 2026-09-05)
+const 사진긴쪽 = 1600;     // 줄일 크기
+const 사진품질 = 0.8;
+
+/** 그 건에 딸린 사진들. 없으면 빈 것. */
+function 사진들(할일id) {
+  return 방문기록(할일id).사진 || [];
+}
+
+/**
+ * 고른 사진을 **줄여서** data URL 로. 원본은 안 건드립니다.
+ *
+ * 사진에 박힌 방향(EXIF)은 캔버스가 알아서 세워 줍니다
+ * (요즘 브라우저는 createImageBitmap 이 방향을 봅니다).
+ */
+async function 사진줄이기(파일) {
+  const 그림 = await createImageBitmap(파일, { imageOrientation: "from-image" })
+    .catch(() => createImageBitmap(파일));
+  const 배 = Math.min(1, 사진긴쪽 / Math.max(그림.width, 그림.height));
+  const 판 = document.createElement("canvas");
+  판.width = Math.round(그림.width * 배);
+  판.height = Math.round(그림.height * 배);
+  판.getContext("2d").drawImage(그림, 0, 0, 판.width, 판.height);
+  try { 그림.close && 그림.close(); } catch {}
+  return 판.toDataURL("image/jpeg", 사진품질);
+}
+
+/** 화면에 붙일 사진 칸. 확인사항 화면 맨 아래에 옵니다. */
+function 사진칸(p) {
+  const 것들 = 사진들(p.id);
+  /*
+   * ★ 비대면이면 **왜** 꼭 필요한지 적습니다.
+   *   「필수」라고만 하면 왜인지 모르고, 모르면 안 찍습니다.
+   */
+  const 기록 = 방문기록(p.id);
+  const 안내 =
+    p.갈래 === "식사" && !서명받을수있나(p, 기록)
+      ? '<span class="딱지" style="background:var(--bad);color:#fff">꼭 필요</span> ' +
+        "<b>놓아 두고 온 자리를 찍어 주세요.</b> " +
+        "문 앞에 두고 오신 것은 어르신 서명을 못 받으므로, " +
+        "<b>이 사진이 그 자리를 대신합니다.</b>"
+      : p.갈래 === "식사"
+      ? '<span class="딱지" style="background:var(--bad);color:#fff">필수</span> ' +
+        "<b>전달한 사진을 찍어 주세요.</b>"
+      : "한 일을 알 수 있게 찍어 주세요. 서식 뒷장에 붙습니다.";
+
+  return `
+    <div class="칸">
+      <div class="이름표">사진 <span class="딱지">${것들.length} / ${사진최대}</span></div>
+      <p class="작게" style="margin:0 0 8px">${안내}<br>
+        찍으신 <b>원본은 휴대폰에 그대로 남습니다.</b>
+        사무실로는 작게 줄여서 보냅니다.</p>
+      <div class="사진판">
+        ${것들.map((s, i) => `
+          <div class="사진하나">
+            <img src="${s.그림}" alt="사진 ${i + 1}">
+            <button class="사진빼기" onclick="사진빼기('${p.id}', ${i})">✕</button>
+          </div>`).join("")}
+        ${것들.length < 사진최대 ? `
+          <label class="사진넣기">
+            <input type="file" accept="image/*" multiple id="사진고르기" class="숨은칸">
+            <span>＋<br><b>사진</b></span>
+          </label>` : ""}
+      </div>
+      <p id="사진말" class="작게" style="margin:6px 0 0"></p>
+    </div>`;
+}
+
+/** 확인사항 화면이 뜬 뒤에 사진 칸의 손잡이를 답니다. */
+function 사진손잡이(p, 번) {
+  const 고르기 = $("사진고르기");
+  if (!고르기) return;
+  고르기.onchange = async (e) => {
+    const 파일들 = [...(e.target.files || [])];
+    e.target.value = "";                       // 같은 사진을 또 고를 수 있게
+    if (!파일들.length) return;
+
+    const 말 = $("사진말");
+    const 남은자리 = 사진최대 - 사진들(p.id).length;
+    if (파일들.length > 남은자리 && 말)
+      말.textContent = `${사진최대}장까지라 앞의 ${남은자리}장만 넣습니다.`;
+
+    for (const 파일 of 파일들.slice(0, 남은자리)) {
+      if (말) 말.innerHTML = '<span class="돌아감"></span> 사진을 줄이는 중…';
+      try {
+        const 그림 = await 사진줄이기(파일);
+        if (!몸.방문) 몸.방문 = {};
+        if (!몸.방문[p.id]) 몸.방문[p.id] = {};
+        const 기 = 몸.방문[p.id];
+        if (!기.사진) 기.사진 = [];
+        기.사진.push({ 그림, 찍은때: 지금() });
+        await 다시잠그기(몸);
+      } catch (err) {
+        if (말) {
+          말.style.color = "var(--bad)";
+          말.textContent = "이 사진은 못 읽었습니다. 다른 것으로 해 주세요.";
+        }
+        return;
+      }
+    }
+    확인사항화면(번);                            // 다시 그려서 새 사진을 보여 줍니다
+  };
+}
+
+async function 사진빼기(할일id, 자리) {
+  if (!confirm("이 사진을 뺍니다.")) return;
+  const 기 = 몸.방문 && 몸.방문[할일id];
+  if (!기 || !기.사진) return;
+  기.사진.splice(자리, 1);
+  await 다시잠그기(몸);
+  const 번 = (오늘것들 || []).findIndex((x) => x.id === 할일id);
+  if (번 >= 0) 확인사항화면(번);
+}
+
+/* ── 우편함으로 올리기 ─────────────────────────────────────── */
+
+/** data URL 을 바이트로. 잠그기 전에 한 번 거칩니다. */
+function 그림바이트(dataURL) {
+  const 속 = atob(String(dataURL).split(",")[1] || "");
+  const 것 = new Uint8Array(new ArrayBuffer(속.length));
+  for (let i = 0; i < 속.length; i++) 것[i] = 속.charCodeAt(i);
+  return 것;
+}
+
+/**
+ * 이 기관의 번호. 사진을 둘 자리(길)의 첫 칸입니다.
+ *
+ * 등록할 때 받아 두지만, 그 전에 등록한 폰에는 없습니다.
+ * 없으면 그 자리에서 우편함에 물어보고 적어 둡니다.
+ */
+async function 기관번호가져오기() {
+  if (몸.기관번호) return 몸.기관번호;
+  const 줄 = await 우편함("/rest/v1/worker_device?select=org_id");
+  const 번호 = 줄 && 줄[0] && 줄[0].org_id;
+  if (!번호) throw new Error("기관 번호를 알 수 없습니다");
+  몸.기관번호 = 번호;
+  await 다시잠그기(몸);
+  return 번호;
+}
+
+/**
+ * 사진들을 잠가서 Storage 에 올리고, 표에 한 줄씩 적습니다.
+ *
+ * 보고가 먼저 올라가 있어야 합니다 — 사진 표가 보고를 가리키기 때문입니다.
+ * 한 장이 실패해도 나머지는 올립니다. 다음에 다시 올리면
+ * 이미 올라간 것은 건너뜁니다(각 사진에 `올림` 을 적어 둡니다).
+ */
+async function 사진올리기(할일id, 보고id) {
+  const 기 = 몸.방문 && 몸.방문[할일id];
+  if (!기 || !기.사진 || !기.사진.length) return 0;
+
+  const 기관 = await 기관번호가져오기();
+  let 올린수 = 0;
+
+  for (const 한장 of 기.사진) {
+    if (한장.올림) continue;
+    const 사진번호 = crypto.randomUUID();
+    const 길 = `${기관}/${보고id}/${사진번호}`;
+    const 잠긴 = await 덩이잠그기(몸.기관열쇠, 그림바이트(한장.그림));
+
+    const r = await fetch(`${설정.주소}/storage/v1/object/${encodeURI("사진")}/${길}`, {
+      method: "POST",
+      headers: {
+        apikey: 설정.열쇠,
+        Authorization: "Bearer " + 표딱지,
+        "content-type": "application/octet-stream",
+      },
+      body: 잠긴,
+    });
+    if (!r.ok) throw new Error(`사진 올리기 실패 (${r.status})`);
+
+    await 우편함("/rest/v1/photo", {
+      method: "POST",
+      headers: { Prefer: "return=minimal" },
+      body: JSON.stringify({
+        id: 사진번호, report_id: 보고id, org_id: 기관, path: 길,
+      }),
+    });
+
+    한장.올림 = 지금();
+    await 다시잠그기(몸);
+    올린수++;
+  }
+  return 올린수;
+}
+
+// ── ⑨ 사무실로 보내기 ──────────────────────────────────────
+/*
+ * ═══════════════════════════════════════════════════════════
+ *  찍고 적은 것을 우편함에 올립니다.
+ *
+ *  ── 언제 보내나 ──────────────────────────────────────────
+ *
+ *    · 서명을 마치는 **그 자리에서** (그 집 일이 끝났으니)
+ *    · 앱을 열 때, 아직 안 보낸 것이 있으면
+ *    · 「오늘 갈 곳」에서 새로 고칠 때
+ *
+ *  저녁에 몰아서 보내게 두면 **그날 안 보낸 것이 반드시 생깁니다.**
+ *  끝나는 자리마다 보내는 편이 낫습니다.
+ *
+ *  ── 안 되면 어떻게 하나 ──────────────────────────────────
+ *
+ *  ★ 사람에게 안 알립니다. 조용히 넘어갑니다.
+ *
+ *  어르신 댁 마당에서 신호가 약한 것은 **제공인력 잘못이 아니고,
+ *  그 자리에서 할 수 있는 일도 없습니다.** 거기서 빨간 경고를 띄우면
+ *  「내가 뭘 잘못했나」 하고 붙들려 있게 됩니다.
+ *  적은 것은 폰에 잠겨 남아 있고, 다음에 열 때 다시 보냅니다.
+ *
+ *  ── 두 번 보내면 ────────────────────────────────────────
+ *
+ *  보고 번호를 **할일번호에서 늘 같게** 만듭니다. 두 번 보내면
+ *  우편함이 「이미 있다(409)」고 돌려줍니다 — 그것도 성공으로 봅니다.
+ *  같은 방문이 실적에 두 줄 생기는 일이 없습니다.
+ * ═══════════════════════════════════════════════════════════ */
+
+/**
+ * 보고 번호 — 할일번호에서 늘 같게 만듭니다.
+ *
+ * 할일번호(UUID)의 몇 자리만 바꿔 씁니다. 새로 무작위로 만들면
+ * 다시 보낼 때마다 다른 번호가 되어 실적이 겹쳐 쌓입니다.
+ */
+function 보고번호(할일id) {
+  // 마지막 덩어리의 첫 글자만 바꿉니다 — 꼴은 UUID 그대로 둡니다.
+  const 조각 = String(할일id).split("-");
+  if (조각.length !== 5) return 할일id;
+  조각[4] = "b" + 조각[4].slice(1);
+  return 조각.join("-");
+}
+
+/** 마지막으로 보내기가 왜 안 됐는가. 화면 아래에 작게 적습니다. */
+let 마지막탈 = "";
+
+/** 아직 안 보낸 것들. */
+function 안보낸것() {
+  if (!몸 || !몸.방문) return [];
+  return (오늘것들 || [])
+    .map((p, 번) => ({ p, 번, 기: 방문기록(p.id) }))
+    .filter(({ 기 }) => 기.시작 && 기.끝 && 기.서명 && !기.보냄);
+}
+
+/**
+ * 한 건을 보냅니다. 돌려주는 값 = 보냈나.
+ * 던지지 않습니다 — 부르는 쪽이 실패를 신경 쓸 필요가 없어야 합니다.
+ */
+/** 아직 우편함에 안 올라간 사진이 몇 장인가. */
+function 안올린사진수(할일id) {
+  return 사진들(할일id).filter((x) => !x.올림).length;
+}
+
+/**
+ * 그 건을 보내려다 몇 번 걸렸나.
+ *
+ * 한두 번은 생깁니다 — 지하실, 엘리베이터, 잠깐 끊긴 우편함.
+ * 그때마다 겁을 주면 현장은 곧 아무 말도 안 읽습니다.
+ * **세 번**이면 저절로 풀릴 일이 아니라고 봅니다 (2026-09-05 무무 확인).
+ */
+function 보낸탈수(번) {
+  const p = 오늘것들[번];
+  return (p && 방문기록(p.id).보낸탈수) || 0;
+}
+
+async function 보내보기(번) {
+  const p = 오늘것들[번];
+  if (!p) return false;
+  const 기 = 방문기록(p.id);
+  if (!기.시작 || !기.끝 || !기.서명) return false;
+
+  const 보고id = 보고번호(p.id);
+  마지막탈 = "";
+
+  /*
+   * ── 보고는 갔는데 사진이 안 간 경우 ────────────────────────
+   *
+   * ★ 여기가 **조용히 사진을 잃던 자리**입니다.
+   *
+   *   예전에는 사진 올리기가 실패하면 그냥 삼키고 「보냄」을 찍었습니다.
+   *   주석에는 「다음에 다시 시도합니다」라고 적어 두었는데, 정작 맨 위에서
+   *   `기.보냄` 이면 곧장 돌아가 버려 **다음이 영영 안 왔습니다.**
+   *   화면은 초록으로 「보냈습니다」라고 하고, 사무실 제공실적에는
+   *   사진 칸이 비어 있었습니다. 아무도 모릅니다.
+   *   (2026-09-05 무무 — 「촬영해 올렸던 사진도 보이지 않는데」)
+   *
+   *   사진은 **편람이 서식 뒷장에 붙이라고 한 근거**입니다. 식사지원의
+   *   전달사진이 대표입니다. 조용히 없어지면 안 됩니다.
+   *
+   *   그래서 「보냈나」를 **보고와 사진 두 몫으로** 나눕니다.
+   *   보고가 이미 갔으면 보고는 건너뛰고 **사진만** 다시 올립니다.
+   */
+  if (기.보냄) {
+    if (!안올린사진수(p.id)) return false;         // 정말로 다 갔습니다
+    try {
+      표딱지 = null;
+      몸.refresh = await 표딱지새로(몸.refresh);
+      await 다시잠그기(몸);
+      await 사진올리기(p.id, 보고id);
+      기.사진탈 = "";
+      await 다시잠그기(몸);
+      return true;
+    } catch (e) {
+      기.사진탈 = String((e && e.message) || e).slice(0, 160);
+      마지막탈 = 기.사진탈;
+      try { await 다시잠그기(몸); } catch {}
+      return false;
+    }
+  }
+
+  try {
+    /*
+     * 표딱지가 오래됐을 수 있습니다. 한 번 새로 받고 시작합니다.
+     * (받은 새 표딱지는 반드시 다시 잠가 둬야 합니다 — 안 그러면
+     *  다음에 열 때 못 들어갑니다.)
+     */
+    표딱지 = null;
+    몸.refresh = await 표딱지새로(몸.refresh);
+    await 다시잠그기(몸);
+
+    // 보고에도 사진에도 들어갑니다. 먼저 확보합니다.
+    const 기관 = await 기관번호가져오기();
+
+    const 짐 = {
+      served_on: p.served_on || 오늘날짜(),
+      이름: p.이름 ?? "",
+      서비스: p.서비스 ?? "",
+      갈래: p.갈래 ?? null,
+      적은것: 기.적은것 ?? {},
+      /*
+       * ★ **어느 목록으로 눌렀나** (2026-09-06 무무)
+       *
+       *   「확인사항 항목이 바뀔 경우 실행 시의 목록으로 서식을 뽑아.
+       *    변경된 항목으로 뽑을 경우 일을 한 기록이 표시되지 않는
+       *    문제가 발생 되.」
+       *
+       * 이 번호가 실적에 남습니다. 사무실이 나중에 목록을 고쳐도
+       * 이 건은 **누를 때 보였던 목록** 그대로 종이에 나옵니다.
+       */
+      확인버전: p.확인버전 ?? null,
+      서명: 기.서명 ?? null,
+      서명받은때: 기.서명받은때 ?? null,
+      /*
+       * ★ 서명이 없으면 **왜 없는지**를 같이 보냅니다.
+       *   빈 칸만 가면 사무실은 「받아야 하는데 안 받았구나」로 읽고
+       *   다시 받으러 사람을 보냅니다. 못 받는 건이라고 적어야
+       *   기록지 비고에도 그대로 쓸 수 있습니다.
+       */
+      서명없음: (!기.서명 && !서명받을수있나(p, 기)) ? "비대면배달" : null,
+      표없이: !!기.표없이,
+      /*
+       * 고친 시각들. 사무실 제공실적 화면에 그대로 보입니다.
+       * 「이 건은 나중에 두 번 고쳤구나」가 보여야 근거가 됩니다.
+       */
+      고침: 기.고침 ?? [],
+      /*
+       * 끝을 잘못 찍어 되돌린 시각들. 사무실이 봐야 합니다 —
+       * 조용히 지우면 「왜 끝이 두 번 찍혔나」를 아무도 모릅니다.
+       */
+      되돌림: 기.되돌림 ?? [],
+    };
+
+    await 우편함("/rest/v1/report", {
+      method: "POST",
+      headers: { Prefer: "return=minimal" },
+      body: JSON.stringify({
+        id: 보고id,
+        job_id: p.id,
+        /*
+         * ★ 기관번호를 꼭 실어야 합니다.
+         *   우편함의 `report.org_id` 는 **비면 안 되는 칸**입니다.
+         *   빠뜨렸더니 보내기가 통째로 실패했고, 화면에는
+         *   「신호가 되는 곳에서 다시」라고 떴습니다 — 신호는 멀쩡했는데도.
+         *   (2026-09-05 무무가 현장에서 발견.)
+         */
+        org_id: 기관,
+        worker_id: 몸.인력번호,
+        started_at: 기.시작,
+        ended_at: 기.끝,
+        /*
+         * 방문표를 실제로 찍었는가.
+         * 「표 없이」로 적은 것은 false 로 갑니다 — 사무실이
+         * 「확인필요」로 보고 한 번 짚게 됩니다.
+         */
+        qr_ok: !기.표없이,
+        payload_enc: await 짐싸기(몸.기관열쇠, 짐),
+      }),
+    });
+
+    /*
+     * 보고가 들어갔으니 사진을 올립니다.
+     * 사진 표가 보고를 가리키므로 **보고가 먼저**여야 합니다.
+     *
+     * 사진이 실패해도 보고는 이미 갔으니 「보냄」으로 적습니다. 다만
+     * **왜 안 갔는지 적어 둡니다** — 위쪽 다시 보내는 길이 이것을 보고
+     * 사진만 다시 올립니다. 화면에도 「사진 N장이 아직」으로 뜹니다.
+     */
+    기.사진탈 = "";
+    try { await 사진올리기(p.id, 보고id); }
+    catch (e) { 기.사진탈 = String((e && e.message) || e).slice(0, 160); }
+
+    기.보냄 = 지금();
+    기.보낸탈수 = 0;                 // 갔으니 지금까지 걸린 것은 잊습니다
+    await 다시잠그기(몸);
+    return true;
+  } catch (e) {
+    /*
+     * 「이미 있다」는 성공입니다 — 앞서 보낸 것이 들어가 있는 것입니다.
+     * 그것까지 실패로 보면 영원히 다시 보내려 듭니다.
+     */
+    const 말 = String(e && e.message || e);
+    if (말.includes("(409)") || 말.includes("duplicate key")) {
+      // 보고는 이미 들어가 있습니다. 그래도 **사진은 아직일 수 있습니다.**
+      try { await 사진올리기(p.id, 보고id); } catch { /* 다음에 다시 */ }
+      기.보냄 = 지금();
+      기.보낸탈수 = 0;
+      try { await 다시잠그기(몸); } catch {}
+      return true;
+    }
+    /*
+     * 그 밖의 실패. **몇 번째인지 세어 둡니다** — 한두 번은 조용히 넘기고
+     * 세 번째부터 현장에 알립니다 (2026-09-05 무무 확인).
+     * 인터넷이 끊긴 것은 세지 않습니다. 그건 화면이 곧바로 그렇게 말합니다.
+     */
+    마지막탈 = 말.slice(0, 160);
+    if (navigator.onLine !== false) {
+      기.보낸탈수 = (기.보낸탈수 || 0) + 1;
+      try { await 다시잠그기(몸); } catch {}
+    }
+    return false;
+  }
+}
+
+/**
+ * 손으로 보내기.
+ *
+ * 저절로 보내는데도 단추를 두는 까닭 — 신호가 돌아온 것을 사람이
+ * 먼저 압니다. 「이제 되겠지」 싶을 때 누를 자리가 있어야 합니다.
+ */
+async function 지금보내기(번) {
+  const 단추 = document.querySelector("button.크게");
+  if (단추) { 단추.disabled = true; 단추.innerHTML = '<span class="돌아감"></span> 보내는 중…'; }
+  const 됐나 = await 보내보기(번);
+  if (됐나) return 집화면(번);
+  if (단추) {
+    단추.disabled = false;
+    단추.textContent = "사무실로 보내기";
+  }
+  /*
+   * ★ 왜 안 됐는지 **작게라도 적습니다.**
+   *
+   * 처음에는 늘 「신호가 되는 곳에서 다시」라고만 했습니다. 그런데
+   * 실제로 걸린 것은 신호가 아니라 우편함이 보고를 거절한 것이었고,
+   * 그 말 때문에 무무가 신호를 의심하며 시간을 썼습니다.
+   * 제공인력에게 겁을 주지 않을 만큼 작게, 그러나 고칠 수 있을 만큼은
+   * 적어 둡니다.
+   */
+  const 말 = document.createElement("p");
+  말.className = "작게 가운데";
+  말.style.color = "var(--bad)";
+  /*
+   * ── 무엇이 걸렸는지에 따라 다르게 말합니다 ──────────────────
+   *
+   * 예전에는 무엇이 걸렸든 「신호가 되는 곳에서 다시 눌러 주세요」였습니다.
+   * 그런데 실제로 걸린 것은 **우편함이 거절한 것**이었습니다(org_id 를
+   * 안 실어 보냈습니다). 제공인력은 신호가 멀쩡한 데서 창밖으로 나가 보고,
+   * 사무실에 전화하고, 그러다 하루를 넘겼습니다. (2026-09-05 무무)
+   *
+   * 무무가 정한 규칙 —
+   *
+   *   ① 잘 갔으면      목록에 **「전송 완료」**  (상태표 를 보세요)
+   *   ② 신호가 끊겼으면 **「인터넷 신호문제로 전송이 안되고 있습니다.
+   *                       확인 바랍니다.」**
+   *   ③ 그 밖의 거절    **조용히 다시 시도**하고, 세 번째부터 알립니다
+   *
+   * ③ 을 조용히 두는 까닭 — 한두 번은 생기고 다음에 바로 나갑니다.
+   * 그때마다 겁을 주면 현장은 곧 아무 말도 안 읽게 됩니다.
+   * 다만 세 번이면 저절로 풀릴 일이 아닙니다. 그때는 말해야 합니다.
+   */
+  const 끊겼나 = navigator.onLine === false;
+  const 몇번째 = 보낸탈수(번);
+
+  if (끊겼나) {
+    말.innerHTML = "인터넷 신호문제로 전송이 안되고 있습니다. 확인 바랍니다.";
+  } else if (몇번째 >= 3) {
+    말.innerHTML =
+      "사무실로 보내지지 않고 있습니다 (" + 몇번째 + "번째). "
+      + "적으신 것은 <b>그대로 남아 있습니다.</b> 사무실에 알려 주세요."
+      + (마지막탈 ? `<br><span style="color:var(--muted);font-size:.8rem">${안전(마지막탈)}</span>` : "");
+  } else {
+    /*
+     * 아직 조용히 있을 때입니다. 겁주지 않고, 다시 해 볼 수 있다는 것만.
+     * 자료가 안전하다는 말은 넣습니다 — 그것만은 늘 알아야 합니다.
+     */
+    말.style.color = "var(--muted)";
+    말.innerHTML = "아직 안 갔습니다. 적으신 것은 <b>그대로 남아 있습니다</b> — 잠시 뒤 다시 눌러 주세요.";
+  }
+  단추 && 단추.after(말);
+}
+
+/** 안 보낸 것을 다 보내 봅니다. 화면을 막지 않습니다. */
+async function 밀린것보내기() {
+  const 밀린것 = 안보낸것();
+  if (!밀린것.length) return 0;
+  let 보낸수 = 0;
+  for (const { 번 } of 밀린것) if (await 보내보기(번)) 보낸수++;
+  return 보낸수;
+}
+
+// ── 들어오는 문 ─────────────────────────────────────────────
+/*
+ * 등록 QR 은 **주소**입니다 —  https://…/#표=xxxx
+ * 휴대폰 기본 카메라로 찍으면 브라우저가 여기로 바로 옵니다.
+ * '#' 뒤는 서버로 가지 않고 이 폰 안에만 남습니다.
+ */
+const 표읽기 = () => new URLSearchParams(location.hash.slice(1)).get("표");
+
+function 문열기() {
+  const 표 = 표읽기();
+  if (표) return 등록화면(표);
+  if (등록됨()) return 잠금화면();
+  처음화면();
+}
+
+/*
+ * 앱이 **이미 떠 있는데** 표가 들어오는 경우가 있습니다.
+ * 주소에서 '#' 뒤만 바뀌면 화면이 새로 열리지 않아, 아무 일도 안 일어납니다.
+ * (시험에서 걸렸습니다.) 그래서 따로 귀를 열어 둡니다.
+ */
+window.addEventListener("hashchange", () => { if (표읽기()) 문열기(); });
+
+/*
+ * ── 주소는 하나여야 합니다 ──────────────────────────────────
+ *
+ * 등록한 것은 **그 주소의 저장소**에 들어갑니다. 브라우저에게
+ * `app.tongdol.kr` 과 `무엇무엇.netlify.app` 과 `tongdol.kr` 은
+ * **완전히 다른 곳**입니다. 저장소도 따로입니다.
+ *
+ * 그래서 즐겨찾기에 옛 주소가 남아 있거나, 검색해서 다른 주소로
+ * 들어오면 등록이 멀쩡히 있는데도 **「아직 등록되지 않았습니다」**가
+ * 뜹니다. 도메인을 옮길 때 한 번 겪었습니다.
+ *
+ * 여기서 한 번에 막습니다 — 바른 주소가 아니면 바른 주소로 보냅니다.
+ * `replace` 를 쓰는 까닭은 뒤로 가기를 눌렀을 때 다시 틀린 주소로
+ * 돌아가지 않게 하려는 것입니다.
+ *
+ * localhost 와 127.0.0.1 은 그냥 둡니다 — 시험이 거기서 돕니다.
+ */
+const 바른집 = "app.tongdol.kr";
+(function 주소맞추기() {
+  const 집 = location.hostname;
+  if (!집 || 집 === 바른집) return;
+  if (집 === "localhost" || 집 === "127.0.0.1" || 집 === "[::1]") return;
+  location.replace(`https://${바른집}${location.pathname}${location.search}${location.hash}`);
+})();
+
+문열기();
+</script>

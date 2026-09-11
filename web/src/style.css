@@ -1,0 +1,1537 @@
+/* ─────────────────────────────────────────────────────────
+   색은 여기 한 곳에서만 정합니다.
+   화면 코드에는 색을 직접 쓰지 말고 var(--이름) 으로만 쓰세요.
+   나중에 색을 바꿀 때 이 파일만 고치면 됩니다.
+   ───────────────────────────────────────────────────────── */
+
+/* 기본 = 밝게. 업무용이라 예측 가능한 쪽을 기본으로 둡니다. */
+:root,
+:root[data-theme='light'] {
+  --ground: #f5f7f6;
+  --surface: #ffffff;
+  --surface-2: #edf1ef;
+  --ink: #131e1b;
+  --ink-2: #3d4c48;
+  --muted: #68766f;
+  --line: #d5deda;
+  --line-strong: #b4c2bc;
+  --accent: #0e5c52;
+  --accent-soft: #dcebe7;
+  --risk: #a6392a;
+  --risk-soft: #f6e3df;
+  --ok: #2f6b34;
+  --ok-soft: #e2efe1;
+  --warn: #8a5a12;
+  --warn-soft: #f7ecd8;
+  --shadow: 0 1px 2px rgba(19, 30, 27, .06);
+}
+
+/* 어둡게 — 설정에서 고르거나, '시스템 따름'일 때 자동으로 붙습니다. */
+:root[data-theme='dark'] {
+  --ground: #0e1513;
+  --surface: #161f1c;
+  --surface-2: #1d2825;
+  --ink: #e3eae7;
+  --ink-2: #b4c1bc;
+  --muted: #8a9a94;
+  --line: #2a3733;
+  --line-strong: #3b4a45;
+  --accent: #4cbfab;
+  --accent-soft: #152f2b;
+  --risk: #e08573;
+  --risk-soft: #33201c;
+  --ok: #77be7c;
+  --ok-soft: #1b2a1d;
+  --warn: #d9ab5f;
+  --warn-soft: #2c2418;
+  --shadow: none;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'Pretendard', 'IBM Plex Sans KR', -apple-system, 'Malgun Gothic', sans-serif;
+  line-height: 1.65;
+}
+
+h1 { font-size: 1.5rem; margin: 0; letter-spacing: -.02em; }
+h2 { font-size: 1.05rem; margin: 0 0 12px; }
+h3 { font-size: .9rem; margin: 0 0 10px; color: var(--muted); font-weight: 600; }
+a { color: var(--accent); }
+
+.eyebrow {
+  font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 8px; font-weight: 600;
+}
+.mono { font-family: ui-monospace, 'D2Coding', monospace; }
+.small { font-size: .8rem; }
+.muted { color: var(--muted); }
+.note { color: var(--ink-2); font-size: .9rem; }
+.right { text-align: right; }
+.spacer { flex: 1; }
+
+/* ── 가운데 정렬 한 장 (최초 설정 · 로그인) ───────────────── */
+.center {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 40px 20px;
+}
+.panel {
+  width: 100%; max-width: 28.75rem;   /* 460px — 글자 크기를 따라 커집니다 */
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 4px; padding: 32px 30px; box-shadow: var(--shadow);
+}
+.panel.wide { max-width: 38.75rem; }
+.panel-head { margin-bottom: 24px; }
+.panel-head h1 { margin-bottom: 6px; }
+
+/* ── 뼈대 (왼쪽 차림표 + 본문) ────────────────────────────── */
+.shell { display: flex; min-height: 100vh; }
+
+/*
+ * 왼쪽 차림표는 **제자리에 붙어 있습니다.**
+ *
+ * 본문이 길어 아래로 내리면 차림표까지 같이 올라가 사라졌습니다.
+ * 그러면 다른 화면으로 가려고 매번 맨 위까지 되돌아가야 합니다.
+ * 화면 높이에 맞춰 세워 두고, 차림표 자체가 길면 그 안에서만 스크롤합니다.
+ */
+.side {
+  width: 13.125rem; flex-shrink: 0;   /* 210px */
+  background: var(--surface); border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; padding: 22px 0 16px;
+  position: sticky; top: 0; align-self: flex-start;
+  height: 100vh; overflow-y: auto;
+}
+.brand { padding: 0 20px 22px; }
+.brand .name { font-size: 2.2rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+.brand .org { font-size: .8rem; color: var(--muted); margin-top: 8px; }
+/* 버전 번호 — 이름 **아래 줄**에 작고 흐리게. 간판이 먼저입니다. */
+.brand .ver {
+  margin-top: 2px; font-size: .72rem; font-weight: 500;
+  color: var(--muted); letter-spacing: 0;
+}
+@media print { .brand .ver { display: none } }
+
+.nav { display: flex; flex-direction: column; }
+.nav a {
+  padding: 9px 20px; font-size: .92rem; color: var(--ink-2);
+  text-decoration: none; border-left: 3px solid transparent;
+}
+.nav a:hover { background: var(--surface-2); }
+.nav a.on {
+  color: var(--accent); font-weight: 600;
+  border-left-color: var(--accent); background: var(--accent-soft);
+}
+.nav .soon { color: var(--muted); opacity: .55; cursor: default; }
+.nav .soon:hover { background: none; }
+
+.side-foot { padding: 14px 20px 0; border-top: 1px solid var(--line); font-size: .82rem; }
+.side-foot .who { color: var(--ink-2); margin-bottom: 6px; }
+
+.main { flex: 1; min-width: 0; padding: 28px 32px 72px; }
+.main-head {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+/* ── 상자 ────────────────────────────────────────────────── */
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 4px; padding: 20px 22px; margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.card p:last-child { margin-bottom: 0; }
+.card.good { background: var(--ok-soft); border-color: var(--ok); }
+.card.good h2 { color: var(--ok); }
+.card.bad { background: var(--risk-soft); border-color: var(--risk); }
+.card.bad h2 { color: var(--risk); }
+.card.warn { background: var(--warn-soft); border-color: var(--warn); }
+.card.warn h2 { color: var(--warn); }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
+
+.facts { display: grid; grid-template-columns: 6.25rem 1fr; gap: 9px 16px; margin: 0; }
+.facts dt { color: var(--muted); font-size: .86rem; }
+.facts dd { margin: 0; font-size: .92rem; word-break: break-all; }
+
+/* ── 입력 ────────────────────────────────────────────────── */
+label { display: block; font-size: .84rem; color: var(--ink-2); margin-bottom: 5px; }
+input, select, textarea {
+  font: inherit; font-size: .93rem; width: 100%;
+  padding: 8px 10px; border-radius: 3px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface); color: var(--ink);
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent);
+}
+textarea { min-height: 72px; resize: vertical; }
+.field { margin-bottom: 14px; }
+.row { display: flex; gap: 12px; }
+.row > * { flex: 1; }
+.row.tight { gap: 8px; }
+
+/* ── 단추 ────────────────────────────────────────────────── */
+button {
+  font: inherit; font-size: .9rem; padding: 8px 15px; cursor: pointer;
+  border-radius: 3px; border: 1px solid var(--line-strong);
+  background: var(--surface); color: var(--ink);
+}
+button:hover { background: var(--surface-2); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:disabled { opacity: .5; cursor: default; }
+button.primary {
+  background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600;
+}
+button.primary:hover { filter: brightness(1.08); }
+button.danger { color: var(--risk); border-color: var(--risk); background: transparent; }
+button.danger:hover { background: var(--risk-soft); }
+button.plain { border-color: transparent; background: transparent; color: var(--muted); }
+button.plain:hover { background: var(--surface-2); color: var(--ink); }
+button.wide { width: 100%; }
+.btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+/* 새 창으로 여는 링크를 단추처럼 보이게 */
+.btn-like {
+  font-size: .9rem; padding: 8px 15px; border-radius: 3px;
+  border: 1px solid var(--line-strong); background: var(--surface);
+  color: var(--ink); text-decoration: none; display: inline-block;
+}
+.btn-like:hover { background: var(--surface-2); }
+
+/* ── 고르기 묶음 (테마 · 상태) ───────────────────────────── */
+.pick { display: flex; gap: 0; flex-wrap: wrap; }
+.pick button {
+  font-size: .82rem; padding: 6px 12px; margin-left: -1px;
+  border-radius: 0; color: var(--muted);
+}
+.pick button:first-child { border-radius: 3px 0 0 3px; margin-left: 0; }
+.pick button:last-child { border-radius: 0 3px 3px 0; }
+.pick button[aria-pressed='true'] {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+  position: relative; z-index: 1;
+}
+
+/* ── 표 ──────────────────────────────────────────────────── */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+th {
+  font-size: .78rem; color: var(--muted); font-weight: 600;
+  letter-spacing: .04em; background: var(--surface-2);
+  border-bottom: 1px solid var(--line-strong); white-space: nowrap;
+}
+tbody tr:hover { background: var(--surface-2); }
+tbody tr.clickable { cursor: pointer; }
+td .name { font-weight: 600; }
+.empty { padding: 40px 12px; text-align: center; color: var(--muted); font-size: .92rem; }
+
+/* ── 딱지 ────────────────────────────────────────────────── */
+.tag {
+  display: inline-block; font-size: .76rem; padding: 2px 8px;
+  border-radius: 10px; border: 1px solid var(--line-strong);
+  background: var(--surface-2); color: var(--ink-2); white-space: nowrap;
+}
+.tag.이용 { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+.tag.중단 { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+.tag.직권중단 { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+.tag.종결 { background: var(--risk-soft); border-color: var(--risk); color: var(--risk); }
+.tag.취소 { background: var(--risk-soft); border-color: var(--risk); color: var(--risk); }
+
+.deadline { font-size: .82rem; color: var(--warn); white-space: nowrap; }
+.deadline.over { color: var(--risk); font-weight: 600; }
+
+/* ── 알림줄 ──────────────────────────────────────────────── */
+.msg {
+  padding: 9px 13px; border-radius: 3px; font-size: .88rem; margin-bottom: 14px;
+  border: 1px solid;
+}
+.msg.err { background: var(--risk-soft); border-color: var(--risk); color: var(--risk); }
+.msg.ok  { background: var(--ok-soft);  border-color: var(--ok);  color: var(--ok); }
+.msg.warn { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+
+/* ── 겹창 ────────────────────────────────────────────────── */
+.veil {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, .38);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 60px 20px; overflow-y: auto; z-index: 20;
+}
+.modal {
+  width: 100%; max-width: 560px; background: var(--surface);
+  border: 1px solid var(--line-strong); border-radius: 4px; padding: 24px 26px;
+}
+.modal h2 { margin-bottom: 18px; }
+
+code {
+  font-family: ui-monospace, 'D2Coding', monospace; font-size: .88em;
+  background: var(--accent-soft); color: var(--accent);
+  padding: 1px 6px; border-radius: 3px;
+}
+
+/* 판정 딱지 묶음 (의뢰 인박스) */
+.pills { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+
+/* ── 받는 서비스 ─────────────────────────────────────────── */
+.svcs { display: inline-flex; gap: 5px; flex-wrap: wrap; }
+.svc {
+  font-size: .78rem; padding: 2px 7px; border-radius: 3px;
+  background: var(--accent-soft); color: var(--accent);
+  border: 1px solid transparent; white-space: nowrap;
+}
+/* 기간이 끝난 서비스. 대상자 상태는 그대로 '이용'입니다 —
+   나머지 서비스를 아직 받고 있기 때문입니다. */
+.svc.done {
+  background: transparent; color: var(--muted);
+  border-color: var(--line); text-decoration: line-through;
+}
+
+/* ── 열 눌러 정렬 ────────────────────────────────────────── */
+.sorter {
+  font: inherit; font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+  color: var(--muted); background: none; border: none; padding: 0;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+}
+.sorter:hover { background: none; color: var(--ink); }
+.sorter .arrow { font-size: .62rem; opacity: .5; }
+.sorter:hover .arrow { opacity: 1; }
+
+/* 체크박스 딸린 이름표 */
+.check {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: .9rem; color: var(--ink); margin: 0; cursor: pointer;
+}
+.check input { width: 16px; margin: 0; }
+
+/* ── 제공실적 한 달 표 ─────────────────────────────────────
+   날짜가 31칸이라 가로로 깁니다. 칸을 최대한 좁히고,
+   토·일은 배경으로 구분해 눈이 주 단위로 끊어 읽게 합니다. */
+table.grid th,
+table.grid td { padding: 6px 4px; }
+table.grid th.holiday,
+table.grid td.holiday { background: var(--warn-soft); }
+
+.cell {
+  width: 100%;
+  min-width: 22px;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  font-size: .9rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--muted);
+}
+.cell:hover:not(:disabled) { background: var(--line); color: var(--ink); }
+.cell:disabled { cursor: default; opacity: .35; }
+.cell.제공   { color: var(--ok); font-weight: 700; }
+.cell.계획밖 { color: var(--accent); font-weight: 700; }
+.cell.미제공 { color: var(--warn); font-weight: 700; }
+/* 요일이 정해지지 않은 서비스(월 2회·생애 1회)의 빈 칸.
+   누를 수는 있지만 계획이 아니므로 거의 안 보이게 둡니다. */
+.cell.free { opacity: .18; }
+.cell.free:hover:not(:disabled) { opacity: 1; }
+
+/* ── 메모 보드 ─────────────────────────────────────────────
+   사무실 벽에 걸린 화이트보드. 어느 화면에서나 오른쪽에서 열립니다.
+   진짜 보드와 종이처럼 보여야 「적어 두는 곳」이라는 걸 설명 없이 압니다. */
+
+/* 서랍이 열리면 본문을 그만큼 밀어냅니다. 덮지 않습니다 —
+   배정표를 보면서 메모를 적을 수 있어야 메모를 적습니다. */
+.shell { padding-right: var(--memo-w, 0); transition: padding-right .12s ease-out; }
+
+/* 접혀 있을 때 — 오른쪽 가장자리에 손잡이만 */
+.memo-tab {
+  position: fixed; right: 0; top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 14px 7px;
+  border-radius: 6px 0 0 6px;
+  border: 1px solid var(--line-strong); border-right: none;
+  background: var(--surface);
+  box-shadow: -1px 1px 4px rgba(19, 30, 27, .1);
+}
+.memo-tab:hover { background: var(--surface-2); }
+.memo-tab-label { writing-mode: vertical-rl; letter-spacing: .12em; font-size: .82rem; }
+.memo-tab-n {
+  font-size: .72rem; font-weight: 700; line-height: 1;
+  padding: 3px 5px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent);
+}
+.memo-tab-n.over { background: var(--risk-soft); color: var(--risk); }
+
+/* 펼쳤을 때 — 오른쪽 서랍 */
+.memo-drawer {
+  position: fixed; right: 0; top: 0; bottom: 0;
+  z-index: 40;
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  border-left: 1px solid var(--line-strong);
+  box-shadow: -2px 0 10px rgba(19, 30, 27, .12);
+}
+:root[data-theme='dark'] .memo-drawer { box-shadow: -2px 0 10px rgba(0, 0, 0, .4); }
+
+/* 왼쪽 가장자리 = 너비 손잡이 */
+.memo-grip {
+  position: absolute; left: -3px; top: 0; bottom: 0; width: 8px;
+  cursor: col-resize; touch-action: none;
+}
+.memo-grip:hover { background: var(--accent); opacity: .35; }
+
+.memo-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 14px; border-bottom: 1px solid var(--line);
+}
+.memo-head .spacer { flex: 1 }
+.memo-head button { padding: 4px 10px; font-size: .8rem; }
+
+.memo-say {
+  margin: 8px 14px 0; padding: 6px 10px; border-radius: 3px;
+  font-size: .78rem;
+  background: var(--warn-soft); color: var(--warn);
+  border: 1px solid var(--warn);
+}
+
+/* 보드 바탕 — 옅은 격자. 종이가 어디에 붙었는지 눈으로 가늠됩니다. */
+.memo-board {
+  flex: 1; overflow: auto; padding: 14px;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 100% 40px,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 40px 100%,
+    var(--surface-2);
+  background-blend-mode: normal;
+}
+:root[data-theme='light'] .memo-board { background-color: #eef1f0; }
+.memo-canvas { position: relative; }
+.memo-empty { color: var(--muted); font-size: .9rem; padding: 26px 4px; }
+
+/* ── 메모지 ───────────────────────────────────────────────── */
+.memo-note {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, .16);
+  border-radius: 2px;
+  padding: 12px 12px 8px;
+  display: flex; flex-direction: column;
+  box-shadow: 1px 2px 4px rgba(19, 30, 27, .18);
+  cursor: grab;
+  touch-action: none;
+  overflow: hidden;
+}
+.memo-note.moving { cursor: grabbing; box-shadow: 3px 6px 14px rgba(19, 30, 27, .3); }
+.memo-note.top { z-index: 5 }
+.memo-note.new {
+  position: static; margin: 12px 14px 0; width: auto; cursor: default;
+  box-shadow: none;
+}
+
+.memo-note .body {
+  flex: 1; min-height: 0; overflow: auto;
+  white-space: pre-wrap; word-break: break-word;
+  font-size: .9rem; line-height: 1.5; color: #23201a;
+}
+.memo-note .meta {
+  margin-top: 8px; display: flex; gap: 6px; align-items: baseline;
+  font-size: .7rem; color: #6a6354; min-width: 0;
+}
+.memo-note .meta .who {
+  margin-left: auto; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; max-width: 45%;
+}
+/*
+ * 메모지 아래 단추 줄.
+ *
+ * **좁으면 줄을 접습니다.** 메모지는 160px 까지 작아지는데, 고치는 중에는
+ * 색 동그라미 넷(98px)과 지움·취소·저장(130px)이 함께 서야 해서
+ * 한 줄로는 절대 못 들어갑니다. 접지 않으면 메모지 밖으로 밀려
+ * <b>「저장」이 잘려 안 보입니다</b> — 실제로 그렇게 나왔고 쓰는 사람이 잡아냈습니다.
+ * 접으면 색 동그라미가 윗줄, 단추가 아랫줄로 갈라져 둘 다 보입니다.
+ *
+ * flex:none — 글상자가 늘어날 때 단추 줄이 대신 눌리면 안 됩니다.
+ */
+.memo-note .foot {
+  margin-top: 6px; display: flex; gap: 4px; align-items: center;
+  flex-wrap: wrap; row-gap: 5px; flex: none;
+  font-size: .7rem;
+}
+.memo-note .foot .spacer { flex: 1 }
+/*
+ * 고치는 중에는 **색 줄과 단추 줄을 아예 갈라 둡니다.**
+ *
+ * 저절로 접히게만 두었더니 메모지 너비에 따라 「지움·취소」까지는 색 옆에 붙고
+ * 「저장」만 혼자 다음 줄로 떨어졌습니다. 접히는 자리가 너비마다 달라지니
+ * 볼 때마다 모양이 달라 보기 흉합니다.
+ * 색은 색끼리 한 줄, 단추는 단추끼리 한 줄 — 어느 너비에서나 같은 모양입니다.
+ */
+.memo-note.editing .foot .memo-swatches { flex: 1 0 100%; }
+.memo-note .foot button {
+  flex: none; padding: 2px 7px; font-size: .7rem;
+  border-color: rgba(0, 0, 0, .18);
+  background: rgba(255, 255, 255, .55); color: #3b352a;
+  white-space: nowrap;
+}
+.memo-note .foot button:hover { background: rgba(255, 255, 255, .95); }
+.memo-note textarea {
+  flex: 1; min-height: 0;
+  background: rgba(255, 255, 255, .7); color: #23201a;
+  border-color: rgba(0, 0, 0, .18); font-size: .88rem;
+}
+/* 고치는 중에는 끌리지 않습니다 — 글자를 고르려던 손이 종이를 끌면 안 됩니다. */
+.memo-note.editing { cursor: default; }
+/* 지움 — 되돌릴 수 없는 것은 눈에 다르게 보여야 합니다. */
+.memo-note .foot button.danger-plain { color: #9a2b1c; border-color: rgba(154, 43, 28, .35); }
+.memo-note .foot button.danger-plain:hover { background: rgba(154, 43, 28, .1); }
+
+.memo-note.yellow { background: #fdf1b8 }
+.memo-note.pink   { background: #fbdce4 }
+.memo-note.blue   { background: #d8e8f7 }
+.memo-note.green  { background: #dcefd4 }
+
+/* 오른쪽 아래 모서리 — 잡고 끌면 크기가 바뀝니다 */
+.memo-note .grip {
+  position: absolute; right: 0; bottom: 0;
+  width: 16px; height: 16px;
+  cursor: nwse-resize; touch-action: none;
+  background:
+    linear-gradient(135deg, transparent 45%, rgba(0, 0, 0, .28) 45%, rgba(0, 0, 0, .28) 55%, transparent 55%),
+    linear-gradient(135deg, transparent 68%, rgba(0, 0, 0, .28) 68%, rgba(0, 0, 0, .28) 78%, transparent 78%);
+}
+
+/* 뗀 메모 — 보드에서 내려와 아래에 접힙니다 */
+.memo-off { border-top: 1px solid var(--line); padding: 8px 14px 12px; max-height: 34vh; overflow: auto; }
+.memo-off-list { list-style: none; margin: 0; padding: 0 }
+.memo-off-list li {
+  display: flex; align-items: center; gap: 7px;
+  padding: 4px 0; font-size: .8rem; color: var(--muted);
+}
+.memo-off-list .txt {
+  flex: 1; min-width: 0; text-decoration: line-through;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/* 며칠 뒤에 없어지는가 — 사흘 안쪽은 붉게. 되살릴 마지막 기회입니다. */
+.memo-off-list .left {
+  flex: none; font-size: .68rem; line-height: 1;
+  padding: 2px 6px; border-radius: 7px; white-space: nowrap;
+  background: var(--surface-2); color: var(--muted);
+}
+.memo-off-list .left.soon { background: var(--risk-soft); color: var(--risk); font-weight: 700 }
+.memo-off-list .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; border: 1px solid var(--line-strong) }
+.memo-off-list .dot.yellow { background: #fdf1b8 }
+.memo-off-list .dot.pink   { background: #fbdce4 }
+.memo-off-list .dot.blue   { background: #d8e8f7 }
+.memo-off-list .dot.green  { background: #dcefd4 }
+
+/*
+ * 색 고르기 — 동그라미 네 개.
+ *
+ * 반드시 `.memo-note .foot` 보다 **더 센 이름**으로 적어야 합니다.
+ * 그냥 `.swatch` 로 적었더니 바로 위의 `.memo-note .foot button` 규칙이 이겨서
+ * 네 개가 모두 같은 반투명 흰색이 되고, 뒤에 비치는 메모지 색 때문에
+ * **하나를 누르면 네 개가 한꺼번에 바뀌는 것처럼** 보였습니다.
+ * 아래처럼 `button.memo-swatch` 까지 적어야 색이 제대로 들어갑니다.
+ */
+.memo-swatches { display: inline-flex; gap: 6px; align-items: center }
+.memo-note .foot button.memo-swatch,
+button.memo-swatch {
+  width: 20px; height: 20px; padding: 0; flex: none;
+  border-radius: 50%; border: 1px solid var(--line-strong);
+}
+.memo-note .foot button.memo-swatch[aria-pressed='true'],
+button.memo-swatch[aria-pressed='true'] {
+  outline: 2px solid #3b352a; outline-offset: 1px;
+}
+.memo-note .foot button.memo-swatch.yellow, button.memo-swatch.yellow { background: #fdf1b8 }
+.memo-note .foot button.memo-swatch.pink,   button.memo-swatch.pink   { background: #fbdce4 }
+.memo-note .foot button.memo-swatch.blue,   button.memo-swatch.blue   { background: #d8e8f7 }
+.memo-note .foot button.memo-swatch.green,  button.memo-swatch.green  { background: #dcefd4 }
+.memo-note .foot button.memo-swatch:hover, button.memo-swatch:hover { filter: brightness(.95) }
+
+/* 배정 목록에 실려 오는 대상자 메모 — 출력물에는 안 나갑니다. */
+.memo-line {
+  display: block;
+  font-size: .74rem;
+  color: var(--warn);
+  margin-top: 2px;
+  max-width: 16.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * 어느 보드인지 한 줄.
+ *
+ * 보드 고르는 단추는 없습니다 — 어느 보드를 보는가는 **화면이 정합니다.**
+ * 고르게 두었더니 지금 누구 보드인지 매번 확인해야 했고,
+ * 확인을 건너뛰면 남의 보드에 적히는 일이 생깁니다.
+ * 그래서 고르는 대신 **어디에 적고 있는지 알려만 줍니다.**
+ */
+.memo-where {
+  margin: 0; padding: 7px 14px 0;
+  font-size: .76rem; color: var(--muted);
+}
+.memo-where b { color: var(--ink-2); }
+
+/*
+ * ── 백업 되돌리기 ─────────────────────────────────────────
+ *
+ * 되돌리기는 **지금 자료를 버리는 일**입니다.
+ * 그래서 고르는 자리를 목록 안에 숨기지 않고 펼쳐 놓고,
+ * 고른 것과 지금 것을 나란히 놓아 견주게 합니다.
+ */
+.bk-files {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 8px; padding: 8px;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface-2);
+  max-height: 190px; overflow-y: auto;
+}
+button.bk-file {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  padding: 5px 9px; font-size: .78rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 7px;
+}
+button.bk-file:hover { border-color: var(--accent); }
+button.bk-file.on { border-color: var(--accent); background: var(--accent-soft); }
+button.bk-file .muted { font-size: .72rem; }
+button.bk-file .tag { font-size: .68rem; padding: 0 5px; }
+
+.bk-compare {
+  margin-top: 12px; padding: 12px;
+  border: 1px solid var(--warn); border-radius: 10px;
+  background: var(--warn-soft);
+}
+.bk-compare table { width: 100%; }
+.bk-compare td.danger { color: var(--risk); font-weight: 600; }
+.bk-compare td.danger .muted { font-weight: 400; }
+
+/*
+ * ── 제공실적 달력 ─────────────────────────────────────────
+ *
+ * 가로로 1일부터 31일까지 늘어놓으면 자리는 적게 먹지만
+ * 「8월 13일」을 찾을 때 **칸을 세야 합니다.**
+ * 달력은 13일이 어디인지 눈이 이미 압니다. 토·일이 어디서 끊기는지도요.
+ *
+ * 왼쪽은 누구를 볼 것인가, 오른쪽은 그 사람의 한 달.
+ */
+.rec-split {
+  display: grid;
+  grid-template-columns: 16.375rem minmax(0, 1fr);   /* 262px */
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 1100px) { .rec-split { grid-template-columns: 1fr; } }
+
+.rec-who { margin-top: 0; overflow: hidden; }
+.rec-who-head { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.rec-who-list { max-height: 70vh; overflow-y: auto; }
+button.rec-who-item {
+  display: block; width: 100%; text-align: left;
+  padding: 9px 14px; border: 0; border-bottom: 1px solid var(--line);
+  background: none; border-radius: 0; cursor: pointer;
+}
+button.rec-who-item:hover { background: var(--surface-2); }
+button.rec-who-item.on {
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.rec-who-name { display: flex; align-items: center; gap: 6px; }
+.rec-who-name .name { font-weight: 600; }
+/* 아직 안 채운 개수. 사람을 하나씩 열어 보지 않아도 여기서 보여야 합니다. */
+.rec-left {
+  margin-left: auto; font-size: .7rem; font-weight: 700;
+  color: var(--warn); background: var(--warn-soft);
+  border: 1px solid var(--warn); border-radius: 999px; padding: 0 6px;
+}
+
+.rec-cal-head {
+  display: flex; align-items: baseline; gap: 10px;
+  padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid var(--line);
+}
+.rec-svc { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+.rec-svc-item {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  font-size: .82rem;
+}
+.rec-svc-tag {
+  font-size: .7rem; padding: 1px 5px; border-radius: 4px;
+  background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent);
+}
+.rec-svc-num { margin-left: auto; }
+
+.cal {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cal-dow {
+  background: var(--surface-2); text-align: center;
+  padding: 6px 0; font-size: .76rem; color: var(--muted); font-weight: 600;
+}
+.cal-dow.sun, .cal-num .sun { color: var(--risk); }
+.cal-dow.sat, .cal-num .sat { color: var(--accent); }
+
+.cal-day {
+  background: var(--surface);
+  min-height: 82px;
+  padding: 4px 5px 6px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+/* 그 달이 아닌 앞뒤 빈칸. 줄을 맞추려고 두는 것이라 비워 둡니다. */
+.cal-day.out { background: var(--surface-2); opacity: .5; }
+/* 휴일 방문에는 할증이 붙습니다. 그래서 눈에 띄어야 합니다. */
+.cal-day.holiday { background: var(--warn-soft); }
+.cal-day.today { box-shadow: inset 0 0 0 2px var(--accent); }
+.cal-day.future { opacity: .55; }
+
+.cal-num {
+  display: flex; align-items: baseline; gap: 4px;
+  font-size: .8rem; font-weight: 600; color: var(--ink-2);
+}
+/* 왜 쉬는 날인가. 붉은 칸만 있고 이름이 없으면 알 수 없습니다. */
+.cal-hname {
+  font-size: .64rem; font-weight: 500; color: var(--warn);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+button.cal-chip {
+  display: flex; align-items: center; gap: 4px;
+  width: 100%; padding: 3px 5px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--surface); color: var(--muted);
+  font-size: .78rem; line-height: 1.2; cursor: pointer; text-align: left;
+}
+button.cal-chip:hover:not(:disabled) { border-color: var(--accent); color: var(--ink); }
+button.cal-chip:disabled { cursor: default; opacity: .45; }
+.cal-chip .chip-svc { font-size: .66rem; color: var(--muted); }
+.cal-chip .chip-mark { font-weight: 700; }
+/* 못 간 사유는 칸에 그대로 남습니다. 나중에 지자체가 물으면 이것이 답입니다. */
+.cal-chip .chip-why {
+  font-size: .64rem; color: var(--warn);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+button.cal-chip.제공   { color: var(--ok);     border-color: var(--ok);   background: var(--ok-soft); }
+button.cal-chip.계획밖 { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+button.cal-chip.미제공 { color: var(--warn);   border-color: var(--warn); background: var(--warn-soft); }
+/* 요일이 정해지지 않은 서비스(월 2회·생애 1회)의 빈 칸.
+   누를 수는 있지만 계획이 아니므로 거의 안 보이게 둡니다. */
+button.cal-chip.free { opacity: .2; border-style: dashed; }
+button.cal-chip.free:hover:not(:disabled) { opacity: 1; }
+
+/* ── 몇 분 있었나 (30분 환산 · A-1) ─────────────────────────────
+   시간제 서비스(가사·동행)의 「제공」 칸에만 붙습니다.
+   누르면 분을 적고, 편람 규칙으로 몇 분 인정되는지 그 자리에 보입니다.
+   **아직 안 적은 칸은 흐리게** — 안 적으면 예전처럼 한 시간으로 셉니다. */
+button.chip-min {
+  display: block; width: 100%; margin-top: 2px; padding: 1px 4px;
+  border: 1px dashed var(--line); border-radius: 5px;
+  background: transparent; color: var(--muted);
+  font-size: .64rem; line-height: 1.3; cursor: pointer; text-align: left;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+button.chip-min:hover:not(:disabled) { border-color: var(--accent); color: var(--ink); }
+button.chip-min:disabled { cursor: default; opacity: .45; }
+button.chip-min.적음 { border-style: solid; color: var(--ok); border-color: var(--ok); }
+/* 15분을 못 넘겨 **0원이 되는** 칸. 이건 눈에 띄어야 합니다. */
+button.chip-min.미산정 { border-style: solid; color: var(--warn); border-color: var(--warn); }
+
+/* ── 이 달 월 한도 (A-2) ───────────────────────────────────────
+   가사 월 12시간 · 식사 월 8회 · 동행 월 6시간과 2회 · 이미용 월 1회.
+   넘겨도 막지 않으므로 **눈에 띄기만** 하면 됩니다. */
+.rec-cap {
+  display: inline-block; margin-left: 8px; padding: 0 6px;
+  border: 1px solid var(--line); border-radius: 999px;
+  font-size: .68rem; color: var(--muted); white-space: nowrap;
+}
+.rec-cap.over { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
+/* 시간·횟수 중 **무엇 때문에** 넘었는지 갈라 보입니다. */
+.rec-cap .over { font-weight: 700; text-decoration: underline; }
+
+/* ── 못 간 날의 갈래 (A-3 · 7-아) ───────────────────────────────
+   같은 ✕ 인데 **노쇼만 돈이 나가고 한도에서 깎입니다**(계약서 4조).
+   그러니 노쇼는 눈에 띄어야 하고, 나머지는 조용해야 합니다. */
+button.chip-kind {
+  display: block; width: 100%; margin-top: 2px; padding: 1px 4px;
+  border: 1px dashed var(--line); border-radius: 5px;
+  background: transparent; color: var(--muted);
+  font-size: .64rem; line-height: 1.3; cursor: pointer; text-align: left;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+button.chip-kind:hover:not(:disabled) { border-color: var(--accent); color: var(--ink); }
+button.chip-kind:disabled { cursor: default; opacity: .45; }
+/* 돈이 나가는 칸. */
+button.chip-kind.노쇼 {
+  border-style: solid; border-color: var(--warn);
+  color: var(--warn); font-weight: 700;
+}
+/* 사전취소라고 적혔지만 알려 온 날이 하루 전보다 늦은 칸. **막지는 않습니다.** */
+button.chip-kind.늦음 { border-style: solid; border-color: var(--warn); color: var(--warn); }
+
+/* ── 식사지원 비대면 배달 (A-4 · 계약서 5-2조) ──────────────────
+   ● 와 ✕ 사이의 자리입니다 — **갔고 놓고 왔습니다.**
+   미제공(✕)과 헷갈리면 안 됩니다: 비대면은 **제공**이고 **비용이 나갑니다.**
+   그래서 색은 「돈이 나간다」 쪽(warn)이되, 테두리는 제공처럼 채워 둡니다. */
+button.cal-chip.비대면 {
+  border-color: var(--warn); color: var(--warn); background: var(--warn-soft);
+}
+button.cal-chip.비대면 .chip-mark { font-weight: 700; }
+.chip-why.f2f { color: var(--warn); font-weight: 700; }
+
+.rec-noshow { color: var(--warn); font-weight: 700; }
+.card.노쇼칸 { border-color: var(--warn); }
+.card.노쇼칸 > div:last-child { color: var(--warn); }
+
+/*
+ * 제공실적 — 대상자 상태 탭.
+ *
+ * 처음 열면 **이용 중인 분만**. 종결·취소까지 섞이면
+ * 「지금 몇 분을 보고 있나」를 셀 수가 없습니다.
+ */
+.rec-tabs {
+  display: flex; flex-wrap: wrap; gap: 2px;
+  padding: 8px 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+button.rec-tab {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 5px 9px; font-size: .78rem;
+  border: 0; border-radius: 6px 6px 0 0;
+  background: none; color: var(--muted); cursor: pointer;
+}
+button.rec-tab:hover { background: var(--surface-2); color: var(--ink-2); }
+button.rec-tab.on {
+  color: var(--accent); font-weight: 700;
+  background: var(--accent-soft);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+.rec-tab-n { font-size: .7rem; opacity: .75; }
+
+/*
+ * 정산 — 청구가 둘로 갈릴 때.
+ *
+ * 지자체 몫과 이용자 몫의 청구 시점이 다르면 **묶는 기간이 다릅니다.**
+ * 한 장에 담으면 그 종이가 거짓말이 되므로 덩어리를 갈라 놓습니다.
+ */
+.bill-part + .bill-part { margin-top: 18px; }
+.bill-part-head {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  padding-bottom: 6px; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+/* 아직 때가 안 된 것. 잘못된 것이 아니므로 붉게 두지 않습니다. */
+.tag.쌓이는중 {
+  background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
+}
+
+/*
+ * ── 통계 ──────────────────────────────────────────────────
+ */
+
+/* 달 고르개. 열두 칸이 가로로 넘치면 줄을 바꿉니다. */
+.mon-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+button.mon {
+  display: inline-flex; align-items: baseline; gap: 4px;
+  padding: 5px 10px; font-size: .8rem;
+  border: 1px solid var(--line); border-radius: 7px;
+  background: var(--surface); color: var(--ink-2); cursor: pointer;
+}
+button.mon:hover:not(:disabled) { border-color: var(--accent); }
+button.mon.on {
+  border-color: var(--accent); background: var(--accent-soft);
+  color: var(--accent); font-weight: 700;
+}
+/* 아직 오지 않은 달. 눌러도 볼 것이 없습니다. */
+button.mon:disabled { opacity: .35; cursor: default; }
+.mon-n { font-size: .7rem; opacity: .7; }
+
+/*
+ * 처리율 막대.
+ * 숫자만 있으면 **어느 쪽이 처진 것인지** 눈에 안 들어옵니다.
+ * 빨강·노랑·초록 대신 이 프로그램이 이미 쓰는 색을 그대로 씁니다.
+ */
+.bar-wrap {
+  position: relative; display: block;
+  height: 18px; border-radius: 4px;
+  background: var(--surface-2); overflow: hidden;
+}
+.bar { position: absolute; inset: 0 auto 0 0; }
+.bar.good { background: var(--ok-soft); border-right: 2px solid var(--ok); }
+.bar.mid  { background: var(--warn-soft); border-right: 2px solid var(--warn); }
+.bar.low  { background: var(--risk-soft); border-right: 2px solid var(--risk); }
+.bar-n {
+  position: relative; display: block; text-align: right;
+  padding-right: 6px; font-size: .74rem; line-height: 18px; color: var(--ink-2);
+}
+
+/* 못 간 사유 — 개수가 먼저 오게. 「부재 12」보다 「12 부재」가 빨리 읽힙니다. */
+.reasons { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
+.reason {
+  display: flex; align-items: baseline; gap: 6px;
+  padding: 6px 11px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface-2);
+}
+.reason b { font-size: 1rem; }
+.reason span { font-size: .8rem; color: var(--muted); }
+
+/* 인쇄할 때만 나오는 머리글 — 기관명은 이미 쪽 위에 있고, 여기엔 무엇·언제. */
+.print-head { display: none; }
+
+/*
+ * ── 인쇄 ──────────────────────────────────────────────────
+ *
+ * 별도 프로그램 없이 **브라우저 인쇄**로 갑니다. 「PDF 로 저장」도 그대로 됩니다.
+ *
+ * 지킬 것 —
+ *   · 화면의 색·배경은 빼고 **선과 글자만.** 잉크와 알아보기 둘 다를 위해서입니다.
+ *   · 차림표·단추·메모장처럼 **종이에서 쓸 수 없는 것**은 뺍니다.
+ *   · 표가 쪽을 넘어갈 때 **줄 가운데가 잘리지 않게** 합니다.
+ *   · 머리글에 무엇을 언제 뽑았는지. 종이가 돌아다니다 출처를 잃습니다.
+ */
+@media print {
+  /*
+   * ── 종이는 늘 같은 크기입니다 ─────────────────────────────
+   * 화면 글자 크기는 **그 사람 눈**을 위한 것입니다. 그것이 종이까지
+   * 따라가면, 크게 보시는 분이 뽑은 제공기록지와 눈 좋은 분이 뽑은 것이
+   * **쪽 수도 줄 수도 다릅니다.** 지자체에 내는 종이가 사람마다 다르면 안 됩니다.
+   */
+  :root {
+    font-size: 16px !important;
+    --ground: #fff; --surface: #fff; --surface-2: #fff;
+    --ink: #000; --ink-2: #222; --muted: #555;
+    --line: #999; --line-strong: #666;
+    --accent: #000; --accent-soft: #fff;
+    --risk: #000; --risk-soft: #fff;
+    --ok: #000; --ok-soft: #fff;
+    --warn: #000; --warn-soft: #fff;
+    --shadow: none;
+  }
+  @page { size: A4 portrait; margin: 14mm 12mm 16mm; }
+
+  body { background: #fff; }
+  /*
+   * ★★★ **메모장은 종이에 안 나옵니다** (2026-09-07 무무 —
+   *   「오른쪽 메모장을 펼치면 인쇄화면이 엉망이 되. 메모장은
+   *    인쇄범위에 포함되지 않아야 해.」)
+   *
+   *   여기 `.memo-panel` 이라고 적혀 있었는데, **그런 반 이름은
+   *   없습니다.** 진짜 이름은 `.memo-drawer` 입니다. 그래서 서랍을
+   *   펼친 채 인쇄하면 화면 오른쪽의 메모지가 종이에 통째로 얹혔고,
+   *   `.shell` 의 오른쪽 여백(`--memo-w`)까지 살아 있어 표가 왼쪽으로
+   *   밀려 잘렸습니다.
+   *
+   *   **없는 이름을 적어 두면 시험도 화면도 아무 말을 안 합니다** —
+   *   규칙은 있는데 아무 데도 안 걸리는 채로 몇 주가 갑니다.
+   */
+  .side, .memo-tab, .memo-drawer, .memo-panel, .memo-board,
+  .main-head .btns, .btns, button, .btn-like, .toast {
+    display: none !important;
+  }
+  /* 서랍이 밀어 두었던 오른쪽 여백도 되돌립니다 — 안 그러면 표가 잘립니다. */
+  .shell { padding-right: 0 !important; --memo-w: 0 !important; }
+
+  /*
+   * ★★★ **표 머리줄은 단추라도 남깁니다** (2026-09-07 화면에서 잡음)
+   *
+   *   열 이름이 「이름 ⇅」처럼 **정렬 단추**로 되어 있습니다. 위에서
+   *   단추를 통째로 숨기니 종이에 **열 이름이 하나도 안 남았습니다** —
+   *   「연번」만 있고 나머지는 빈 칸이었습니다. 숫자만 있고 그게
+   *   무엇인지 없는 종이는 못 읽습니다.
+   *
+   *   단추 모양만 벗기고 **글자는 남깁니다.** 화살표(⇅▲▼)는 화면에서
+   *   누르라는 표시일 뿐이라 종이에서는 뺍니다.
+   */
+  th button, th .sorter { display: inline !important;
+    background: none; border: 0; padding: 0; margin: 0;
+    font: inherit; color: inherit; }
+  th .sorter .arrow { display: none !important; }
+
+  /*
+   * ★ **거르개 상자는 뺍니다.** 찾기 칸·고르개는 화면에서 누르는
+   *   것이지 종이에 남길 것이 아닙니다. 무엇으로 걸렀는지는 이미
+   *   맨 위 `.print-when` 줄에 적혀 있습니다 — 두 번 찍을 까닭이 없고,
+   *   빈 입력칸이 종이 한 뼘을 차지합니다.
+   */
+  .거르개 { display: none !important; }
+  input, select, textarea { display: none !important; }
+
+  /*
+   * 서비스 이름표 같은 작은 딱지 — **바탕색은 빼고 글자만.**
+   * 잉크도 잉크지만, 흑백 프린터에서 회색 바탕 위의 글씨는 오히려
+   * 읽기 어렵습니다. 「선과 글자만」이 인쇄목록.md 의 원칙입니다.
+   */
+  .svc, .딱지, .한것딱지, .chip {
+    background: none !important; color: #000 !important;
+    border: 1px solid #999 !important;
+  }
+  .shell { display: block; padding-right: 0 !important; }
+  .main { padding: 0 !important; }
+  .card {
+    border: 1px solid #999; box-shadow: none; break-inside: avoid; margin: 0 0 8mm;
+  }
+  .card.warn { border-width: 2px; }
+  h1 { font-size: 15pt; }
+  h2 { font-size: 11pt; }
+  body, td, th, p { font-size: 9pt; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border-bottom: 1px solid #bbb; }
+  thead { display: table-header-group; }   /* 쪽이 넘어가도 머리줄을 다시 찍습니다 */
+  tr { break-inside: avoid; }
+  .table-wrap { overflow: visible !important; }
+  a { color: #000; text-decoration: none; }
+
+  /* 막대는 잉크만 먹고 뜻이 안 남습니다. 숫자만 남깁니다. */
+  .bar { display: none; }
+  .bar-wrap { background: none; height: auto; }
+  .bar-n { text-align: left; padding: 0; }
+
+  .print-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1.5px solid #000; padding-bottom: 3mm; margin-bottom: 5mm;
+  }
+  .print-head span { font-size: 8pt; color: #333; }
+}
+
+/* 어느 해·달 것인지. 화면에는 안 보이고 종이에만 나옵니다. */
+.print-when { display: none; }
+
+@media print {
+  /* 「못 감」의 주황도 종이에서는 검정입니다 — 선과 글자만. */
+  .deadline, .tag { color: #000 !important; border-color: #666 !important; background: none !important; }
+  .print-when {
+    display: block; font-size: 10pt; font-weight: 700; margin: 0 0 4mm;
+  }
+}
+
+/*
+ * 통계 — 보기 탭 (서비스별 · 대상자별 · 제공인력별 · 행정동별).
+ *
+ * 같은 자료를 네 가지 눈으로 봅니다. 넷을 한꺼번에 펴 두었더니
+ * 대상자가 늘수록 화면이 아래로 한없이 길어졌습니다.
+ */
+.view-tabs {
+  display: flex; align-items: center; gap: 2px;
+  padding: 10px 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+button.view-tab {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 12px; font-size: .82rem;
+  border: 0; border-radius: 7px 7px 0 0;
+  background: none; color: var(--muted); cursor: pointer;
+}
+button.view-tab:hover { background: var(--surface-2); color: var(--ink-2); }
+button.view-tab.on {
+  color: var(--accent); font-weight: 700;
+  background: var(--accent-soft);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+.view-n { font-size: .72rem; opacity: .75; }
+.view-when { padding-right: 6px; }
+
+@media print {
+  /* 탭 줄은 종이에서 뜻이 없습니다. 다만 **무엇을 보고 있었는지**는 남깁니다. */
+  .view-tabs { border: 0; padding: 0 0 3mm; }
+  .view-tab { display: none; }
+  .view-tab.on { display: inline-flex !important; padding: 0; font-size: 10pt; }
+  .view-when { display: inline !important; padding: 0 0 0 8px; }
+}
+
+/*
+ * 통계 표 — **열 자리를 못박습니다.**
+ *
+ * 표마다 이름 길이가 다릅니다(「가사지원」 · 「해남읍」 · 사람 이름).
+ * 그대로 두면 숫자 열이 표마다 다른 자리에 서서, 탭을 넘길 때마다
+ * 숫자가 좌우로 튑니다. 그러면 견주어 읽을 수가 없습니다.
+ */
+table.stat-table { table-layout: fixed; width: 100%; }
+table.stat-table td, table.stat-table th { overflow: hidden; text-overflow: ellipsis; }
+
+/*
+ * 「보기」 상자 — 밝기와 글자 크기를 나란히.
+ * 좁아지면 위아래로 섭니다. 옆으로 밀려 잘리면 고를 수가 없습니다.
+ */
+/*
+ * 자리를 `rem` 으로 잽니다 — **글자 크기를 따라갑니다.**
+ * 「아주 크게」로 보면 단추 묶음이 넓어져 두 칸에 안 들어가는데,
+ * 그때 억지로 두 칸을 지키면 단추 줄이 접혀 **둥근 모서리가 어긋나 고장처럼**
+ * 보입니다. 안 들어가면 **위아래로 서게** 둡니다.
+ * (화면 너비로 재는 media query 는 글자 크기를 못 봅니다. 그래서 auto-fit.)
+ */
+.view-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 18px; align-items: start;
+}
+.view-split h3 { margin-bottom: 8px; }
+
+/*
+ * ── 겹창 고르개 (폴더 · 주소) ─────────────────────────────
+ *
+ * 경로를 손으로 치게 두면 오타가 몇 달 뒤에 드러납니다.
+ * 서버가 폴더를 훑어 주고, 화면은 탐색기처럼 눌러 들어갑니다.
+ *
+ * **이름을 `.dlg` 로 붙입니다.** 처음에 `.pick` 이라고 지었더니 프로그램이
+ * 이미 쓰던 `.pick`(테마 고르개 같은 단추 묶음)과 부딪혀, 그 단추들이
+ * 갑자기 620px 짜리 흰 상자가 되었습니다. 브라우저 시험이 잡아냈습니다.
+ * **새 이름은 무엇의 것인지 앞에 붙입니다** — `.memo-note` 때와 같은 교훈입니다.
+ */
+.dlg-back {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(0, 0, 0, .35);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.dlg {
+  width: min(620px, 100%); max-height: 80vh;
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line-strong);
+  border-radius: 12px; padding: 16px 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+}
+.dlg-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.dlg-where {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px; margin-bottom: 8px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+  font-size: .82rem; word-break: break-all;
+}
+.dlg-where button { flex: none; padding: 2px 9px; }
+.dlg-list {
+  flex: 1; min-height: 160px; overflow-y: auto;
+  border: 1px solid var(--line); border-radius: 8px;
+}
+button.dlg-row {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; text-align: left;
+  padding: 8px 12px; border: 0; border-bottom: 1px solid var(--line);
+  background: none; border-radius: 0; cursor: pointer; font-size: .86rem;
+}
+button.dlg-row:hover { background: var(--accent-soft); }
+.dlg-ico { opacity: .7; }
+.dlg-foot { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+
+/*
+ * 주소 검색창은 **남의 창을 우리 겹창 안에 앉히는 것**입니다.
+ * 그 창은 제 높이를 스스로 못 정하므로(부모가 정해 줘야 합니다) 여기서
+ * 자리를 못 박습니다. 높이를 안 주면 1px 짜리 줄로 납작하게 눌립니다.
+ */
+.dlg.addr-box { width: min(560px, 100%); height: min(640px, 88vh); }
+.addr-embed {
+  flex: 1; min-height: 380px; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 8px;
+}
+
+/*
+ * 접어 두는 설명.
+ * 늘 펼쳐 두면 「내가 모르는 어려운 게 있구나」만 남고,
+ * 없애면 알고 싶을 때 물어볼 데가 없어집니다. 그래서 접어 둡니다.
+ */
+.더보기 > summary {
+  cursor: pointer; font-size: .82rem; color: var(--muted);
+  padding: 4px 0; list-style: none; width: fit-content;
+}
+.더보기 > summary::-webkit-details-marker { display: none }
+.더보기 > summary::before { content: '▸ '; }
+.더보기[open] > summary::before { content: '▾ '; }
+.더보기 > summary:hover { color: var(--ink-2); }
+@media print { .더보기 { display: none } }
+
+
+/* ══ 제공실적 — 칸을 눌러서 여는 창 (2026-09-05) ═══════════
+   예전에는 칸을 누를 때마다 상태가 돌았습니다. 현장앱이 붙으면서
+   한 칸이 들고 있는 것(진행시간·확인사항·사진·서명·고친 기록)이
+   많아져 달력 칸에 다 못 넣게 되었고, 무엇보다 **보려고 눌렀다가
+   값이 바뀌는** 일이 위험했습니다.                            */
+.덮개 {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, .42);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 40px 16px; overflow-y: auto; z-index: 30;
+}
+.실적창 {
+  width: 100%; max-width: 520px; background: var(--surface);
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  padding: 18px 20px 22px; position: relative;
+}
+.실적창머리 {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--line);
+}
+.실적창머리 > div:first-child { flex: 1; min-width: 0; }
+.닫기단추 {
+  flex: 0 0 auto; width: 34px; height: 34px; padding: 0; margin: 0;
+  font-size: 1.05rem; line-height: 1; border-radius: 4px;
+}
+.실적칸 { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.실적칸:last-of-type { border-bottom: 0; }
+.실적칸.고침칸 { background: var(--warn-soft); border-radius: 4px; padding: 12px 14px; }
+.실적이름표 {
+  font-weight: 600; font-size: .92rem; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.실적줄 {
+  display: flex; gap: 10px; margin-top: 6px; font-size: .95rem;
+  align-items: baseline;
+}
+.실적줄 > span:first-child {
+  color: var(--muted); min-width: 5.4em; flex: 0 0 auto; font-size: .88rem;
+}
+.실적줄 > span:last-child { flex: 1; min-width: 0; }
+
+/* 상태 고르는 단추 — 지금 값이 한눈에 보여야 합니다 */
+.상태고름 { display: flex; gap: 6px; flex-wrap: wrap; }
+.상태단추 {
+  flex: 1 1 auto; min-width: 88px; margin: 0; padding: 11px 10px;
+  font-size: .95rem; border-radius: 5px;
+}
+.상태단추.지금 {
+  background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700;
+}
+.작은단추 { display: inline; margin: 0 0 0 8px; padding: 0; font-size: .82rem;
+  text-decoration: underline; }
+
+.한것딱지 {
+  display: inline-block; font-size: .82rem; padding: 2px 8px; margin: 0 4px 4px 0;
+  border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+}
+.한것딱지.기타 { background: var(--surface-2); color: var(--ink-2); }
+
+/*
+ * ── 「관리자 수정함」 ────────────────────────────────────────
+ *
+ * 사무실이 손댄 칸에만 붙습니다. **작게, 조용하게** — 무무가 요청한
+ * 것이 딱 그것입니다. 크게 붙이면 매 줄이 경고처럼 보여서, 정작
+ * 봐야 할 「확인필요」가 안 보입니다.
+ */
+/*
+ * 제공기록지 받기 — 서비스 줄 오른쪽에 조용히 붙습니다.
+ * 매달 한 번 누르는 것이라 크게 만들 까닭이 없고, 그렇다고
+ * 못 찾으면 손으로 쓰게 됩니다.
+ */
+.rec-sheet {
+  margin-left: 8px; text-decoration: none;
+  border: 1px solid var(--line); border-radius: 4px;
+  padding: 2px 8px; font-size: .78rem; color: var(--accent);
+  white-space: nowrap;
+}
+.rec-sheet:hover { background: var(--accent-soft); border-color: var(--accent); }
+
+.손댐 {
+  margin-left: 6px; font-size: .68rem; font-weight: 500;
+  color: var(--ink-2); opacity: .75; white-space: nowrap;
+}
+.손댐::before { content: "· "; }
+
+/*
+ * ── 사무실이 적는 칸 ────────────────────────────────────────
+ *
+ * 현장에서 온 것을 보여 주는 자리와 **눈에 띄게 갈라 둡니다.**
+ * 보는 칸과 적는 칸이 같아 보이면, 보려고 열었다가 고쳐 놓는 일이
+ * 생깁니다 — 「눌러 도는 것」을 없앤 까닭과 같습니다.
+ */
+.적는칸 {
+  background: var(--surface-2); border-radius: 8px;
+  padding: 14px 16px; margin-top: 4px;
+}
+.적는칸 .field { margin-bottom: 14px; }
+.적는칸 .field:last-of-type { margin-bottom: 0; }
+.적는칸 input[type=time] { font-variant-numeric: tabular-nums; }
+
+/*
+ * ── 고르는 칸 (서식3 의 열한 가지 같은 것) ──────────────────
+ *
+ * ★ 2026-09-05 에 빠뜨린 것 ★
+ *   이 모양이 **현장앱에만** 있고 사무실 화면에는 없었습니다. 그래서
+ *   네모칸이 글자 아래로 밀려 **어느 네모가 어느 항목인지 알 수 없는**
+ *   화면이 나왔습니다. 체크 하나를 잘못 누르면 서식이 통째로 틀립니다.
+ *
+ * 한 줄에 하나씩 둡니다. 두 줄로 놓으면 「재활운동보조」 같은 말이
+ * 잘립니다. 잘린 글자를 읽게 하느니 스크롤을 한 번 더 하는 편이 낫습니다.
+ */
+.고름 { display: grid; grid-template-columns: 1fr; gap: 6px; }
+.고름.둘 { grid-template-columns: 1fr 1fr; }
+.칸고름 {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface); font-size: .95rem; cursor: pointer;
+  user-select: none; word-break: keep-all; margin: 0;
+}
+.칸고름 input { width: 18px; height: 18px; margin: 0; flex: 0 0 auto; accent-color: var(--accent); }
+.칸고름:hover { border-color: var(--ink-2); }
+.칸고름:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+
+/*
+ * 서명판. 손으로 그리는 자리라 **넉넉해야** 합니다 —
+ * 좁으면 이름 석 자가 안 들어가서 다시 그리게 됩니다.
+ */
+.서명판 {
+  width: 100%; height: 150px; display: block;
+  border: 1px dashed var(--line); border-radius: 8px;
+  background: #fff; touch-action: none; cursor: crosshair;
+}
+.한것딱지.확인, .한것딱지.늦음 { background: var(--risk-soft); color: var(--risk); }
+
+.실적사진판 { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+.실적사진 { padding: 0; margin: 0; border: 1px solid var(--line); border-radius: 4px;
+  overflow: hidden; aspect-ratio: 1/1; background: var(--surface-2); cursor: zoom-in; }
+.실적사진 img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.실적서명 {
+  width: 100%; max-width: 300px; border: 1px solid var(--line);
+  border-radius: 4px; background: #fff; display: block;
+}
+.큰그림 {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, .82); z-index: 40;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  cursor: zoom-out;
+}
+.큰그림 img { max-width: 100%; max-height: 100%; border-radius: 4px; }
+
+/* ── 근무시간 띠 ───────────────────────────────────────────
+   「컴퓨터를 켜면 같이 켜기」를 쓰면 사무실 동료가 컴퓨터만 켜 주고
+   자리를 뜹니다. 그 사람은 이 화면이 무엇인지 몰라 닫습니다.
+   그래서 **맨 위에서 늘 보이게** 둡니다 — 접거나 숨길 수 없습니다. */
+/*
+ * ── 한 자리에 모읍니다 (2026-09-05) ──────────────────────────
+ *
+ * 알릴 것이 둘이 되었습니다 — 종료 예약과 사무실 열림. 띠를 하나 더
+ * 붙이면 화면 위가 두 줄이 되고, 그것만으로 프로그램이 어수선해
+ * 보입니다. (무무 — 「띄우되 UI 미관을 해치지 않는 방법을 고민해 줘」)
+ *
+ * 그래서 **한 상자 안에 줄로** 넣습니다. 둘 다 있을 때만 두 줄이고,
+ * 보통은 한 줄입니다. 얇게 · 옅게 · 글자만.
+ */
+.상태띠 { margin: 0 0 14px; }
+.띠줄 {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 9px 14px; border-radius: 8px;
+  background: #fff7e6; border: 1px solid #e8c37a; color: #6b4c12;
+  font-size: .9rem; line-height: 1.5;
+}
+.띠줄 + .띠줄 { margin-top: 6px; }
+.띠줄 b { color: #5a3d08; }
+/* 곧 꺼질 때는 색을 바꿉니다 — 지나칠 수 없어야 합니다. */
+.띠줄.곧꺼짐 { background: #fdecea; border-color: #e0a49c; color: #7d2f26; }
+.띠줄.곧꺼짐 b { color: #6b241c; }
+/*
+ * 사무실 열림은 **경고가 아닙니다.** 관리자가 스스로 연 것이라
+ * 노랑·빨강으로 겁줄 일이 아니고, 다만 열려 있다는 것은 보여야 합니다.
+ */
+.띠줄.열림 { background: #eaf1f7; border-color: #a9c2d8; color: #24506f; }
+.띠줄.열림 b { color: #1a3c55; }
+.띠줄 .띠단추 {
+  margin-left: auto; padding: 5px 12px; border-radius: 6px;
+  border: 1px solid currentColor; background: #fff;
+  color: inherit; font-size: .86rem; cursor: pointer; white-space: nowrap;
+}
+.띠줄 .띠단추:hover { background: #fff; filter: brightness(.97); }
+
+/* 설정의 「사무실 안에서 열기」 — 주소와 번호를 크게 보여 줍니다. */
+.열린안내 {
+  background: var(--surface-2); border-radius: 8px;
+  padding: 12px 14px; margin: 10px 0;
+}
+.열린줄 { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.열린줄:last-child { margin-bottom: 0; }
+.열린줄 .이름표 { min-width: 40px; margin: 0; }
+.열린값 { font-size: 1.05rem; font-variant-numeric: tabular-nums; user-select: all; }
+/* 번호는 옆자리에 불러 주는 것이라 한눈에 읽혀야 합니다. */
+.열린값.번호 { font-size: 1.35rem; letter-spacing: .12em; color: var(--accent); }
+
+/*
+ * 퍼센트 칸 — 숫자 오른쪽에 「%」를 붙여 둡니다.
+ *
+ * 사람이 「0.2」와 「20」 중 무엇을 적어야 하는지 헷갈리는 자리라,
+ * 단위를 칸 안에 박아 둡니다. 본인부담 구간에서 씁니다.
+ */
+.퍼센트칸 { display: inline-flex; align-items: center; gap: 4px; }
+.퍼센트칸 input { width: 72px; text-align: right; }
+.퍼센트칸 span { color: var(--muted); font-size: .9em; }
+
+/* ── 시간 셈하기 미리보기 (v1.9.28) ─────────────────────────
+   숫자를 말로 설명하는 것보다 **다녀온 시간 → 셈하는 시간 → 금액**을
+   그대로 보여 주는 편이 빠릅니다. 무무: 「예시를 하단에 표시해 주는건
+   매우 좋은 아이디어야」 */
+.셈보기 { width: auto; min-width: 320px; margin: 4px 0 0; font-size: .92em; }
+.셈보기 caption {
+  text-align: left; padding: 0 0 4px; color: var(--muted);
+  font-size: .9em; font-weight: 600;
+}
+.셈보기 th, .셈보기 td { padding: 3px 14px 3px 0; }
+.셈보기 thead th { color: var(--muted); font-weight: 500; }
+.셈보기 tbody tr.muted td { opacity: .55; }
+
+/* ── 확인사항 항목 (v1.9.29) ────────────────────────────────
+   순서가 그대로 폰 화면의 순서라, 번호를 앞에 붙여 둡니다. */
+.확인줄들 { list-style: none; margin: 10px 0 0; padding: 0; }
+.확인줄들 li {
+  display: flex; align-items: center; gap: 6px; padding: 3px 0;
+}
+.확인줄들 li input { flex: 1; min-width: 0; }
+.확인번호 {
+  width: 22px; text-align: right; color: var(--muted);
+  font-size: .88em; flex: none;
+}
+.확인줄들 .plain { padding: 4px 8px; flex: none; }
+.확인줄들 .plain.지움 { color: var(--bad); }
+.확인줄들 .plain:disabled { opacity: .3; }
+.딱지.작게 { font-size: .74em; padding: 1px 6px; flex: none; }
+.딱지.작게.기타 { background: var(--surface-2); color: var(--muted); }
+.확인이력 { width: 100%; margin-top: 8px; }
+.확인이력 td { padding: 3px 10px 3px 0; vertical-align: top; }
+
+/* ── 설정 탭 (v1.10.29) ─────────────────────────────────────
+   무무: 「탭 명칭을 일반/기관정보/계산규칙 이렇게 3가지로 만들고
+   별도로 여는 기준 없이 탭을 선택하면 언제나 볼 수 있도록 해줘야 해」
+
+   ★ 눌린 탭이 **한눈에** 보여야 합니다. 설정은 하루에도 여러 번
+     오가는 화면이라, 지금 어디를 보고 있는지 헷갈리면 엉뚱한 탭에서
+     값을 찾다가 「없어졌다」고 합니다. */
+.설정탭띠 {
+  display: flex; gap: 2px; margin: -4px 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+.설정탭띠 button {
+  background: none; border: 0; border-bottom: 2px solid transparent;
+  padding: 9px 18px; margin-bottom: -1px;
+  color: var(--muted); font-size: 1.02em; font-weight: 600;
+  cursor: pointer; border-radius: 6px 6px 0 0;
+}
+.설정탭띠 button:hover { background: var(--surface-2); color: var(--text); }
+.설정탭띠 button.고름 {
+  color: var(--accent); border-bottom-color: var(--accent);
+  background: none;
+}
+.설정탭띠 button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* 계산 규칙 탭 맨 위의 경고 줄 — 돈에 닿는 값들이라 한 번 짚습니다. */
+.규칙머리 {
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px; margin: 0 0 16px;
+  background: var(--surface-2); border-radius: 0 8px 8px 0;
+}
+
+/* ── USB 로 오간 자료 (v1.10.30) ────────────────────────────
+   「이 컴퓨터에만」 칸이 0 이 아니면 그만큼 사라집니다.
+   숫자만 놓으면 안 보여서, 그 줄을 붉게 물들입니다. */
+.USB견줌 { width: 100%; max-width: 420px; margin: 4px 0 0; font-size: .93em; }
+.USB견줌 th { color: var(--muted); font-weight: 500; padding: 0 10px 4px 0; }
+.USB견줌 td { padding: 3px 10px 3px 0; }
+.USB견줌 tr.사라짐 td { color: var(--bad); }
+.USB띠 h2 { font-size: 1.05rem; }
+
+/* ── 계획 미리 재기 (v1.11.30) ──────────────────────────────
+   무무: 「계획 수립 시 100%가 넘어가는 계획이 수립되면 경고창을
+   띄우자」 — 넘는 줄만 붉게 두어, 표를 다 읽지 않아도 눈에 걸리게. */
+.계획잰것 { margin: 10px 0; }
+/*
+ * ★ 표가 카드보다 넓어지면 오른쪽 글이 잘립니다 — 풀이 줄이 길어서
+ *   실제로 그랬습니다 (2026-09-07 화면에서 확인). 기둥 너비를 못박고
+ *   글은 접히게 둡니다. 한글은 `keep-all` 이라야 낱말 가운데가 안 잘립니다.
+ */
+.계획표 { width: 100%; margin: 6px 0 0; font-size: .92em; table-layout: fixed; }
+.계획표 td { padding: 2px 12px 2px 0; vertical-align: top;
+             white-space: normal; word-break: keep-all; }
+.계획표 td:first-child { width: 34%; font-weight: 600; }
+.계획표 td:last-child { width: 5rem; }
+.계획표 tr.넘음 td { color: var(--bad); }
+.계획표 tr.넘음 td:last-child { font-weight: 700; }
+
+/* ── 계획 미리 재기 · 달마다 몇 번 (v1.13.31) ───────────────
+   무무: 「실제로 실행되었다고 인정되는 횟수(소수점은 말도 안되지)
+   × 시간으로 계산이 되어야 해」 — 달력을 그대로 세어 정수로 냅니다. */
+.계획달표 { width: auto; min-width: 280px; margin: 8px 0 2px; font-size: .9em; }
+.계획달표 td { padding: 2px 14px 2px 0; }
+.계획달표 td:first-child { font-weight: 700; }
+.계획달표 tr.넘음 td { color: var(--bad); }
+/* 「183% 넘음」만으로는 얼마나 큰일인지 모릅니다 — 풀이를 바로 아래에. */
+.계획표 tr.넘음풀이 td, .계획표 tr.풀이 td {
+  padding: 2px 0 8px; font-size: .95em; line-height: 1.55;
+}
+.계획표 tr.넘음풀이 td { color: var(--bad); }
+.계획표 tr.풀이 td { color: var(--muted); }
+
+/* ── 계획 미리 재기 · 지금 받고 있는 것 (v1.13.31) ──────────
+   무무: 「현재 서비스 들어간 현황과 한도, 잔여한도등을 함께」 —
+   무엇을 줄여야 할지는 이 분이 받는 것 전체를 봐야 정합니다. */
+.계획현황 {
+  margin: 8px 0 4px; padding: 8px 12px;
+  background: var(--surface-2); border-radius: 6px; font-size: .93em;
+}
+.계획현황 .이름표 { font-weight: 700; margin-bottom: 4px; font-size: .95em; }
+.계획현황 .줄 { display: flex; gap: 14px; padding: 2px 0; }
+.계획현황 .줄 > span:first-child { min-width: 8rem; font-weight: 600; }
+.계획현황 .줄.연간 {
+  margin-top: 4px; padding-top: 6px; border-top: 1px solid var(--line);
+}
+
+/* ── 인쇄 단추 (v1.14.31) ───────────────────────────────────
+   화면 오른쪽 위에 조용히 둡니다. 인쇄는 자주 하는 일이 아니라
+   눈에 띄는 자리를 차지하면 매번 걸리적거립니다. */
+.btns.인쇄단추 {
+  justify-content: flex-end; margin: 0 0 -4px;
+}
+.btns.인쇄단추 button { font-size: .9em; padding: 5px 12px; }
+@media print {
+  /* 종이의 「무엇을 · 어떤 조건으로」 줄. 여러 줄이면 접힙니다. */
+  .print-when { white-space: normal; word-break: keep-all; line-height: 1.5; }
+  .인쇄안내 { display: none !important; }
+}
+
+/* ── 업데이트 안내 띠 ─────────────────────────────────────
+   홈 맨 위에 뜹니다. 눈에 띄되 무섭지 않아야 합니다 —
+   「고쳐 두었으니 받으세요」이지 경고가 아닙니다. 그래서 바탕은
+   부드러운 강조색이고, **꼭 해야 하는 버전**일 때만 경고색으로 갑니다. */
+.업데이트띠 { border-color: var(--accent); background: var(--accent-soft); }
+.업데이트띠 h2 { color: var(--accent); font-size: 1.02rem; }
+.업데이트띠.꼭 { border-color: var(--warn); background: var(--warn-soft); }
+.업데이트띠.꼭 h2 { color: var(--warn); }
+.업데이트띠 .꼭줄 { color: var(--warn); }
+.업데이트띠 .흐림 { color: var(--muted); }
+
+/* 바뀐 것 — 한 줄에 하나. 기관은 이 줄들을 읽고 깔지 말지를 정합니다. */
+.업데이트띠 ul.바뀐것 { margin: .5rem 0 .7rem; padding-left: 1.1rem; }
+.업데이트띠 ul.바뀐것 li { margin: .18rem 0; line-height: 1.5; }
+
+/* 받는 중 눈금 */
+.업데이트띠.받는중 { padding-top: .7rem; padding-bottom: .7rem; }
+.받는눈금 {
+  margin-top: .45rem; height: 6px; border-radius: 3px;
+  background: var(--surface-2); overflow: hidden;
+}
+.받는눈금 > div { height: 100%; background: var(--accent); transition: width .3s ease; }
+
+.업데이트띠.하는중 { border-color: var(--accent); background: var(--accent-soft); }
+
+/* 인쇄에는 나오지 않습니다 — 종이에 남을 것이 아닙니다. */
+@media print { .업데이트띠 { display: none !important; } }
+
+/* 설정 → 이 프로그램 → 업데이트 안내 */
+.업데이트설정 .흐림 { color: var(--muted); }
+.업데이트설정 .위험 { color: var(--risk); }
+.업데이트설정 details.지난버전 { margin-top: .7rem; }
+.업데이트설정 details.지난버전 > summary {
+  cursor: pointer; color: var(--accent); font-size: .88rem; padding: .2rem 0;
+}
+.업데이트설정 .지난버전줄 { margin: .5rem 0 .2rem; font-size: .88rem; }
+.업데이트설정 .지난버전줄 ul { margin: .2rem 0 .5rem; padding-left: 1.1rem; }
+.업데이트설정 .지난버전줄 li { margin: .12rem 0; color: var(--ink-2); }
+
+@media print { .업데이트설정 { display: none !important; } }
+
+/* 업데이트 단추는 **글자만큼만** 넓습니다.
+   .row > * { flex: 1 } 때문에 그냥 두면 「받아 둔 것 지우 / 기」처럼
+   가운데서 접힙니다. 눌러야 할 것이 접혀 있으면 안 누릅니다. */
+.업데이트띠 .row > button,
+.업데이트설정 .row > button { flex: 0 0 auto; white-space: nowrap; }
+.업데이트띠 .row, .업데이트설정 .row { flex-wrap: wrap; }
+
+/* 관리자는 한 명뿐 — 역할 고르는 자리의 안내와 넘기기 단추 */
+.관리자한명 {
+  margin-top: 10px; padding: 10px 12px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 4px;
+}
+.pick button[disabled] { opacity: .45; cursor: not-allowed; }
