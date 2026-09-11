@@ -309,8 +309,23 @@ foreach ($f in $올라갈것) {
   if (-not $것 -or $것.Length -gt 2MB) { continue }
   $속 = Get-Content -LiteralPath $온길 -Raw -ErrorAction SilentlyContinue
   if (-not $속) { continue }
+  <#
+    ── 그림 덩어리는 먼저 걷어 냅니다 (2026-09-11) ───────────
+
+    설명서 HTML 에는 화면 그림이 **base64 글자 덩어리**로 박혀 있습니다.
+    1.8MB 짜리 뜻 없는 글자라, 어떤 열쇠 모양이든 **우연히 걸립니다.**
+    실제로 「AWS 열쇠가 들었다」며 멈췄고, 뜯어 보니 그림 한가운데의
+    `AkiAEuQlwtZ5L9ufPHlS` 였습니다.
+
+    걷어 내도 잃는 것이 없습니다 — 열쇠를 그림 속에 숨겨 올릴 일은
+    없고, 덩어리 밖의 글은 그대로 다 봅니다.
+  #>
+  $속 = [regex]::Replace($속, 'data:[A-Za-z0-9.+\-/]+;base64,[A-Za-z0-9+/=\s]+', 'data:...')
+  $속 = [regex]::Replace($속, '[A-Za-z0-9+/=]{200,}', '...')
   foreach ($모양 in $열쇠모양) {
-    if ($속 -match $모양.꼴) { $새는것 += ("{0}   ← {1}" -f $f, $모양.이름); break }
+    # ★ -cmatch 라야 합니다. -match 는 **대소문자를 안 가립니다** —
+    #   그래서 AKIA 가 akia·AkiA 에도 걸려 헛걸림이 났습니다.
+    if ($속 -cmatch $모양.꼴) { $새는것 += ("{0}   ← {1}" -f $f, $모양.이름); break }
   }
 }
 if ($새는것.Count -gt 0) {

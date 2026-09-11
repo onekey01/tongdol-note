@@ -45,6 +45,11 @@ const 밀 = existsSync(밀길) ? readFileSync(밀길, "utf8") : "";
   /sb_secret_\[A-Za-z0-9_\\-\]\{12,\}/.test(밀));
 본다("③ 잠긴 열쇠(PEM)도 찾는다", /BEGIN \[A-Z \]\*PRIVATE KEY/.test(밀));
 본다("③ 토큰(JWT)도 찾는다", /eyJhbGciOi/.test(밀));
+본다("★★ ③ 은 **대소문자를 가린다** (-cmatch)", /\$속 -cmatch \$모양\.꼴/.test(밀),
+  "PowerShell 의 -match 는 안 가려서 AKIA 가 akia 에도 걸립니다");
+본다("★★ ③ 은 그림 덩어리(base64)를 먼저 걷어 낸다",
+  /base64,\[A-Za-z0-9\+\/=/.test(밀),
+  "안 걷어 내면 설명서 그림에서 헛걸림이 납니다");
 본다("걸리면 담아 둔 것을 되돌린다 (reset)", /깃 reset \| Out-Null/.test(밀));
 본다("이름이 버전 번호면 다시 묻는다", /\^v\?\\d\+\(\\\.\\d\+\)\+\$/.test(밀),
   "이름 칸에 v1.21.36 이 들어간 일이 있었습니다");
@@ -89,6 +94,9 @@ let 본파일 = 0;
     if (st.size > 2 * 1024 * 1024) continue;
     let 속: string; try { 속 = readFileSync(온길, "utf8"); } catch { continue; }
     본파일++;
+    /* 그림 덩어리는 뜻 없는 글자라 우연히 걸립니다 — 올리는 도구와 똑같이 걷어 냅니다. */
+    속 = 속.replace(/data:[A-Za-z0-9.+\-/]+;base64,[A-Za-z0-9+/=\s]+/g, "data:...")
+           .replace(/[A-Za-z0-9+/=]{200,}/g, "...");
     for (const [무엇, 꼴] of 열쇠모양)
       if (꼴.test(속)) { 걸린것.push(`${온길.slice(뿌리.length + 1)}  ← ${무엇}`); break; }
   }

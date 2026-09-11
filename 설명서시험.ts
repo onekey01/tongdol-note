@@ -16,7 +16,7 @@
  *   섞여 있고, 단가도 옛 값이 남아 있습니다(2026-09-08 에 확인).
  *   기관이 새로 받았을 때의 값을 봐야 합니다.
  */
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { mkdtempSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -194,6 +194,31 @@ try {
   if (e?.stack) console.log(String(e.stack).split("\n").slice(1, 4).join("\n"));
 } finally {
   rmSync(터, { recursive: true, force: true });
+  console.log("\n── 10. 배포본에 실릴 문서가 **지금 것**인가 ─────────────\n");
+  /*
+   * ★ 1.21.36 이 여기서 샜습니다 (2026-09-11).
+   *
+   *   화면 그림을 넣어 새로 지은 설명서가 `문서짓기\` 에만 쌓였고,
+   *   build.ps1 은 **프로젝트 뿌리**에서 집어 갑니다. 그래서 꾸러미에는
+   *   9월 8일자 옛 문서가 실려 나갔습니다 — 「그림이 들어갔습니다」라고
+   *   적힌 바뀐것 줄과 달리, 열어 보면 그림이 없었습니다.
+   *
+   *   문서는 **열어 봐야** 아는 물건이라 아무도 안 알아챕니다. 그래서 셉니다.
+   */
+  for (const [이름, 글자, 적어도] of [["설치 안내", 안내, 5], ["사용설명서", 글, 10]] as const) {
+    const 그림수 = (글자.match(/data:image\/png;base64/g) ?? []).length;
+    통과해야(`★★ ${이름}.html 에 화면 그림이 들어 있다`, 그림수 >= 적어도,
+      `${그림수}장 (적어도 ${적어도}장)`);
+  }
+  {
+    /* 문서짓기\ 에 옛 판이 남아 헷갈리지 않는지도 봅니다. */
+    const 옛길 = join(뿌리, "문서짓기", "사용설명서.html");
+    const 옛것 = existsSync(옛길) ? readFileSync(옛길, "utf8") : "";
+    통과해야("문서짓기\\ 에 옛 판이 남아 있지 않다",
+      !옛것 || (옛것.match(/data:image\/png;base64/g) ?? []).length >= 10,
+      옛것 ? "남아 있다면 지금 것이라야 합니다" : "없음");
+  }
+
   console.log(`\n${통과수 + 실패수}가지 중 ${통과수}가지 통과, ${실패수}가지 실패\n`);
   process.exit(실패수 ? 1 : 0);
 }

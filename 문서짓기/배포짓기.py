@@ -30,11 +30,11 @@ from 짓기 import 짓기
     <tr><td><b>서명 열쇠</b></td><td>✅ 됨</td>
         <td>2026-09-11 에 만들었습니다 — <b>1단계는 건너뛰셔도 됩니다</b></td></tr>
     <tr><td><b>GitHub 저장소</b></td><td>✅ 있음</td>
-        <td><span class="길">onekey01/tongdol-note</span> — v1.20.36 릴리스까지 올라갔습니다 →
+        <td><span class="길">onekey01/tongdol-note</span> — v1.21.36 릴리스까지 올라갔습니다 →
             <b>2단계도 건너뛰셔도 됩니다</b></td></tr>
     <tr><td><b>소스(만든 글)</b></td><td>❌ 아직</td>
         <td>아직 <b>이 PC 한 대에만</b> 있습니다 → <b>6단계</b></td></tr>
-    <tr><td><b>기관에 깔린 버전</b></td><td>1.19.35 또는<br>1.20.36</td>
+    <tr><td><b>기관에 깔린 버전</b></td><td>1.19.35 또는<br>1.21.36</td>
         <td>이 버전에는 <b>열쇠가 없습니다.</b> 그래서 <b>이번 한 번은 손으로</b> → <b>5단계</b></td></tr>
   </tbody>
 </table></div>
@@ -208,7 +208,7 @@ from 짓기 import 짓기
        <b>한 줄에 하나씩</b> 적습니다.</p>
 
     <div class="짚기">
-      <p><b>이번 버전(1.21.36)은 이렇게 적으시면 됩니다</b> — 그대로 복사해 붙이셔도 됩니다.</p>
+      <p><b>이번 버전(1.22.36)은 이렇게 적으시면 됩니다</b> — 그대로 복사해 붙이셔도 됩니다.</p>
       <div class="검은창" style="margin-bottom:0">바탕화면 아이콘이 흐릿하게 나오던 것을 고쳤습니다
 설치 안내와 사용설명서에 실제 화면 그림이 들어갔습니다. 브라우저에서 열어 보시면 됩니다
 지자체에 내는 기록지에 값이 파란 기울임 글씨로 나가던 것을 고쳤습니다. 이제 검은 글씨로 나갑니다
@@ -251,19 +251,17 @@ from 짓기 import 짓기
        검은 창이 뜨고 한참 돕니다. <b>두 번 묻습니다.</b></p>
 
     <h3>물음 ① 버전 번호</h3>
-    <div class="검은창"><span class="흐리게">  지금 버전 번호는  v1.20.36  입니다.</span>
+    <div class="검은창"><span class="흐리게">  지금 버전 번호는  v1.21.36  입니다.</span>
 <span class="흐리게">  맨 뒷자리(36)는 자료함 구조라 프로그램이 붙입니다 — 손대지 않습니다.</span>
 
-<span class="흐리게">  고친 것을 내보내는 것이면 앞 두 자리를 올려 주세요 (예: 1.20 → 1.21).</span>
+<span class="흐리게">  고친 것을 내보내는 것이면 앞 두 자리를 올려 주세요 (예: 1.21 → 1.22).</span>
 <span class="흐리게">  그대로 두시려면 그냥 엔터.</span>
-<span class="흐리게">  새 앞 두 자리: </span><span class="밝게">1.21</span>  <span class="흐리게">← 이렇게 치고 엔터</span></div>
+<span class="흐리게">  새 앞 두 자리: </span><span class="밝게">1.22</span>  <span class="흐리게">← 이렇게 치고 엔터</span></div>
 
-    <p><b>이번에는 <span class="길">1.21</span> 을 치십시오.</b> 그러면 버전이
-       <b>1.21.36</b> 이 됩니다.</p>
+    <p><b>이번에는 <span class="길">1.22</span> 을 치십시오.</b> 그러면 버전이
+       <b>1.22.36</b> 이 됩니다.</p>
     <div class="짚기">
-      <p style="margin-bottom:0"><b>왜 올리나</b> — <b>1.20.36 은 이미 릴리스했습니다.</b>
-         GitHub 은 같은 태그를 두 번 못 씁니다. 그리고 아이콘과 새 설명서는
-         그 1.20.36 안에 안 들어 있습니다. 그래서 <b>한 칸 올려서</b> 다시 냅니다.</p>
+      <p style="margin-bottom:0"><b>왜 올리나</b> — <b>1.21.36 은 이미 릴리스했습니다.</b> GitHub 은 같은 태그를 두 번 못 씁니다. 그리고 1.21.36 꾸러미에는 <b>그림 없는 옛 설명서</b>가 실려 나갔습니다 — 문서를 짓는 자리와 배포본이 집어 가는 자리가 달랐습니다. 그것을 고쳤으니 <b>한 칸 더 올려서</b> 다시 냅니다.</p>
     </div>
 
     <h3>물음 ② 꼭 해야 하는 버전인가</h3>
@@ -281,8 +279,8 @@ from 짓기 import 짓기
     <h3>다 되면 이렇게 끝납니다</h3>
     <div class="검은창"><span class="흐리게">  다 됐습니다.</span>
 
-<span class="흐리게">    폴더    </span><span class="밝게">통돌Note_1.21.36</span>
-<span class="흐리게">    압축    </span><span class="밝게">통돌Note_1.21.36.zip</span><span class="흐리게">   ← 기관에는 이 파일 하나만 보내면 됩니다</span>
+<span class="흐리게">    폴더    </span><span class="밝게">통돌Note_1.22.36</span>
+<span class="흐리게">    압축    </span><span class="밝게">통돌Note_1.22.36.zip</span><span class="흐리게">   ← 기관에는 이 파일 하나만 보내면 됩니다</span>
 
 <span class="흐리게">    올릴것  ← GitHub 에 이 폴더 안의 세 파일을 올리시면 됩니다</span></div>
 
@@ -290,7 +288,7 @@ from 짓기 import 짓기
     <div class="검은창"><span class="흐리게">  올릴것\</span>
     <span class="밝게">version.json</span>                    <span class="흐리게">버전 번호 · 날짜 · 바뀐 것 · 지문</span>
     <span class="밝게">version.json.sig</span>                <span class="흐리게">그 파일에 찍은 서명</span>
-    <span class="밝게">tongdol-note-1.21.36.zip</span>        <span class="흐리게">프로그램 (40MB쯤)</span></div>
+    <span class="밝게">tongdol-note-1.22.36.zip</span>        <span class="흐리게">프로그램 (40MB쯤)</span></div>
 
     <div class="큰일">
       <p class="머릿말">「올릴것」 폴더가 안 열리면 1단계를 안 하신 것입니다</p>
@@ -318,16 +316,16 @@ from 짓기 import 짓기
               <td>★ <b>이 단계를 하셔야 합니다.</b> 그 버전에는 <b>공개 열쇠가 없어</b>
                   새 버전을 봐도 서명을 확인할 수 없어 받지 않습니다. 손으로 한 번만
                   넣어 드리면 그 다음부터 저절로 뜹니다</td></tr>
-          <tr><td><b>1.20.36</b></td>
+          <tr><td><b>1.21.36</b></td>
               <td>✅ <b>이 단계는 건너뛰십시오.</b> 그 안에 열쇠가 들어 있습니다.
-                  기관은 다음에 켤 때 <b>1.21.36 띠를 저절로 봅니다</b></td></tr>
+                  기관은 다음에 켤 때 <b>1.22.36 띠를 저절로 봅니다</b></td></tr>
         </tbody>
       </table></div>
       <p style="margin:.8rem 0 0">손으로 가는 일은 <b>열쇠 없는 버전에 한 번뿐</b>입니다.</p>
     </div>
 
     <h3>무엇을 가져가나</h3>
-    <p><b>파일 하나입니다</b> — <span class="길">통돌Note_1.21.36.zip</span>.
+    <p><b>파일 하나입니다</b> — <span class="길">통돌Note_1.22.36.zip</span>.
        USB 에 담아 가시거나 메일로 보내시면 됩니다.</p>
 
     <h3>기관 PC 에서 하는 일</h3>
@@ -341,7 +339,7 @@ from 짓기 import 짓기
           <span>★ <b>지금 깔려 있는 그 자리</b>(대개 <span class="길">C:\통돌Note</span>)여야 합니다.
                 같은 자리면 <b>프로그램만 갈아 끼우고 자료함은 손도 대지 않습니다.</b></span></li>
       <li><b>바탕화면 아이콘으로 켜서 확인</b>
-          <span>설정 → 이 프로그램 → 버전에 <b>1.21.36</b> 이 보이면 된 것입니다.</span></li>
+          <span>설정 → 이 프로그램 → 버전에 <b>1.22.36</b> 이 보이면 된 것입니다.</span></li>
     </ol>
 
     <div class="큰일">
@@ -440,7 +438,7 @@ from 짓기 import 짓기
 <span class="흐리게">  ────────────────────────────────────────────────────</span>
 
 <span class="흐리게">  무엇을 고쳤는지 한 줄로 적어 주세요.</span>
-<span class="흐리게">  한 줄 설명 (그냥 엔터 = v1.21.0 손질): </span><span class="밝게">아이콘 목차 고침</span>
+<span class="흐리게">  한 줄 설명 (그냥 엔터 = v1.22.0 손질): </span><span class="밝게">아이콘 목차 고침</span>
 
 <span class="흐리게">  기록으로 묶었습니다 — 아이콘 목차 고침</span>
 
@@ -507,10 +505,10 @@ from 짓기 import 짓기
       <li><b>오른쪽 기둥에서 <span class="누름">Releases</span> 를 누릅니다</b>
           <span>처음이면 <span class="누름">Create a new release</span>,
                 다음부터는 <span class="누름">Draft a new release</span>.</span></li>
-      <li><b><span class="누름">Choose a tag</span> 를 누르고 <span class="길">v1.21.36</span> 을 칩니다</b>
-          <span>치고 나면 아래에 <span class="누름">+ Create new tag: v1.21.36 on publish</span>
+      <li><b><span class="누름">Choose a tag</span> 를 누르고 <span class="길">v1.22.36</span> 을 칩니다</b>
+          <span>치고 나면 아래에 <span class="누름">+ Create new tag: v1.22.36 on publish</span>
                 가 뜹니다. <b>그것을 눌러야</b> 태그가 만들어집니다.</span></li>
-      <li><b>Release title 에 <span class="길">v1.21.36</span></b>
+      <li><b>Release title 에 <span class="길">v1.22.36</span></b>
           <span>태그와 똑같이 두시면 됩니다.</span></li>
       <li><b>아래 <span class="누름">Attach binaries by dropping them here</span> 자리에
              「올릴것」 폴더의 <b>세 파일을 통째로 끌어다 놓습니다</b></b>
@@ -525,10 +523,10 @@ from 짓기 import 짓기
       <div class="표감" style="margin:.6rem 0 0"><table>
         <thead><tr><th style="width:9rem">이렇게</th><th style="width:5rem">되나</th><th>까닭</th></tr></thead>
         <tbody>
-          <tr><td><span class="길">v1.21.36</span></td><td>✅</td><td>맞습니다</td></tr>
-          <tr><td><span class="길">1.21.36</span></td><td>❌</td><td>앞에 <b>v</b> 가 없습니다</td></tr>
-          <tr><td><span class="길">v1.20</span></td><td>❌</td><td>뒷자리(36)가 빠졌습니다</td></tr>
-          <tr><td><span class="길">V1.21.36</span></td><td>❌</td><td>대문자 V 는 다른 글자입니다</td></tr>
+          <tr><td><span class="길">v1.22.36</span></td><td>✅</td><td>맞습니다</td></tr>
+          <tr><td><span class="길">1.22.36</span></td><td>❌</td><td>앞에 <b>v</b> 가 없습니다</td></tr>
+          <tr><td><span class="길">v1.22</span></td><td>❌</td><td>뒷자리(36)가 빠졌습니다</td></tr>
+          <tr><td><span class="길">V1.22.36</span></td><td>❌</td><td>대문자 V 는 다른 글자입니다</td></tr>
         </tbody>
       </table></div>
       <p style="margin:.8rem 0 0"><b>만들기 창 맨 끝에 써야 할 태그가 그대로 찍혀 나옵니다.</b>
@@ -557,7 +555,7 @@ from 짓기 import 짓기
     <div class="표감"><table>
       <thead><tr><th style="width:10rem">보이는 것</th><th>뜻</th></tr></thead>
       <tbody>
-        <tr><td><b>글자 덩어리</b><br><span class="작게">{"version":"1.21.36",…</span></td>
+        <tr><td><b>글자 덩어리</b><br><span class="작게">{"version":"1.22.36",…</span></td>
             <td>✅ 됐습니다. 기관은 다음에 켤 때 알아서 봅니다</td></tr>
         <tr><td><b>404</b></td>
             <td>❌ Publish 를 안 눌렀거나, 태그가 틀렸거나, 파일을 안 올렸습니다</td></tr>
@@ -621,7 +619,7 @@ from 짓기 import 짓기
         <td>버전 번호를 안 올렸을 수 있습니다 (같은 번호면 안 뜹니다).
             또는 그 기관 프로그램에 <b>열쇠가 없는 옛 버전</b>입니다 — <b>5단계</b></td></tr>
     <tr><td>기관이 <span class="뜬말">받는 중</span> 에서 안 끝남</td>
-        <td>태그가 <span class="길">v1.21.36</span> 이 아닐 가능성이 큽니다</td></tr>
+        <td>태그가 <span class="길">v1.22.36</span> 이 아닐 가능성이 큽니다</td></tr>
     <tr><td>검은 창에 <span class="뜬말">버전정보의 서명이 맞지 않습니다</span></td>
         <td>version.json 만 바꾸고 .sig 를 안 올렸습니다 — <b>셋을 늘 같이</b></td></tr>
   </tbody>
@@ -647,7 +645,7 @@ from 짓기 import 짓기
     제목="새 버전 내보내기",
     탭이름="통돌 Note — 새 버전 내보내기",
     한줄="처음 한 번 두 가지, 그 다음부터는 매번 네 가지. 그대로 따라 하시면 됩니다.",
-    꼬리=[("이번 버전", "1.21.36"), ("기관에 깔린 것", "설정 → 이 프로그램 에서 확인"), ("걸리는 시간", "처음 40분 · 다음부터 20분")],
+    꼬리=[("이번 버전", "1.22.36"), ("기관에 깔린 것", "설정 → 이 프로그램 에서 확인"), ("걸리는 시간", "처음 40분 · 다음부터 20분")],
     몸=몸,
-    발=발.replace("{버전}", "1.21.36"),
+    발=발.replace("{버전}", "1.22.36"),
 )
